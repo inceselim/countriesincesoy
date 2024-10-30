@@ -1,0 +1,94 @@
+NoConnection Sayfası yapılacak
+Music background
+
+🎪 kışla
+👨🏻‍✈️
+⚔️
+✮ star
+🗡️ kılıç
+👑 taç
+💎 gems
+
+Sözleşme
+
+her 1000 kişi için bir hastane
+ değilse nüfus artışında azalma
+
+her bina basıldğında fiyat artışı
+
+yönetim binası her 1000 kişi için 
+vergi %0.001
+
+merkez bankası kredi çekmek için
+kasadaki fazla para için faiz geliri
+pazar odun, kil, demir sat altın karşılığı al
+
+minumum nüfus 1000
+market binası ekle
+doğumhane her seviye için +1 nüfus artışı
+bekleme ekranı
+    -Beklerken tavsiyeler
+
+Istatikler
+ -sıralama (gelir,savunma gücü, saldırı gücü, nüfus)
+
+Castle
+savunma savaşlarında kullanılır
+    -Kale - savaş yüzde bonusu arttır.
+    -Kule savaş gücünü arttır.
+------------------------------------------------------------------------------
+BUILD PRICE
+parliament - 200 maintenance 20
+{data?.parliament} Performance:{data?.population < (data?.parliament * 1000) ? "%100" : " % " + (100 - 5 * ((data?.population - (data?.parliament * 1000)) / 100)).toFixed(2)}
+
+Kışla - 100 maintenance 10
+    Kışla asker kapasitesini belirler. Asker üretebilmek için kışla seviyesini artırın.
+Çiftlik - 
+    Nüfus kapasitesini belirler. altın gideri    
+Oduncu - 
+    Oduncu odun üretimi ve altın geliri sağlar.
+Maden -
+    Maden Demir üretimi ve altın geliri sağlar.
+Trade Center
+    Ticaret Merkezi Altın geliri sağlar.
+Kale -
+    Savunma bonusu verir.
+
+Kule - 
+    Kule savunma gücü oluşturur.
+🪵 🧱 🪨
+nüfus 1000'den aşağı düşemez.
+yağma köyleri yap.
+macera oluştur.
+sığınak eklenecek.
+
+Soldiers
+    type        attack      defence       price         maintenance
+    spearman      10          40            30          1gold 2wood 1pop
+    bowman        20          30            20          2gold 2wood 1pop
+    swordman      25          60            60          1gold 2iron 2pop
+    axeman        45          10            50          2gold 2iron 2pop
+    knight        95          40            100         3gold 2iron 3pop
+    catapult      180         10            60          5gold 3wood 5pop
+
+
+
+Polity (hükümet şekli)
+    // Polities
+    //Monarchy,Aristocracy,Theocracy,Dictator,Democracy
+
+    monarşi,        40turn +%10attack %-10soldierMaintenance      -%20pop 
+    aristokrasi,    20turn %10income %-10buildPrice               -%20attack
+    teokrasi        10turn %10soldierMaintenance  %10defence              -%20buildPrice
+    Dictator        no election %10pop  %10defence                -%20buildPrice
+    demokrasi,      5turn  %10pop  %10buildPrice                  -%20defence
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+SONRAKI VERSIYON
+Goverment Başkan Ekle
+Din ekle
+hero ekle
+macera ekle
+demirci ekle (her asker için seviye arttırma)
+
+vulcan point adası

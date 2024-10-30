@@ -1,0 +1,37 @@
+export interface IDefaultData {
+    turn: number;
+    language: string;
+    countryName: string;
+    isTutorial: boolean;
+    population: number;
+    prevPopulation: number;
+    gems: number;
+    gold: number;
+    countryFocus: "attack" | "defence" | "pop" | "income" | "premium";
+    polity: string;
+    polityEffects: string[];
+    polityNegative: string[];
+    prevInflation: number;
+    inflation: number;
+    income: number;
+    wood: number;
+    clay: number;
+    iron: number;
+    parliament: number;
+    castle: number;
+    tower: number;
+    espionage: number;
+    barracks: number;
+    farm: number;
+    mine: number;
+    woodcutter: number;
+    brickhouse: number;
+    trade_center: number;
+    avm: number;
+    spearman: number;
+    bowman: number;
+    swordman: number;
+    axeman: number;
+    knight: number;
+    catapult: number;
+}
