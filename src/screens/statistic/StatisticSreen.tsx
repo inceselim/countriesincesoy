@@ -95,20 +95,7 @@ export const StatisticScreen = () => {
 
                         <View style={{ paddingStart: 12, flex: 0.7 }}>
                             <Text style={[styles.txtDarkTitle, { paddingStart: 0, }]}>{segment == 0 ? "Defence Power" : segment == 1 ? "Attack Power" : "Population"}</Text>
-                            <Pressable onPress={() => setSegment(0)}
-                                disabled={segment == 0}
-                                style={{
-                                    backgroundColor: colors.kavunKoyu,
-                                    borderRadius: 8,
-                                    width: 120,
-                                    alignItems: "center",
-                                    paddingHorizontal: 6,
-                                    marginVertical: 6,
-                                    paddingVertical: 6,
-                                    opacity: segment == 0 ? 0.52 : 1
-                                }}>
-                                <Text style={[styles.txtDarkBold]}>70💰 - 70🪵</Text>
-                            </Pressable>
+                            <Text style={[styles.txtDark, { paddingStart: 0, }]}>{segment == 0 ? "Defence Power" : segment == 1 ? "Attack Power" : "Population"}</Text>
                         </View>
                     </View>
                 </CardView>
