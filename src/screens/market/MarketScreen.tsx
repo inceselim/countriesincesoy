@@ -40,7 +40,6 @@ export const MarketScreen = () => {
     // G1()
 
     const sellMaterial = ({ item, state }: any) => {
-        console.log("item,state", item, state)
         // state 0 sıfır ise satış demektir.
         // state 1 bir ise maden (wood, clay, iron) alış demektir.
         if (state == 0) {
