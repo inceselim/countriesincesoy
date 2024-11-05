@@ -39,8 +39,64 @@ export const MarketScreen = () => {
     // REKLAM
     // G1()
 
-    const sellMaterial=(item,)=>{
-
+    const sellMaterial = ({ item, state }: any) => {
+        console.log("item,state", item, state)
+        // state 0 sıfır ise satış demektir.
+        // state 1 bir ise maden (wood, clay, iron) alış demektir.
+        if (state == 0) {
+            switch (item) {
+                case "wood":
+                    setData((prevData: any) => ({
+                        ...prevData,
+                        gold: prevData.gold + 70,
+                        wood: prevData.wood - 100,
+                    }))
+                    break;
+                case "clay":
+                    setData((prevData: any) => ({
+                        ...prevData,
+                        gold: prevData.gold + 70,
+                        clay: prevData.clay - 100
+                    }))
+                    break;
+                case "iron":
+                    setData((prevData: any) => ({
+                        ...prevData,
+                        gold: prevData.gold + 90,
+                        iron: prevData.iron - 100
+                    }))
+                    break;
+                default:
+                    break;
+            }
+        }
+        else {
+            switch (item) {
+                case "wood":
+                    setData((prevData: any) => ({
+                        ...prevData,
+                        gold: prevData.gold - 70,
+                        wood: prevData.wood + 70,
+                    }))
+                    break;
+                case "clay":
+                    setData((prevData: any) => ({
+                        ...prevData,
+                        gold: prevData.gold - 70,
+                        clay: prevData.clay + 70
+                    }))
+                    break;
+                case "iron":
+                    setData((prevData: any) => ({
+                        ...prevData,
+                        gold: prevData.gold - 90,
+                        iron: prevData.iron + 70
+                    }))
+                    break;
+                default:
+                    break;
+            }
+        }
     }
     return (
         <ContentView>
@@ -54,19 +110,89 @@ export const MarketScreen = () => {
                         paddingBottom: 10,
                     }}>
                         <View style={{ paddingHorizontal: 12, flex: 0.5 }}>
-                            <Text style={[styles.txtDarkTitle, { paddingStart: 12, }]}>Income</Text>
-                            <Text style={[styles.txtDarkBold, { paddingStart: 12, paddingBottom: 8, }]}>💰 {data.income}</Text>
-                            <Text style={[styles.txtDarkBold, { paddingStart: 12, paddingBottom: 8, }]}>🪵 {Math.round(buildIncomeWood)}</Text>
-                            <Text style={[styles.txtDarkBold, { paddingStart: 12, paddingBottom: 8, }]}>🧱 {Math.round(buildIncomeClay)}</Text>
-                            <Text style={[styles.txtDarkBold, { paddingStart: 12, paddingBottom: 8, }]}>🪨 {Math.round(buildIncomeIron)}</Text>
+                            <Text style={[styles.txtDarkTitle, { paddingStart: 12, }]}>Sell</Text>
+                            <Pressable onPress={() => sellMaterial({ item: "wood", state: 0 })}
+                                style={{
+                                    backgroundColor: colors.kavunKoyu,
+                                    borderRadius: 8,
+                                    width: 120,
+                                    alignItems: "center",
+                                    paddingHorizontal: 6,
+                                    marginVertical: 6,
+                                    paddingVertical: 6,
+                                    // opacity: disabled ? 0.52 : 1
+                                }}>
+                                <Text style={[styles.txtDarkBold]}>100🪵 - 70💰</Text>
+                            </Pressable>
+                            <Pressable onPress={() => sellMaterial({ item: "clay", state: 0 })}
+                                style={{
+                                    backgroundColor: colors.kavunKoyu,
+                                    borderRadius: 8,
+                                    width: 120,
+                                    alignItems: "center",
+                                    paddingHorizontal: 6,
+                                    marginVertical: 6,
+                                    paddingVertical: 6,
+                                    // opacity: disabled ? 0.52 : 1
+                                }}>
+                                <Text style={[styles.txtDarkBold]}>100🧱 - 70💰</Text>
+                            </Pressable>
+                            <Pressable onPress={() => sellMaterial({ item: "iron", state: 0 })}
+                                style={{
+                                    backgroundColor: colors.kavunKoyu,
+                                    borderRadius: 8,
+                                    width: 120,
+                                    alignItems: "center",
+                                    paddingHorizontal: 6,
+                                    marginVertical: 6,
+                                    paddingVertical: 6,
+                                    // opacity: disabled ? 0.52 : 1
+                                }}>
+                                <Text style={[styles.txtDarkBold]}>100🪨 - 90💰</Text>
+                            </Pressable>
                         </View>
 
                         <View style={{ paddingStart: 12, flex: 0.5 }}>
-                            <Text style={[styles.txtDarkTitle, { paddingStart: 0, }]}>Maintenance</Text>
-                            <Text style={[styles.txtDarkBold, { paddingStart: 12, paddingBottom: 8, }]}>💰 {buildMaintenanceGold + armyMaintenanceGold}</Text>
-                            <Text style={[styles.txtDarkBold, { paddingStart: 12, paddingBottom: 8, }]}>🪵 {Math.round(buildMaintenanceWood + armyMaintenanceWood)}</Text>
-                            <Text style={[styles.txtDarkBold, { paddingStart: 12, paddingBottom: 8, }]}>🧱 {Math.round(buildMaintenanceClay + armyMaintenanceClay)}</Text>
-                            <Text style={[styles.txtDarkBold, { paddingStart: 12, paddingBottom: 8, }]}>🪨 {Math.round(buildMaintenanceIron + armyMaintenanceIron)}</Text>
+                            <Text style={[styles.txtDarkTitle, { paddingStart: 0, }]}>Buy</Text>
+                            <Pressable onPress={() => sellMaterial({ item: "wood", state: 1 })}
+                                style={{
+                                    backgroundColor: colors.kavunKoyu,
+                                    borderRadius: 8,
+                                    width: 120,
+                                    alignItems: "center",
+                                    paddingHorizontal: 6,
+                                    marginVertical: 6,
+                                    paddingVertical: 6,
+                                    // opacity: disabled ? 0.52 : 1
+                                }}>
+                                <Text style={[styles.txtDarkBold]}>70💰 - 70🪵</Text>
+                            </Pressable>
+                            <Pressable onPress={() => sellMaterial({ item: "clay", state: 1 })}
+                                style={{
+                                    backgroundColor: colors.kavunKoyu,
+                                    borderRadius: 8,
+                                    width: 120,
+                                    alignItems: "center",
+                                    paddingHorizontal: 6,
+                                    marginVertical: 6,
+                                    paddingVertical: 6,
+                                    // opacity: disabled ? 0.52 : 1
+                                }}>
+                                <Text style={[styles.txtDarkBold]}>70💰 - 70🧱</Text>
+                            </Pressable>
+                            <Pressable onPress={() => sellMaterial({ item: "iron", state: 1 })}
+                                style={{
+                                    backgroundColor: colors.kavunKoyu,
+                                    borderRadius: 8,
+                                    width: 120,
+                                    alignItems: "center",
+                                    paddingHorizontal: 6,
+                                    marginVertical: 6,
+                                    paddingVertical: 6,
+                                    // opacity: disabled ? 0.52 : 1
+                                }}>
+                                <Text style={[styles.txtDarkBold]}>70💰 - 70🪨</Text>
+                            </Pressable>
                         </View>
                     </View>
                 </CardView>
