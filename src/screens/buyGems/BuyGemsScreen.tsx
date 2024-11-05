@@ -42,7 +42,8 @@ export const BuyGemsScreen = () => {
 
     const skus = Platform.select({
         android: [
-            "destek1",
+            "com.countrieswar.iap1",
+            "com.countrieswar.iap2",
             // "destek2"
         ],
         ios: [
