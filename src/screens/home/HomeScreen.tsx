@@ -297,7 +297,7 @@ const HomeScreen = () => {
                                                 }}>Blacksmith</Text>
                                             </HomeCard> */}
                                                 {
-                                                    <HomeCard onPress={() => setVisibleCountryName(true)}>
+                                                    <HomeCard onPress={() => navigation.navigate("Statistic")}>
                                                         <Image source={require("../../assets/statistic1.png")} style={{
                                                             width: "70%",
                                                             height: "60%",
