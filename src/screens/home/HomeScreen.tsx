@@ -296,22 +296,37 @@ const HomeScreen = () => {
                                                     color: colors.txtWhite
                                                 }}>Blacksmith</Text>
                                             </HomeCard> */}
-                                                {
-                                                    <HomeCard onPress={() => navigation.navigate("Statistic")}>
-                                                        <Image source={require("../../assets/statistic1.png")} style={{
-                                                            width: "70%",
-                                                            height: "60%",
-                                                            resizeMode: "contain"
-                                                        }} />
-                                                        <Text style={{
-                                                            fontSize: 14,
-                                                            marginTop: 6,
-                                                            fontWeight: "bold",
-                                                            textAlign: "center",
-                                                            color: colors.txtWhite
-                                                        }}>Statistic</Text>
-                                                    </HomeCard>
-                                                }
+
+                                                <HomeCard onPress={() => navigation.navigate("War")}>
+                                                    <LottieView
+                                                        autoPlay
+                                                        loop
+                                                        // ref={animationRef}
+                                                        source={require("../../assets/animation/warAnimation.json")}
+                                                        style={{ width: "100%", height: "60%" }}
+                                                    />
+                                                    <Text style={{
+                                                        fontSize: 14,
+                                                        marginTop: 6,
+                                                        fontWeight: "bold",
+                                                        textAlign: "center",
+                                                        color: colors.txtWhite
+                                                    }}>War</Text>
+                                                </HomeCard>
+                                                <HomeCard onPress={() => navigation.navigate("Statistic")}>
+                                                    <Image source={require("../../assets/statistic1.png")} style={{
+                                                        width: "70%",
+                                                        height: "60%",
+                                                        resizeMode: "contain"
+                                                    }} />
+                                                    <Text style={{
+                                                        fontSize: 14,
+                                                        marginTop: 6,
+                                                        fontWeight: "bold",
+                                                        textAlign: "center",
+                                                        color: colors.txtWhite
+                                                    }}>Statistic</Text>
+                                                </HomeCard>
                                                 <HomeCard onPress={() => navigation.navigate("BuyGems")}>
                                                     <Image source={require("../../assets/diamond.png")} style={{
                                                         width: "70%",

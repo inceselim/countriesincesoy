@@ -10,6 +10,7 @@ import { FinanceScreen } from '../screens/finance/FinanceScreen';
 import { BuyGemsScreen } from '../screens/buyGems/BuyGemsScreen';
 import { MarketScreen } from '../screens/market/MarketScreen';
 import { StatisticScreen } from '../screens/statistic/StatisticSreen';
+import { WarScreen } from '../screens/war/WarScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +29,7 @@ export function MainNavigation() {
                 <Stack.Screen name='BuyGems' component={BuyGemsScreen} />
                 <Stack.Screen name='Market' component={MarketScreen} />
                 <Stack.Screen name='Statistic' component={StatisticScreen} />
+                <Stack.Screen name='War' component={WarScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );
