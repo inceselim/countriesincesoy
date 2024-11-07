@@ -59,7 +59,7 @@ export const StatisticScreen = () => {
                                     width: 145,
                                     alignItems: "center",
                                     paddingHorizontal: 12,
-                                    marginVertical: 6,
+                                    marginVertical: 8,
                                     paddingVertical: 6,
                                     opacity: segment == 0 ? 0.52 : 1
                                 }}>
@@ -72,7 +72,7 @@ export const StatisticScreen = () => {
                                     width: 145,
                                     alignItems: "center",
                                     paddingHorizontal: 12,
-                                    marginVertical: 6,
+                                    marginVertical: 8,
                                     paddingVertical: 6,
                                     opacity: segment == 1 ? 0.52 : 1
                                 }}>
@@ -85,7 +85,7 @@ export const StatisticScreen = () => {
                                     width: 145,
                                     alignItems: "center",
                                     paddingHorizontal: 12,
-                                    marginVertical: 6,
+                                    marginVertical: 8,
                                     paddingVertical: 6,
                                     opacity: segment == 2 ? 0.52 : 1
                                 }}>
@@ -95,7 +95,82 @@ export const StatisticScreen = () => {
 
                         <View style={{ paddingStart: 12, flex: 0.7 }}>
                             <Text style={[styles.txtDarkTitle, { paddingStart: 0, }]}>{segment == 0 ? "Defence Power" : segment == 1 ? "Attack Power" : "Population"}</Text>
-                            <Text style={[styles.txtDark, { paddingStart: 0, }]}>{segment == 0 ? "Defence Power" : segment == 1 ? "Attack Power" : "Population"}</Text>
+                            {
+                                segment == 0 ?
+                                    <View style={{
+                                        flexDirection: "row",
+                                        justifyContent: "space-between",
+                                        paddingVertical: 6,
+                                    }}>
+                                        <Text style={[styles.txtDark, { paddingStart: 0, fontSize: 15, fontWeight: "700", color: colors.black }]}>{data.countryName}</Text>
+                                        <Text style={[styles.txtDark, { paddingStart: 0, }]}>{
+                                            (data.spearman * soldier_power.spearman.defence) +
+                                            (data.bowman * soldier_power.bowman.defence) +
+                                            (data.axeman * soldier_power.axeman.defence) +
+                                            (data.swordman * soldier_power.swordman.defence) +
+                                            (data.knight * soldier_power.knight.defence)
+                                        }</Text>
+                                    </View>
+                                    : segment == 1 ?
+                                        <View style={{
+                                            flexDirection: "row",
+                                            justifyContent: "space-between",
+                                            paddingVertical: 6,
+                                        }}>
+                                            <Text style={[styles.txtDark, { paddingStart: 0, fontSize: 15, fontWeight: "700", color: colors.black }]}>{data.countryName}</Text>
+                                            <Text style={[styles.txtDark, { paddingStart: 0, }]}>{
+                                                (data.spearman * soldier_power.spearman.attack) +
+                                                (data.bowman * soldier_power.bowman.attack) +
+                                                (data.axeman * soldier_power.axeman.attack) +
+                                                (data.swordman * soldier_power.swordman.attack) +
+                                                (data.knight * soldier_power.knight.attack)
+                                            }</Text>
+                                        </View>
+                                        :
+                                        <View style={{
+                                            flexDirection: "row",
+                                            justifyContent: "space-between",
+                                            paddingVertical: 6,
+                                        }}>
+                                            <Text style={[styles.txtDark, { paddingStart: 0, fontSize: 15, fontWeight: "700", color: colors.black }]}>{data.countryName}</Text>
+                                            <Text style={[styles.txtDark, { paddingStart: 0, }]}>{data.population}</Text>
+                                        </View>
+                            }
+                            {
+                                data?.bots.map((i: any, index: number) => {
+                                    return (
+                                        <View key={index} style={{
+                                            flexDirection: "row",
+                                            justifyContent: "space-between",
+                                            paddingVertical: 6,
+                                        }}>
+                                            <Text style={[styles.txtDark, { paddingStart: 0, fontSize: 15, fontWeight: "700", color: colors.black }]}>{i.countryName}</Text>
+                                            {
+                                                segment == 0 ?
+                                                    <Text style={[styles.txtDark, { paddingStart: 0, }]}>{
+                                                        (i.spearman * soldier_power.spearman.defence) +
+                                                        (i.bowman * soldier_power.bowman.defence) +
+                                                        (i.axeman * soldier_power.axeman.defence) +
+                                                        (i.swordman * soldier_power.swordman.defence) +
+                                                        (i.knight * soldier_power.knight.defence)
+                                                    }</Text>
+                                                    : segment == 1 ?
+                                                        <Text style={[styles.txtDark, { paddingStart: 0, }]}>{
+                                                            (i.spearman * soldier_power.spearman.attack) +
+                                                            (i.bowman * soldier_power.bowman.attack) +
+                                                            (i.axeman * soldier_power.axeman.attack) +
+                                                            (i.swordman * soldier_power.swordman.attack) +
+                                                            (i.knight * soldier_power.knight.attack)
+                                                        }</Text>
+                                                        :
+                                                        <Text style={[styles.txtDark, { paddingStart: 0, }]}>{
+                                                            i.population}</Text>
+
+                                            }
+                                        </View>
+                                    )
+                                })
+                            }
                         </View>
                     </View>
                 </CardView>

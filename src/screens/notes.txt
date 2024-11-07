@@ -88,7 +88,7 @@ SONRAKI VERSIYON
 Goverment Başkan Ekle
 Din ekle
 hero ekle
-macera ekle
+macera ekle1
 demirci ekle (her asker için seviye arttırma)
 
 vulcan point adası

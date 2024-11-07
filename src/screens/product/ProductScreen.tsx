@@ -35,7 +35,7 @@ const ProductScreen = () => {
                         }} />
                     <View style={{ paddingStart: 12, flex: 1 }}>
                         <Text style={[styles.txtDarkTitle, { paddingStart: 0, color: data.farm * 1000 <= data.population ? colors.red : colors.black }]}>Farm - Level: {data.farm} Capacity: {data.farm * 1000 + " / " + data.population}</Text>
-                        <Text style={styles.txtDark}>desc</Text>
+                        <Text style={styles.txtDark}>Capacity of Population</Text>
                         <View style={{
                             flexDirection: "row",
                             alignItems: "center",
@@ -102,7 +102,7 @@ const ProductScreen = () => {
                             }}>
                                 <Text style={styles.txtDark}>Amount: {data.mine}</Text>
                                 <ButtonSelect text={"+"} onPress={() => BuildUpdate("mine", data, setData)}
-                                    disabled={!(data.gold >= build_costs.mine.gold && data.wood >= build_costs.mine.wood && data.clay >= build_costs.mine.clay && data.iron >= build_costs.mine.iron)} />
+                                    disabled={!(data.gold >= build_costs.mine.gold && data.wood >= build_costs.mine.wood && data.clay >= build_costs.mine.clay)} />
                             </View>
                         </View>
                     </CardView>
@@ -141,7 +141,7 @@ const ProductScreen = () => {
                             }}>
                                 <Text style={styles.txtDark}>Amount: {data.woodcutter}</Text>
                                 <ButtonSelect text={"+"} onPress={() => BuildUpdate("woodcutter", data, setData)}
-                                    disabled={!(data.gold >= build_costs.woodcutter.gold && data.wood >= build_costs.woodcutter.wood && data.clay >= build_costs.woodcutter.clay && data.iron >= build_costs.woodcutter.iron)} />
+                                    disabled={!(data.gold >= build_costs.woodcutter.gold && data.clay >= build_costs.woodcutter.clay && data.iron >= build_costs.woodcutter.iron)} />
                             </View>
                         </View>
                     </CardView>
@@ -180,7 +180,7 @@ const ProductScreen = () => {
                             }}>
                                 <Text style={styles.txtDark}>Amount: {data.brickhouse}</Text>
                                 <ButtonSelect text={"+"} onPress={() => BuildUpdate("brickhouse", data, setData)}
-                                    disabled={!(data.gold >= build_costs.brickhouse.gold && data.wood >= build_costs.brickhouse.wood && data.clay >= build_costs.brickhouse.clay && data.iron >= build_costs.brickhouse.iron)} />
+                                    disabled={!(data.gold >= build_costs.brickhouse.gold && data.wood >= build_costs.brickhouse.wood && data.iron >= build_costs.brickhouse.iron)} />
                             </View>
                         </View>
                     </CardView>
