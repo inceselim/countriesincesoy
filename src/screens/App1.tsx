@@ -1,73 +1,89 @@
-//import liraries
-import React, { Component, useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useRef, useState } from "react";
+import { Animated, TextInput, StyleSheet, View, Easing } from "react-native";
 
-// create a component
 export const App = () => {
-    const [value, setValue] = useState("sfsd")
-    const [value1, setValue1] = useState(3)
-    const [value2, setValue2] = useState(
-        [
-            {
-                userName: "selim",
-                age: 33
-            },
-            {
-                userName: "esra",
-                year: 2,
-            },
-        ]
-    )
-    const [value3, setValue3] = useState(
-        ["BMW", "Audi", "Mercedes", "Renault", "Fiat"]
-    )
-    const [selectedCar, setSelectedCar] = useState("")
+  const backgroundColorAnim = useRef(new Animated.Value(0)).current;
+  const intervalRef:any = useRef(null);
+
+  const [isFocused, setIsFocused] = useState(false);
+  const [currentColor, setCurrentColor] = useState("white");
+  const [nextColor, setNextColor] = useState(getRandomColor());
+
+  function getRandomColor() {
     return (
-        <View style={{
-            flex: 1,
-            backgroundColor: "#af1",
-            justifyContent: "center",
-            alignItems: "center"
-        }}>
-            <Text style={{
-                fontSize: 22,
-                fontWeight: "bold"
-            }}>1. Object: {value2[0].age}</Text>
-            <Text style={{
-                fontSize: 22,
-                fontWeight: "bold"
-            }}>Arabalar: {selectedCar == "" ? "Araba Seçilmedi" : selectedCar}</Text>
-            {
-                value3.map((i: any, index) => {
-                    console.log(index)
-                    return (
-                        <TouchableOpacity onPress={() => setSelectedCar(i)}>
-                            <Text key={i}
-                                style={{
-                                    fontSize: 14,
-                                    paddingHorizontal: 12,
-                                    marginVertical: 6,
-                                    backgroundColor: "#344",
-                                    color: "#eee",
-                                    fontWeight: "700",
-                                    paddingBottom: 21
-                                }}>{i}</Text>
-                        </TouchableOpacity>
-                    )
-                })
-            }
-            <TouchableOpacity onPress={() => setSelectedCar("")}>
-                <Text
-                    style={{
-                        fontSize: 14,
-                        paddingHorizontal: 12,
-                        marginVertical: 6,
-                        backgroundColor: "#344",
-                        color: "#eee",
-                        fontWeight: "700",
-                        paddingBottom: 21
-                    }}>Arabayı sil</Text>
-            </TouchableOpacity>
-        </View>
+      "rgb(" +
+      Math.floor(Math.random() * 256) +
+      "," +
+      Math.floor(Math.random() * 256) +
+      "," +
+      Math.floor(Math.random() * 256) +
+      ")"
     );
+  }
+
+  const startColorAnimation = () => {
+    intervalRef.current = setInterval(() => {
+      setCurrentColor(nextColor);
+      setNextColor(getRandomColor());
+      Animated.timing(backgroundColorAnim, {
+        toValue: 1,
+        duration: 1000,
+        easing: Easing.linear,
+        useNativeDriver: false,
+      }).start(() => {
+        backgroundColorAnim.setValue(0); // Bir sonraki animasyon için sıfırla
+      });
+    }, 1000);
+  };
+
+  const stopColorAnimation = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+  };
+
+  const handleFocus = () => {
+    setIsFocused(true);
+    startColorAnimation();
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+    stopColorAnimation();
+    setCurrentColor("white"); // Odak dışındayken rengi beyaza sıfırla
+  };
+
+  const backgroundColor = backgroundColorAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: [currentColor, nextColor],
+  });
+
+  return (
+    <Animated.View style={[styles.container, { backgroundColor }]}>
+      <TextInput
+        style={styles.input}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        placeholder="Type something"
+      />
+    </Animated.View>
+  );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  input: {
+    width: "80%",
+    height: 50,
+    borderWidth: 1,
+    borderColor: "gray",
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    fontSize: 16,
+    backgroundColor: "white",
+  },
+});

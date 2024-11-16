@@ -22,10 +22,10 @@ export const build_maintenance: build_maintenances = {
         iron: 1,
     },
     barracks: {
-        gold: 5,
-        wood: 1,
+        gold: 15,
+        wood: 0,
         clay: 3,
-        iron: 5,
+        iron: 0,
     },
     castle: {
         gold: 80,
@@ -40,9 +40,9 @@ export const build_maintenance: build_maintenances = {
         iron: 3,
     },
     espionage: {
-        gold: 30,
-        wood: 3,
-        clay: 4,
+        gold: 50,
+        wood: 0,
+        clay: 0,
         iron: 0,
     },
     farm: {

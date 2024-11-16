@@ -39,7 +39,7 @@ export const build_costs: build_costs = {
     barracks: { gold: 100, wood: 10, clay: 15, iron: 35, gems: 0 },
     castle: { gold: 2000, wood: 130, clay: 185, iron: 155, gems: 0 },
     tower: { gold: 1300, wood: 220, clay: 125, iron: 115, gems: 0 },
-    espionage: { gold: 200, wood: 210, clay: 215, iron: 315, gems: 0 },
+    espionage: { gold: 0, wood: 0, clay: 0, iron: 0, gems: 5 },
     blacksmith: { gold: 500, wood: 320, clay: 325, iron: 515, gems: 0 },
     farm: { gold: 100, wood: 40, clay: 45, iron: 0, gems: 0 },
     woodcutter: { gold: 500, wood: 0, clay: 25, iron: 15, gems: 0 },

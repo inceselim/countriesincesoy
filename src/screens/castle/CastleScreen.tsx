@@ -114,17 +114,17 @@ const CastleScreen = () => {
                             resizeMode: "contain"
                         }} />
                     <View style={{ paddingStart: 12, flex: 1 }}>
-                        <Text style={[styles.txtDarkTitle, { paddingStart: 0, color: data.tower >= 20 ? colors.red : colors.black }]}>Espionage - Level: {data.espionage}</Text>
-                        <Text style={styles.txtDark}>Description</Text>
+                        <Text style={[styles.txtDarkTitle, { paddingStart: 0 }]}>Espionage - Level: {data.espionage}</Text>
+                        <Text style={styles.txtDark}>You need to build a espionage building for data</Text>
                         <View style={{
                             flexDirection: "row",
                             alignItems: "center",
                             marginVertical: 6
                         }}>
                             <View>
-                                <Text style={[styles.txtDark, { marginTop: 6 }]}>Price: {build_costs.espionage.gold > 0 && build_costs.espionage.gold + "💰"} {build_costs.espionage.wood > 0 && build_costs.espionage.wood + "🪵"} {build_costs.espionage.clay > 0 && build_costs.espionage.clay + "🧱"} {build_costs.espionage.iron > 0 && build_costs.espionage.iron + "🪨"}</Text>
-                                <Text style={[styles.txtDark, { marginTop: 6 }]}>Maintenance: {build_maintenance.espionage.gold}</Text>
-                                <Text style={[styles.txtDark, { marginTop: 6 }]}>Max: 20</Text>
+                                <Text style={[styles.txtDark, { marginTop: 6 }]}>Price: {build_costs.espionage.gems > 0 && build_costs.espionage.gems + "💎"} {build_costs.espionage.wood > 0 && build_costs.espionage.wood + "🪵"} {build_costs.espionage.clay > 0 && build_costs.espionage.clay + "🧱"} {build_costs.espionage.iron > 0 && build_costs.espionage.iron + "🪨"}</Text>
+                                <Text style={[styles.txtDark, { marginTop: 6 }]}>Maintenance: {build_maintenance.espionage.gold}💰</Text>
+                                <Text style={[styles.txtDark, { marginTop: 6 }]}>Max: 1</Text>
                             </View>
                             <View style={{
                                 flexDirection: "row",
@@ -135,9 +135,9 @@ const CastleScreen = () => {
                                     marginVertical: 6,
                                     marginEnd: 12
                                 }]}></Text>
-                                <ButtonSelect text={"Level Up"}
+                                <ButtonSelect text={data.espionage == 0 ? "Create" : "Created"}
                                     onPress={() => BuildUpdate("tower", data, setData)}
-                                    disabled={(data.gold < build_costs.espionage.gold || data.espionage >= 20 || data.wood < build_costs.espionage.wood || data.clay < build_costs.espionage.clay || data.clay < build_costs.espionage.clay || data.iron < build_costs.espionage.iron)} />
+                                    disabled={(data.gems < build_costs.espionage.gems || data.espionage >= 1)} />
                             </View>
 
                         </View>
