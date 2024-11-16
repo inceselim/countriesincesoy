@@ -238,8 +238,8 @@ const HomeScreen = () => {
 
                                                     <HomeCard onPress={() => setVisibleCountryName(true)}>
                                                         <Image source={require("../../assets/parchmentIcon.png")} style={{
-                                                            width: "70%",
-                                                            height: "60%",
+                                                            width: "50%",
+                                                            height: "40%",
                                                             resizeMode: "contain"
                                                         }} />
                                                         <Text style={{
@@ -248,7 +248,7 @@ const HomeScreen = () => {
                                                             fontWeight: "bold",
                                                             textAlign: "center",
                                                             color: colors.txtWhite
-                                                        }}>Enter Country Name</Text>
+                                                        }}>Enter Name</Text>
                                                     </HomeCard>
                                                 }
                                                 <HomeCard onPress={() => navigation.navigate("Finance")}>
