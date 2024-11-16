@@ -78,7 +78,7 @@ const CastleScreen = () => {
                         }} />
                     <View style={{ paddingStart: 12, flex: 1 }}>
                         <Text style={[styles.txtDarkTitle, { paddingStart: 0, color: data.tower >= 20 ? colors.red : colors.black }]}>Tower - Level: {data.tower}</Text>
-                        <Text style={styles.txtDark}>Defence: {build_defence_powers.tower.defence * data.tower}</Text>
+                        <Text style={styles.txtDark}>Defence Power: {build_defence_powers.tower.defence * data.tower}</Text>
                         <View style={{
                             flexDirection: "row",
                             alignItems: "center",
