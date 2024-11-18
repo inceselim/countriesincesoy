@@ -363,6 +363,34 @@ export const BotsEndTurn = async (bot: any, index: number, data: any, setData: (
             }
         }
     }
+    if (kararlar?.troops?.length > 0) {
+        if (kararlar?.buildings?.includes("tower")) {
+            if (build_costs.tower.gold <= data.bots[index].gold &&
+                build_costs.tower.wood <= data.bots[index].wood &&
+                build_costs.tower.clay <= data.bots[index].clay &&
+                build_costs.tower.iron <= data.bots[index].iron
+            ) {
+                setData((prevData: any) => {
+                    // Önce botların eski halini al
+                    const updatedBots = [...prevData.bots];
+                    // index'teki botu güncelle
+                    updatedBots[index] = {
+                        ...updatedBots[index],
+                        tower: updatedBots[index].tower + 1,
+                        gold: Math.round(updatedBots[index].gold - build_costs.tower.gold),
+                        wood: Math.round(updatedBots[index].wood - build_costs.tower.wood),
+                        clay: Math.round(updatedBots[index].clay - build_costs.tower.clay),
+                        iron: Math.round(updatedBots[index].iron - build_costs.tower.iron),
+                    };
+                    // Güncellenmiş botları geri döndür
+                    return {
+                        ...prevData,
+                        bots: updatedBots,
+                    };
+                });
+            }
+        }
+    }
 
     setData((prevData: any) => {
         // Önce botların eski halini al

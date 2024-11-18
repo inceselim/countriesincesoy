@@ -52,7 +52,7 @@ export const EndTurn = (data: any, setData: (data: any) => void, setLoading: any
             inflationRate = 0;
         }
         if (data.prevInflation > inflationRate) {
-            Alert.alert("Enflasyonda artış")
+            // Alert.alert("Enflasyonda artış")
         }
         return Math.round(inflationRate);
     }
