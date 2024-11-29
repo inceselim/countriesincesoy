@@ -36,7 +36,7 @@ const HeaderMenuContent = ({ title }: any) => {
             marginBottom: 12,
             paddingBottom: 6
         }}>
-            <Text style={[styles.txtDarkTitle, { marginStart: 12 }]}>{title}</Text>
+            {/* <Text style={[styles.txtDarkTitle, { marginStart: 12 }]}>{title}</Text> */}
             <View style={{
                 flexDirection: "row"
             }}>

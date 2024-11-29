@@ -123,10 +123,23 @@ export const StatisticScreen = () => {
                                         }}>
                                         <Text style={[styles.txtDarkBold]}>Trade Center</Text>
                                     </Pressable>
+                                    <Pressable onPress={() => setSegment(4)}
+                                        style={{
+                                            backgroundColor: colors.kavunKoyu,
+                                            borderRadius: 8,
+                                            width: 145,
+                                            alignItems: "center",
+                                            paddingHorizontal: 12,
+                                            marginVertical: 8,
+                                            paddingVertical: 6,
+                                            opacity: segment == 4 ? 0.52 : 1
+                                        }}>
+                                        <Text style={[styles.txtDarkBold]}>Mine</Text>
+                                    </Pressable>
                                 </View>
 
                                 <View style={{ paddingStart: 12, flex: 0.7 }}>
-                                    <Text style={[styles.txtDarkTitle, { paddingStart: 0, }]}>{segment == 0 ? "Defence Power" : segment == 1 ? "Attack Power" : segment == 3 ? "Trade Center" : "Population"}</Text>
+                                    <Text style={[styles.txtDarkTitle, { paddingStart: 0, }]}>{segment == 0 ? "Defence Power" : segment == 1 ? "Attack Power" : segment == 3 ? "Trade Center" : segment == 4 ? "Mine" : "Population"}</Text>
                                     {
                                         segment == 0 ?
                                             <View style={{
@@ -171,14 +184,26 @@ export const StatisticScreen = () => {
                                                         }</Text>
                                                     </View>
                                                     :
-                                                    <View style={{
-                                                        flexDirection: "row",
-                                                        justifyContent: "space-between",
-                                                        paddingVertical: 6,
-                                                    }}>
-                                                        <Text style={[styles.txtDark, { paddingStart: 0, fontSize: 15, fontWeight: "700", color: colors.black }]}>{data.countryName}</Text>
-                                                        <Text style={[styles.txtDark, { paddingStart: 0, }]}>{data.population}</Text>
-                                                    </View>
+                                                    segment == 4 ?
+                                                        <View style={{
+                                                            flexDirection: "row",
+                                                            justifyContent: "space-between",
+                                                            paddingVertical: 6,
+                                                        }}>
+                                                            <Text style={[styles.txtDark, { paddingStart: 0, fontSize: 15, fontWeight: "700", color: colors.black }]}>{data.countryName}</Text>
+                                                            <Text style={[styles.txtDark, { paddingStart: 0, }]}>{
+                                                                (data.mine)
+                                                            }</Text>
+                                                        </View>
+                                                        :
+                                                        <View style={{
+                                                            flexDirection: "row",
+                                                            justifyContent: "space-between",
+                                                            paddingVertical: 6,
+                                                        }}>
+                                                            <Text style={[styles.txtDark, { paddingStart: 0, fontSize: 15, fontWeight: "700", color: colors.black }]}>{data.countryName}</Text>
+                                                            <Text style={[styles.txtDark, { paddingStart: 0, }]}>{data.population}</Text>
+                                                        </View>
                                     }
                                     {
                                         data?.bots.map((i: any, index: number) => {
@@ -211,9 +236,15 @@ export const StatisticScreen = () => {
                                                                     <Text style={[styles.txtDark, { paddingStart: 0, }]}>{
                                                                         (i.trade_center)
                                                                     }</Text>
-                                                                    :
-                                                                    <Text style={[styles.txtDark, { paddingStart: 0, }]}>{
-                                                                        i.population}</Text>
+                                                                    : segment == 4 ?
+                                                                        <>
+                                                                            <Text style={[styles.txtDark, { paddingStart: 0, }]}>{
+                                                                                (i.mine)
+                                                                            }</Text>
+                                                                        </>
+                                                                        :
+                                                                        <Text style={[styles.txtDark, { paddingStart: 0, }]}>{
+                                                                            i.population}</Text>
 
                                                     }
                                                 </View>

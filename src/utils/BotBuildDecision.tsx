@@ -74,7 +74,7 @@ export const BotBuildDecision = (data: any, bot: any, index: number, setData: an
 
 
     // data.bots[index].gold >= 300 && data.bots[index].wood >= 100 && data.bots[index].clay >= 100 && data.bots[index].iron >= 100
-    if (data.bots[index].gold >= 300 && incomeWood >= 10) {
+    if (data.bots[index].gold >= 300 && data.bots[index].clay >= 10) {
     // if (data.bots[index].gold >= 300 && data.bots[index].wood >= 100) {
         recruitments.push('spearman');
     }

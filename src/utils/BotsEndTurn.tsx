@@ -114,7 +114,7 @@ export const BotsEndTurn = async (bot: any, index: number, data: any, setData: (
                     // index'teki botu güncelle
                     updatedBots[index] = {
                         ...updatedBots[index],
-                        parliament: updatedBots[index].parliament + 1,
+                        parliament: updatedBots[index].parliament++,
                         gold: Math.round(updatedBots[index].gold - build_costs.parliament.gold),
                         wood: Math.round(updatedBots[index].wood - build_costs.parliament.wood),
                         clay: Math.round(updatedBots[index].clay - build_costs.parliament.clay),
@@ -129,30 +129,27 @@ export const BotsEndTurn = async (bot: any, index: number, data: any, setData: (
             }
         }
         if (kararlar?.buildings?.includes("farm")) {
-            if (build_costs.farm.gold <= data.bots[index].gold &&
-                build_costs.farm.wood <= data.bots[index].wood &&
-                build_costs.farm.clay <= data.bots[index].clay &&
-                build_costs.farm.iron <= data.bots[index].iron
-            ) {
-                setData((prevData: any) => {
-                    // Önce botların eski halini al
-                    const updatedBots = [...prevData.bots];
-                    // index'teki botu güncelle
-                    updatedBots[index] = {
-                        ...updatedBots[index],
-                        farm: prevData.farm + 1,
-                        gold: Math.round(updatedBots[index].gold - build_costs.farm.gold),
-                        wood: Math.round(updatedBots[index].wood - build_costs.farm.wood),
-                        clay: Math.round(updatedBots[index].clay - build_costs.farm.clay),
-                        iron: Math.round(updatedBots[index].wood - build_costs.farm.iron),
-                    };
-                    // Güncellenmiş botları geri döndür
-                    return {
-                        ...prevData,
-                        bots: updatedBots,
-                    };
-                });
-            }
+            console.log("INSAAT KUYRUGU FARM VAR")
+            console.log("FARM TRUE OLDU")
+            console.log("ekleniyor")
+            setData((prevData: any) => {
+                // Önce botların eski halini al
+                const updatedBots = [...prevData.bots];
+                // index'teki botu güncelle
+                updatedBots[index] = {
+                    ...updatedBots[index],
+                    farm: prevData.farm++,
+                    gold: Math.round(updatedBots[index].gold - build_costs.farm.gold),
+                    wood: Math.round(updatedBots[index].wood - build_costs.farm.wood),
+                    clay: Math.round(updatedBots[index].clay - build_costs.farm.clay),
+                    iron: Math.round(updatedBots[index].wood - build_costs.farm.iron),
+                };
+                // Güncellenmiş botları geri döndür
+                return {
+                    ...prevData,
+                    bots: updatedBots,
+                };
+            });
         }
         if (kararlar?.buildings?.includes("woodcutter")) {
             if (build_costs.woodcutter.gold <= data.bots[index].gold &&
@@ -166,7 +163,7 @@ export const BotsEndTurn = async (bot: any, index: number, data: any, setData: (
                     // index'teki botu güncelle
                     updatedBots[index] = {
                         ...updatedBots[index],
-                        woodcutter: updatedBots[index].woodcutter + 1,
+                        woodcutter: updatedBots[index].woodcutter++,
                         gold: Math.round(updatedBots[index].gold - build_costs.woodcutter.gold),
                         wood: Math.round(updatedBots[index].wood - build_costs.woodcutter.wood),
                         clay: Math.round(updatedBots[index].clay - build_costs.woodcutter.clay),
@@ -192,7 +189,7 @@ export const BotsEndTurn = async (bot: any, index: number, data: any, setData: (
                     // index'teki botu güncelle
                     updatedBots[index] = {
                         ...updatedBots[index],
-                        brickhouse: updatedBots[index].brickhouse + 1,
+                        brickhouse: updatedBots[index].brickhouse++,
                         gold: Math.round(updatedBots[index].gold - build_costs.brickhouse.gold),
                         wood: Math.round(updatedBots[index].wood - build_costs.brickhouse.wood),
                         clay: Math.round(updatedBots[index].clay - build_costs.brickhouse.clay),
@@ -207,30 +204,29 @@ export const BotsEndTurn = async (bot: any, index: number, data: any, setData: (
             }
         }
         if (kararlar?.buildings?.includes("mine")) {
-            if (build_costs.mine.gold <= data.bots[index].gold &&
-                build_costs.mine.wood <= data.bots[index].wood &&
-                build_costs.mine.clay <= data.bots[index].clay &&
-                build_costs.mine.iron <= data.bots[index].iron
-            ) {
-                setData((prevData: any) => {
-                    // Önce botların eski halini al
-                    const updatedBots = [...prevData.bots];
-                    // index'teki botu güncelle
-                    updatedBots[index] = {
-                        ...updatedBots[index],
-                        mine: updatedBots[index].mine + 1,
-                        gold: Math.round(updatedBots[index].gold - build_costs.mine.gold),
-                        wood: Math.round(updatedBots[index].wood - build_costs.mine.wood),
-                        clay: Math.round(updatedBots[index].clay - build_costs.mine.clay),
-                        iron: Math.round(updatedBots[index].iron - build_costs.mine.iron),
-                    };
-                    // Güncellenmiş botları geri döndür
-                    return {
-                        ...prevData,
-                        bots: updatedBots,
-                    };
-                });
-            }
+            console.log("INSAAT KUYRUGU FARM VAR")
+            console.log("FARM TRUE OLDU")
+            setData((prevData: any) => {
+                // Önce botların eski halini al
+                const updatedBots = [...prevData.bots];
+                console.log("ekleniyor MINE: ", updatedBots[index].mine)
+
+                // index'teki botu güncelle
+                updatedBots[index] = {
+                    ...updatedBots[index],
+                    mine: updatedBots[index].mine++,
+                    gold: Math.round(updatedBots[index].gold - build_costs.mine.gold),
+                    wood: Math.round(updatedBots[index].wood - build_costs.mine.wood),
+                    clay: Math.round(updatedBots[index].clay - build_costs.mine.clay),
+                    iron: Math.round(updatedBots[index].iron - build_costs.mine.iron),
+                };
+                // Güncellenmiş botları geri döndür
+                return {
+                    ...prevData,
+                    bots: updatedBots,
+                };
+            });
+            console.log("eklendi MINE: ", data.bot[index].mine)
         }
         if (kararlar?.buildings?.includes("trade_center")) {
             if (build_costs.trade_center.gold <= data.bots[index].gold &&
@@ -244,7 +240,7 @@ export const BotsEndTurn = async (bot: any, index: number, data: any, setData: (
                     // index'teki botu güncelle
                     updatedBots[index] = {
                         ...updatedBots[index],
-                        trade_center: updatedBots[index].trade_center + 1,
+                        trade_center: updatedBots[index].trade_center++,
                         gold: Math.round(updatedBots[index].gold - build_costs.trade_center.gold),
                         wood: Math.round(updatedBots[index].wood - build_costs.trade_center.wood),
                         clay: Math.round(updatedBots[index].clay - build_costs.trade_center.clay),
@@ -270,7 +266,7 @@ export const BotsEndTurn = async (bot: any, index: number, data: any, setData: (
                     // index'teki botu güncelle
                     updatedBots[index] = {
                         ...updatedBots[index],
-                        barracks: updatedBots[index].barracks + 1,
+                        barracks: updatedBots[index].barracks++,
                         gold: Math.round(updatedBots[index].gold - build_costs.barracks.gold),
                         wood: Math.round(updatedBots[index].wood - build_costs.barracks.wood),
                         clay: Math.round(updatedBots[index].clay - build_costs.barracks.clay),
@@ -296,7 +292,7 @@ export const BotsEndTurn = async (bot: any, index: number, data: any, setData: (
                     // index'teki botu güncelle
                     updatedBots[index] = {
                         ...updatedBots[index],
-                        castle: updatedBots[index].castle + 1,
+                        castle: updatedBots[index].castle++,
                         gold: Math.round(updatedBots[index].gold - build_costs.castle.gold),
                         wood: Math.round(updatedBots[index].wood - build_costs.castle.wood),
                         clay: Math.round(updatedBots[index].clay - build_costs.castle.clay),
@@ -322,7 +318,7 @@ export const BotsEndTurn = async (bot: any, index: number, data: any, setData: (
                     // index'teki botu güncelle
                     updatedBots[index] = {
                         ...updatedBots[index],
-                        tower: updatedBots[index].tower + 1,
+                        tower: updatedBots[index].tower++,
                         gold: Math.round(updatedBots[index].gold - build_costs.tower.gold),
                         wood: Math.round(updatedBots[index].wood - build_costs.tower.wood),
                         clay: Math.round(updatedBots[index].clay - build_costs.tower.clay),
@@ -348,7 +344,7 @@ export const BotsEndTurn = async (bot: any, index: number, data: any, setData: (
                     // index'teki botu güncelle
                     updatedBots[index] = {
                         ...updatedBots[index],
-                        espionage: updatedBots[index].espionage + 1,
+                        espionage: updatedBots[index].espionage++,
                         gold: Math.round(updatedBots[index].gold - build_costs.espionage.gold),
                         wood: Math.round(updatedBots[index].wood - build_costs.espionage.wood),
                         clay: Math.round(updatedBots[index].clay - build_costs.espionage.clay),
