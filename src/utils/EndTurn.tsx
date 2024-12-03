@@ -107,7 +107,7 @@ export const EndTurn = (data: any, setData: (data: any) => void, setLoading: any
     ));
     // BotsEndTurn(data)
     data.bots.forEach((bot: any, index: number) => {
-        BotsEndTurn(bot, index, data, setData)
+        BotsEndTurn(index, data, setData)
     });
 
     setData((prevData: any) => ({

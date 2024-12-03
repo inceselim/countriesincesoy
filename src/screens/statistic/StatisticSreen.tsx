@@ -207,7 +207,6 @@ export const StatisticScreen = () => {
                                     }
                                     {
                                         data?.bots.map((i: any, index: number) => {
-                                            console.log("i: ", i)
                                             return (
                                                 <View key={index} style={{
                                                     flexDirection: "row",

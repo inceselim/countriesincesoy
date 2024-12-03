@@ -8,13 +8,15 @@ import { build_costs } from "../data/build_costs"
 import { calculateSoldierAmount } from "./CalculateSoldierAmount"
 
 
-export const BotsEndTurn = async (bot: any, index: number, data: any, setData: (data: any) => void) => {
-    console.log("BotsEndTurn")
-    console.log("",)
-    console.log("",)
-    console.log("BotsEndTurn index: ", data.bots[index].countryName)
+export const BotsEndTurn = async (index: number, data: any, setData: (data: any) => void) => {
     let parliamentPerformance = data.bots[index].population < (data.bots[index].parliament * 1000) ? 1 : (100 - 5 * ((data.bots[index].population - (data.bots[index].parliament * 1000)) / 100)) / 100
-
+    console.log("first")
+    console.log("first")
+    console.log("index", index)
+    console.log("data", data)
+    console.log("first")
+    console.log("first")
+    console.log("first")
     let taxIncome = CalculateInterest(data.bots[index].population)
     let buildIncomeGold = ((build_income.mine.gold * data.bots[index].mine) + (build_income.woodcutter.gold * data.bots[index].woodcutter) + (build_income.brickhouse.gold * data.bots[index].brickhouse) + (build_income.trade_center.gold * data.bots[index].trade_center) + (build_income.avm.gold * data.bots[index].avm))
     let buildIncomeWood: number = ((build_income.woodcutter.wood * data.bots[index].woodcutter) + (build_income.avm.wood * data.bots[index].avm))
@@ -95,7 +97,7 @@ export const BotsEndTurn = async (bot: any, index: number, data: any, setData: (
     let baseIncome: number = Math.round(taxIncome + interest + buildIncomeGold)
     let income: number = Math.round(((baseIncome + Math.ceil(baseIncome * polityGoldBonus) + Math.ceil(baseIncome * countryFocusBonusGold) * parliamentPerformance) * inflationRate))
 
-    let kararlar: any = BotBuildDecision(data, data.bots[index], index, setData)
+    let kararlar: any = BotBuildDecision(data.bots[index], index)
     console.log("KARARLAR")
     console.log("KARARLAR")
     console.log("KARARLAR: ", kararlar)
@@ -108,21 +110,15 @@ export const BotsEndTurn = async (bot: any, index: number, data: any, setData: (
                 build_costs.parliament.clay <= data.bots[index].clay &&
                 build_costs.parliament.iron <= data.bots[index].iron
             ) {
-                setData((prevData: any) => {
-                    // Önce botların eski halini al
-                    const updatedBots = [...prevData.bots];
-                    // index'teki botu güncelle
-                    updatedBots[index] = {
-                        ...updatedBots[index],
-                        parliament: updatedBots[index].parliament++,
-                        gold: Math.round(updatedBots[index].gold - build_costs.parliament.gold),
-                        wood: Math.round(updatedBots[index].wood - build_costs.parliament.wood),
-                        clay: Math.round(updatedBots[index].clay - build_costs.parliament.clay),
-                        iron: Math.round(updatedBots[index].iron - build_costs.parliament.iron),
-                    };
-                    // Güncellenmiş botları geri döndür
+                console.log("ÇALIŞTI PARLIMENT")
+                setData((prevGameData: any) => {
+                    // bots dizisinin bir kopyasını oluştur
+                    const updatedBots = [...prevGameData.bots];
+                    // Verilen indeksteki axeman değerini artır
+                    updatedBots[index].parliament += 1;
+                    // Güncellenmiş bots dizisiyle state'i güncelle
                     return {
-                        ...prevData,
+                        ...prevGameData,
                         bots: updatedBots,
                     };
                 });
@@ -132,21 +128,14 @@ export const BotsEndTurn = async (bot: any, index: number, data: any, setData: (
             console.log("INSAAT KUYRUGU FARM VAR")
             console.log("FARM TRUE OLDU")
             console.log("ekleniyor")
-            setData((prevData: any) => {
-                // Önce botların eski halini al
-                const updatedBots = [...prevData.bots];
-                // index'teki botu güncelle
-                updatedBots[index] = {
-                    ...updatedBots[index],
-                    farm: prevData.farm++,
-                    gold: Math.round(updatedBots[index].gold - build_costs.farm.gold),
-                    wood: Math.round(updatedBots[index].wood - build_costs.farm.wood),
-                    clay: Math.round(updatedBots[index].clay - build_costs.farm.clay),
-                    iron: Math.round(updatedBots[index].wood - build_costs.farm.iron),
-                };
-                // Güncellenmiş botları geri döndür
+            setData((prevGameData: any) => {
+                // bots dizisinin bir kopyasını oluştur
+                const updatedBots = [...prevGameData.bots];
+                // Verilen indeksteki axeman değerini artır
+                updatedBots[index].farm += 1;
+                // Güncellenmiş bots dizisiyle state'i güncelle
                 return {
-                    ...prevData,
+                    ...prevGameData,
                     bots: updatedBots,
                 };
             });
@@ -205,24 +194,15 @@ export const BotsEndTurn = async (bot: any, index: number, data: any, setData: (
         }
         if (kararlar?.buildings?.includes("mine")) {
             console.log("INSAAT KUYRUGU FARM VAR")
-            console.log("FARM TRUE OLDU")
-            setData((prevData: any) => {
-                // Önce botların eski halini al
-                const updatedBots = [...prevData.bots];
-                console.log("ekleniyor MINE: ", updatedBots[index].mine)
-
-                // index'teki botu güncelle
-                updatedBots[index] = {
-                    ...updatedBots[index],
-                    mine: updatedBots[index].mine++,
-                    gold: Math.round(updatedBots[index].gold - build_costs.mine.gold),
-                    wood: Math.round(updatedBots[index].wood - build_costs.mine.wood),
-                    clay: Math.round(updatedBots[index].clay - build_costs.mine.clay),
-                    iron: Math.round(updatedBots[index].iron - build_costs.mine.iron),
-                };
-                // Güncellenmiş botları geri döndür
+            console.log("MINE TRUE OLDU")
+            setData((prevGameData: any) => {
+                // bots dizisinin bir kopyasını oluştur
+                const updatedBots = [...prevGameData.bots];
+                // Verilen indeksteki axeman değerini artır
+                updatedBots[index].mine += 1;
+                // Güncellenmiş bots dizisiyle state'i güncelle
                 return {
-                    ...prevData,
+                    ...prevGameData,
                     bots: updatedBots,
                 };
             });

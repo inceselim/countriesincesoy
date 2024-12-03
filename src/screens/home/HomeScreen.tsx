@@ -125,9 +125,6 @@ const HomeScreen = () => {
     return (
         <SafeAreaView style={styles.container}>
             {
-                loading ?
-                    <LoadingScreen />
-                    :
                     isVisibleCountryName == true ?
                         <EnterName value={isVisibleCountryName} setValue={setVisibleCountryName} />
                         :
