@@ -10,13 +10,6 @@ import { calculateSoldierAmount } from "./CalculateSoldierAmount"
 
 export const BotsEndTurn = async (index: number, data: any, setData: (data: any) => void) => {
     let parliamentPerformance = data.bots[index].population < (data.bots[index].parliament * 1000) ? 1 : (100 - 5 * ((data.bots[index].population - (data.bots[index].parliament * 1000)) / 100)) / 100
-    console.log("first")
-    console.log("first")
-    console.log("index", index)
-    console.log("data", data)
-    console.log("first")
-    console.log("first")
-    console.log("first")
     let taxIncome = CalculateInterest(data.bots[index].population)
     let buildIncomeGold = ((build_income.mine.gold * data.bots[index].mine) + (build_income.woodcutter.gold * data.bots[index].woodcutter) + (build_income.brickhouse.gold * data.bots[index].brickhouse) + (build_income.trade_center.gold * data.bots[index].trade_center) + (build_income.avm.gold * data.bots[index].avm))
     let buildIncomeWood: number = ((build_income.woodcutter.wood * data.bots[index].woodcutter) + (build_income.avm.wood * data.bots[index].avm))
@@ -46,13 +39,6 @@ export const BotsEndTurn = async (index: number, data: any, setData: (data: any)
     }
     function calculateInflation() {
         let inflationRate = 1; // Enflasyon başlangıç değeri
-        if (data.bots[index].gold > 10000) {
-            let extraAltin = data.bots[index].gold - 10000;  // 10000 üstündeki altın miktarı
-            let decrementFactor = Math.floor(extraAltin / 100);  // Her 100 altın için
-            inflationRate -= Number((decrementFactor * 0.1).toFixed(2));  // %10 enflasyon azalır
-            inflationRate = Number(inflationRate.toFixed(2));
-            console.log("inflationRate: ", inflationRate)
-        }
 
         // Enflasyon oranı sıfırın altına düşmemesi için kontrol
         if (inflationRate < 0) {
@@ -89,7 +75,6 @@ export const BotsEndTurn = async (index: number, data: any, setData: (data: any)
     }
     const polityGoldBonus = polityGoldEffects();
     calculateInterest()
-    let inflationRate: number = calculateInflation()
     let resultPopulation: number = CalculatePopBot(data.bots[index])
     let countryFocusBonusGold = data.bots[index].countryFocus == "income" ? 0.1 :
         data.countryFocus == "premium" ? 1 : 0
@@ -110,7 +95,6 @@ export const BotsEndTurn = async (index: number, data: any, setData: (data: any)
                 build_costs.parliament.clay <= data.bots[index].clay &&
                 build_costs.parliament.iron <= data.bots[index].iron
             ) {
-                console.log("ÇALIŞTI PARLIMENT")
                 setData((prevGameData: any) => {
                     // bots dizisinin bir kopyasını oluştur
                     const updatedBots = [...prevGameData.bots];
@@ -125,9 +109,14 @@ export const BotsEndTurn = async (index: number, data: any, setData: (data: any)
             }
         }
         if (kararlar?.buildings?.includes("farm")) {
-            console.log("INSAAT KUYRUGU FARM VAR")
-            console.log("FARM TRUE OLDU")
-            console.log("ekleniyor")
+            console.log("FARM")
+            console.log("FARM")
+            console.log("FARM")
+            console.log("FARM")
+            console.log("FARM")
+            console.log("FARM")
+            console.log("FARM")
+            console.log("FARM")
             setData((prevGameData: any) => {
                 // bots dizisinin bir kopyasını oluştur
                 const updatedBots = [...prevGameData.bots];
@@ -193,8 +182,6 @@ export const BotsEndTurn = async (index: number, data: any, setData: (data: any)
             }
         }
         if (kararlar?.buildings?.includes("mine")) {
-            console.log("INSAAT KUYRUGU FARM VAR")
-            console.log("MINE TRUE OLDU")
             setData((prevGameData: any) => {
                 // bots dizisinin bir kopyasını oluştur
                 const updatedBots = [...prevGameData.bots];
@@ -206,7 +193,6 @@ export const BotsEndTurn = async (index: number, data: any, setData: (data: any)
                     bots: updatedBots,
                 };
             });
-            console.log("eklendi MINE: ", data.bot[index].mine)
         }
         if (kararlar?.buildings?.includes("trade_center")) {
             if (build_costs.trade_center.gold <= data.bots[index].gold &&
@@ -368,25 +354,27 @@ export const BotsEndTurn = async (index: number, data: any, setData: (data: any)
         }
     }
 
-    setData((prevData: any) => {
-        // Önce botların eski halini al
-        const updatedBots = [...prevData.bots];
-        // index'teki botu güncelle
-        updatedBots[index] = {
-            ...updatedBots[index],
-            // gold: updatedBots[index].gold + income,
-            inflation: inflationRate,
-            population: resultPopulation,
-            income: income - (buildMaintenanceGold + armyMaintenanceGold),
-            gold: Math.round(updatedBots[index].gold + (income - (buildMaintenanceGold + armyMaintenanceGold))),
-            wood: updatedBots[index].wood + Math.round(buildIncomeWood - (buildMaintenanceWood + armyMaintenanceWood)),
-            clay: updatedBots[index].clay + Math.round(buildIncomeClay - (buildMaintenanceClay + armyMaintenanceClay)),
-            iron: updatedBots[index].wood + Math.round(buildIncomeIron - (buildMaintenanceIron + armyMaintenanceIron)),
-        };
-        // Güncellenmiş botları geri döndür
-        return {
-            ...prevData,
-            bots: updatedBots,
-        };
-    });
+    setTimeout(() => {
+        setData((prevData: any) => {
+            // Önce botların eski halini al
+            const updatedBots = [...prevData.bots];
+            // index'teki botu güncelle
+            updatedBots[index] = {
+                ...updatedBots[index],
+                // gold: updatedBots[index].gold + income,
+                inflation: inflationRate,
+                population: resultPopulation,
+                income: income - (buildMaintenanceGold + armyMaintenanceGold),
+                gold: Math.round(updatedBots[index].gold + (income - (buildMaintenanceGold + armyMaintenanceGold))),
+                wood: updatedBots[index].wood + Math.round(buildIncomeWood - (buildMaintenanceWood + armyMaintenanceWood)),
+                clay: updatedBots[index].clay + Math.round(buildIncomeClay - (buildMaintenanceClay + armyMaintenanceClay)),
+                iron: updatedBots[index].wood + Math.round(buildIncomeIron - (buildMaintenanceIron + armyMaintenanceIron)),
+            };
+            // Güncellenmiş botları geri döndür
+            return {
+                ...prevData,
+                bots: updatedBots,
+            };
+        });
+    }, 0.5 * 1000);
 }

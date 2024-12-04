@@ -18,9 +18,6 @@ export default function G1() {
 
         await interstitial.load()
             .then(async () => {
-                console.log("AAA: ")
-                console.log("AdMob.adIsLoaded({ id: adUnitId }),", AdMob.adIsLoaded({ id: adUnitId }).then((a) => console.log("first A: ", a)))
-                console.log("interstitial.isLoaded(): ", interstitial.isLoaded())
                 if (AdMob.adIsLoaded({ id: adUnitId })) {
                     console.log("interstitial.isLoaded: ", interstitial.isLoaded())
                     await interstitial.show()
