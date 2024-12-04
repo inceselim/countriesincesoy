@@ -40,7 +40,7 @@ export const EndTurn = (data: any, setData: (data: any) => void, setLoading: any
     }
     function calculateInflation() {
         let inflationRate = 1; // Enflasyon başlangıç değeri
-        if (data.gold > 10000) {
+        if (data.gold > 50000) {
             let extraAltin = data.gold - 10000;  // 10000 üstündeki altın miktarı
             let decrementFactor = Math.floor(extraAltin / 100);  // Her 100 altın için
             inflationRate -= Number((decrementFactor * 0.1).toFixed(2));  // %10 enflasyon azalır
@@ -105,10 +105,6 @@ export const EndTurn = (data: any, setData: (data: any) => void, setLoading: any
         // turn: prevData.turn + 1,
     }
     ));
-    // BotsEndTurn(data)
-    data.bots.forEach((bot: any, index: number) => {
-        BotsEndTurn(index, data, setData)
-    });
 
     setData((prevData: any) => ({
         ...prevData,

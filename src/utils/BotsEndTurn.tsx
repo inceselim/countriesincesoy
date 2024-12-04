@@ -8,7 +8,8 @@ import { build_costs } from "../data/build_costs"
 import { calculateSoldierAmount } from "./CalculateSoldierAmount"
 
 
-export const BotsEndTurn = async (index: number, data: any, setData: (data: any) => void) => {
+export const BotsEndTurn = async (dataBots: any, setDataBots: (data: any) => void) => {
+
     let parliamentPerformance = data.bots[index].population < (data.bots[index].parliament * 1000) ? 1 : (100 - 5 * ((data.bots[index].population - (data.bots[index].parliament * 1000)) / 100)) / 100
     let taxIncome = CalculateInterest(data.bots[index].population)
     let buildIncomeGold = ((build_income.mine.gold * data.bots[index].mine) + (build_income.woodcutter.gold * data.bots[index].woodcutter) + (build_income.brickhouse.gold * data.bots[index].brickhouse) + (build_income.trade_center.gold * data.bots[index].trade_center) + (build_income.avm.gold * data.bots[index].avm))

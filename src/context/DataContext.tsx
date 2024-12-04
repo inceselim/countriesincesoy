@@ -18,7 +18,7 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
         language: "en",
         isTutorial: true,
         news: [],
-        canDeclareWar:false,
+        canDeclareWar: false,
         countryName: "",
         countryFocus: "attack", //attack, defence, pop, income, premium
         polity: "",
@@ -151,7 +151,110 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
             },
         ]
     }
+    const defaultDataBots: any =
+        [ // Bot 1: Saldırı odaklı
+            {
+                countryName: "Bot1",
+                countryFocus: "attack", //attack, defence, pop, income, premium
+                polity: "monarchy",
+                population: 2900,
+                prevPopulation: 0,
+                gems: 0,
+                gold: 3030,
+                prevInflation: 1,
+                inflation: 1,
+                income: 0,
+                wood: 120,
+                clay: 120,
+                iron: 120,
+                parliament: 3,
+                castle: 0,
+                tower: 0,
+                espionage: 0,
+                barracks: 1,
+                farm: 3,
+                mine: 1,
+                woodcutter: 1,
+                brickhouse: 1,
+                trade_center: 1,
+                avm: 0,
+                spearman: 0,
+                bowman: 0,
+                swordman: 0,
+                axeman: 0,
+                knight: 0,
+                catapult: 0,
+            },
+            // Bot 2: Savunma odaklı
+            {
+                countryName: "Bot2",
+                countryFocus: "defence",
+                polity: "theocracy",
+                population: 2900,
+                prevPopulation: 0,
+                gems: 0,
+                gold: 3030,
+                prevInflation: 1,
+                inflation: 1,
+                income: 0,
+                wood: 120,
+                clay: 120,
+                iron: 120,
+                parliament: 3,
+                castle: 0,
+                tower: 0,
+                espionage: 0,
+                barracks: 1,
+                farm: 3,
+                mine: 1,
+                woodcutter: 1,
+                brickhouse: 1,
+                trade_center: 1,
+                avm: 0,
+                spearman: 0,
+                bowman: 0,
+                swordman: 0,
+                axeman: 0,
+                knight: 0,
+                catapult: 0,
+            },
+            // Bot 3: Ekonomi odaklı
+            {
+                countryName: "Bot3",
+                countryFocus: "income",
+                polity: "aristocracy",
+                population: 2900,
+                prevPopulation: 0,
+                gems: 0,
+                gold: 3000,
+                prevInflation: 1,
+                inflation: 1,
+                income: 0,
+                wood: 120,
+                clay: 120,
+                iron: 120,
+                parliament: 3,
+                castle: 0,
+                tower: 0,
+                espionage: 0,
+                barracks: 1,
+                farm: 3,
+                mine: 1,
+                woodcutter: 1,
+                brickhouse: 1,
+                trade_center: 1,
+                avm: 0,
+                spearman: 0,
+                bowman: 0,
+                swordman: 0,
+                axeman: 0,
+                knight: 0,
+                catapult: 0,
+            },
+        ]
+
     const [data, setData] = useState<any>(defaultData);
+    const [dataBots, setDataBots] = useState<any>(defaultDataBots);
     const loadFromStorage = async () => {
         try {
             const value = await AsyncStorage.getItem('@data');
@@ -162,12 +265,23 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
         } catch (e) {
             console.error('Hata:', e);
         }
+        try {
+            const value = await AsyncStorage.getItem('@dataBots');
+            if (value !== null) {
+                setDataBots(JSON.parse(value));
+            }
+        } catch (e) {
+            console.error('Hata:', e);
+        }
     };
 
     // AsyncStorage'a veri kaydetme
-    const saveToStorage = async (value: string) => {
+    const saveToStorage = async (value: string,
+        bots: any
+    ) => {
         try {
             await AsyncStorage.setItem('@data', JSON.stringify(value));
+            await AsyncStorage.setItem('@dataBots', JSON.stringify(bots));
         } catch (e) {
             console.error('Hata:', e);
         }
@@ -202,6 +316,9 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
         <DataContext.Provider value={{
             data,
             setData,
+
+            dataBots, setDataBots,
+
             loadFromStorage,
             saveToStorage,
 
