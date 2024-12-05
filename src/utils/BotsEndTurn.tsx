@@ -14,7 +14,7 @@ export const BotsEndTurn = async (dataBots: any[], setDataBots: (data: any) => v
         console.log(tmpBuild)
         setDataBots((prevDataBots: any[]) => {
             // Yeni bir array oluşturun
-            const updatedBots = [...prevDataBots];
+            const updatedBots: any[] = [...prevDataBots];
             // Verilen indexteki bot ile işlem yap
             // parametre olarak gelen değerini bir artırın
             updatedBots[index] = {
@@ -25,7 +25,6 @@ export const BotsEndTurn = async (dataBots: any[], setDataBots: (data: any) => v
         });
     }
     dataBots.map((item, index) => {
-
         let parliamentPerformance = dataBots[index].population < (dataBots[index].parliament * 1000) ? 1 : (100 - 5 * ((dataBots[index].population - (dataBots[index].parliament * 1000)) / 100)) / 100
         let taxIncome = CalculateInterest(dataBots[index].population)
         let buildIncomeGold = ((build_income.mine.gold * dataBots[index].mine) + (build_income.woodcutter.gold * dataBots[index].woodcutter) + (build_income.brickhouse.gold * dataBots[index].brickhouse) + (build_income.trade_center.gold * dataBots[index].trade_center) + (build_income.avm.gold * dataBots[index].avm))
@@ -172,55 +171,53 @@ export const BotsEndTurn = async (dataBots: any[], setDataBots: (data: any) => v
                 }
             }
         }
-        if (kararlar?.troops?.length > 0) {
-            if (kararlar?.buildings?.includes("tower")) {
-                if (build_costs.tower.gold <= dataBots[index].gold &&
-                    build_costs.tower.wood <= dataBots[index].wood &&
-                    build_costs.tower.clay <= dataBots[index].clay &&
-                    build_costs.tower.iron <= dataBots[index].iron
-                ) {
-                    setDataBots((prevdataBots: any) => {
-                        // Önce botların eski halini al
-                        const updatedBots = [...prevdataBots];
-                        // index'teki botu güncelle
-                        updatedBots[index] = {
-                            ...updatedBots[index],
-                            tower: updatedBots[index].tower + 1,
-                            gold: Math.round(updatedBots[index].gold - build_costs.tower.gold),
-                            wood: Math.round(updatedBots[index].wood - build_costs.tower.wood),
-                            clay: Math.round(updatedBots[index].clay - build_costs.tower.clay),
-                            iron: Math.round(updatedBots[index].iron - build_costs.tower.iron),
-                        };
-                        // Güncellenmiş botları geri döndür
-                        return {
-                            ...prevdataBots,
-                            bots: updatedBots,
-                        };
-                    });
-                }
-            }
-        }
+        // if (kararlar?.troops?.length > 0) {
+        //     if (kararlar?.buildings?.includes("tower")) {
+        //         if (build_costs.tower.gold <= dataBots[index].gold &&
+        //             build_costs.tower.wood <= dataBots[index].wood &&
+        //             build_costs.tower.clay <= dataBots[index].clay &&
+        //             build_costs.tower.iron <= dataBots[index].iron
+        //         ) {
+        //             setDataBots((prevdataBots: any) => {
+        //                 // Önce botların eski halini al
+        //                 const updatedBots = [...prevdataBots];
+        //                 // index'teki botu güncelle
+        //                 updatedBots[index] = {
+        //                     ...updatedBots[index],
+        //                     tower: updatedBots[index].tower + 1,
+        //                     gold: Math.round(updatedBots[index].gold - build_costs.tower.gold),
+        //                     wood: Math.round(updatedBots[index].wood - build_costs.tower.wood),
+        //                     clay: Math.round(updatedBots[index].clay - build_costs.tower.clay),
+        //                     iron: Math.round(updatedBots[index].iron - build_costs.tower.iron),
+        //                 };
+        //                 // Güncellenmiş botları geri döndür
+        //                 return {
+        //                     ...prevdataBots,
+        //                     bots: updatedBots,
+        //                 };
+        //             });
+        //         }
+        //     }
+        // }
 
 
 
-        setTimeout(() => {
-            setDataBots((prevDataBots: any[]) => {
-                // Yeni bir array oluşturun
-                const updatedBots = [...prevDataBots];
-                // Verilen indexteki bot ile işlem yap
-                // parametre olarak gelen değerini bir artırın
-                updatedBots[index] = {
-                    ...updatedBots[index],
-                    inflation: 1,
-                    population: resultPopulation,
-                    income: income - (buildMaintenanceGold + armyMaintenanceGold),
-                    gold: Math.round(updatedBots[index].gold + (income - (buildMaintenanceGold + armyMaintenanceGold))),
-                    wood: updatedBots[index].wood + Math.round(buildIncomeWood - (buildMaintenanceWood + armyMaintenanceWood)),
-                    clay: updatedBots[index].clay + Math.round(buildIncomeClay - (buildMaintenanceClay + armyMaintenanceClay)),
-                    iron: updatedBots[index].wood + Math.round(buildIncomeIron - (buildMaintenanceIron + armyMaintenanceIron)),
-                };
-                return updatedBots;
-            });
-        }, 0.3 * 1000);
+        setDataBots((prevDataBots: any[]) => {
+            // Yeni bir array oluşturun
+            const updatedBots = [...prevDataBots];
+            // Verilen indexteki bot ile işlem yap
+            // parametre olarak gelen değerini bir artırın
+            updatedBots[index] = {
+                ...updatedBots[index],
+                inflation: 1,
+                population: resultPopulation,
+                income: income - (buildMaintenanceGold + armyMaintenanceGold),
+                gold: Math.round(updatedBots[index].gold + (income - (buildMaintenanceGold + armyMaintenanceGold))),
+                wood: updatedBots[index].wood + Math.round(buildIncomeWood - (buildMaintenanceWood + armyMaintenanceWood)),
+                clay: updatedBots[index].clay + Math.round(buildIncomeClay - (buildMaintenanceClay + armyMaintenanceClay)),
+                iron: updatedBots[index].wood + Math.round(buildIncomeIron - (buildMaintenanceIron + armyMaintenanceIron)),
+            };
+            return updatedBots;
+        });
     })
 }

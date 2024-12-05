@@ -151,7 +151,7 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
             },
         ]
     }
-    const defaultDataBots: any =
+    const defaultDataBots: any[] =
         [ // Bot 1: Saldırı odaklı
             {
                 countryName: "Bot1",
@@ -254,7 +254,7 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
         ]
 
     const [data, setData] = useState<any>(defaultData);
-    const [dataBots, setDataBots] = useState<any>(defaultDataBots);
+    const [dataBots, setDataBots] = useState<any[]>(defaultDataBots);
     const loadFromStorage = async () => {
         try {
             const value = await AsyncStorage.getItem('@data');

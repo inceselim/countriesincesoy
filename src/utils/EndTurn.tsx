@@ -102,15 +102,15 @@ export const EndTurn = (data: any, setData: (data: any) => void, setLoading: any
         wood: prevData.wood + Math.round(buildIncomeWood - (buildMaintenanceWood + armyMaintenanceWood)),
         clay: prevData.clay + Math.round(buildIncomeClay - (buildMaintenanceClay + armyMaintenanceClay)),
         iron: prevData.wood + Math.round(buildIncomeIron - (buildMaintenanceIron + armyMaintenanceIron)),
-        // turn: prevData.turn + 1,
-    }
-    ));
-
-    setData((prevData: any) => ({
-        ...prevData,
         turn: prevData.turn + 1,
     }
     ));
+
+    // setData((prevData: any) => ({
+    //     ...prevData,
+    //     turn: prevData.turn + 1,
+    // }
+    // ));
     setTimeout(() => {
         setLoading(false)
     }, 1 * 1);
