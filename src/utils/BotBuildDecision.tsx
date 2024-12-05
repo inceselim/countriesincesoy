@@ -4,12 +4,13 @@ import { BuildMaintenanceGold, BuildMaintenanceWood, BuildMaintenanceClay, Build
 import { calculateSoldierAmount } from "./CalculateSoldierAmount";
 
 export const BotBuildDecision = (data: any, index: number) => {
-    console.log("asas")
-    console.log("asas")
-    console.log("asas")
-    console.log("asas111: ",data)
-    console.log("asas")
-    console.log("asas")
+    console.log("")
+    console.log("")
+    console.log("BOT BUILD DECISION")
+    console.log(data)
+    console.log("")
+    console.log("")
+    console.log("")
     let buildIncomeGold = ((build_income.mine.gold * data.mine) + (build_income.woodcutter.gold * data.woodcutter) + (build_income.brickhouse.gold * data.brickhouse) + (build_income.trade_center.gold * data.trade_center) + (build_income.avm.gold * data.avm))
     let buildIncomeWood: number = ((build_income.woodcutter.wood * data.woodcutter) + (build_income.avm.wood * data.avm))
     let buildIncomeClay: number = ((build_income.brickhouse.clay * data.brickhouse) + (build_income.avm.clay * data.avm))
@@ -74,20 +75,20 @@ export const BotBuildDecision = (data: any, index: number) => {
 
 
     // data.bots[index].gold >= 300 && data.bots[index].wood >= 100 && data.bots[index].clay >= 100 && data.bots[index].iron >= 100
-    if (data.bots[index].gold >= 300 && data.bots[index].clay >= 10) {
+    if (data.gold >= 300 && data.clay >= 10) {
         // if (data.bots[index].gold >= 300 && data.bots[index].wood >= 100) {
         recruitments.push('spearman');
     }
-    if (data.bots[index].gold >= 300 && incomeClay >= 10) {
+    if (data.gold >= 300 && incomeClay >= 10) {
         recruitments.push('bowman');
     }
-    if (data.bots[index].gold >= 300 && incomeIron >= 100) {
+    if (data.gold >= 300 && incomeIron >= 100) {
         recruitments.push('swordman');
     }
-    if (data.bots[index].gold >= 300 && data.bots[index].wood >= 100 && data.bots[index].spearman >= data.bots[index].axeman) {
+    if (data.gold >= 300 && data.wood >= 100 && data.spearman >= data.axeman) {
         recruitments.push('axeman');
     }
-    if (data.bots[index].gold >= 300 && data.bots[index].iron >= 100) {
+    if (data.gold >= 300 && data.iron >= 100) {
         recruitments.push('knight');
     }
     if (incomeWood >= 50 && incomeClay >= 100) {
