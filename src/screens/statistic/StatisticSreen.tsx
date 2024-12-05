@@ -24,7 +24,7 @@ import G1 from '../../ads/G1';
 export const StatisticScreen = () => {
     const navigation: any = useNavigation();
     const [segment, setSegment] = useState(0)
-    const { data, setData,
+    const { data, setData, dataBots, setDataBots,
         buildIncomeWood,
         buildIncomeClay,
         buildIncomeIron,
@@ -206,7 +206,7 @@ export const StatisticScreen = () => {
                                                         </View>
                                     }
                                     {
-                                        data?.bots.map((i: any, index: number) => {
+                                        dataBots?.map((i: any, index: number) => {
                                             return (
                                                 <View key={index} style={{
                                                     flexDirection: "row",

@@ -9,9 +9,22 @@ import { calculateSoldierAmount } from "./CalculateSoldierAmount"
 
 
 export const BotsEndTurn = async (dataBots: any[], setDataBots: (data: any) => void) => {
+    const updateBotBuild = (index: number, build: string) => {
+        let tmpBuild = build
+        console.log(tmpBuild)
+        setDataBots((prevDataBots: any[]) => {
+            // Yeni bir array oluşturun
+            const updatedBots = [...prevDataBots];
+            // Verilen indexteki bot ile işlem yap
+            // parametre olarak gelen değerini bir artırın
+            updatedBots[index] = {
+                ...updatedBots[index],
+                [tmpBuild]: (updatedBots[index][tmpBuild]) + 1
+            };
+            return updatedBots;
+        });
+    }
     dataBots.map((item, index) => {
-        console.log("resssss", index)
-        console.log("resssss", item)
 
         let parliamentPerformance = dataBots[index].population < (dataBots[index].parliament * 1000) ? 1 : (100 - 5 * ((dataBots[index].population - (dataBots[index].parliament * 1000)) / 100)) / 100
         let taxIncome = CalculateInterest(dataBots[index].population)
@@ -95,31 +108,11 @@ export const BotsEndTurn = async (dataBots: any[], setDataBots: (data: any) => v
                     build_costs.parliament.clay <= dataBots[index].clay &&
                     build_costs.parliament.iron <= dataBots[index].iron
                 ) {
-                    setDataBots((prevdataBots: any) => {
-                        // bots dizisinin bir kopyasını oluştur
-                        const updatedBots = [...prevdataBots];
-                        // Verilen indeksteki axeman değerini artır
-                        updatedBots[index].parliament += 1;
-                        // Güncellenmiş bots dizisiyle state'i güncelle
-                        return {
-                            ...prevdataBots,
-                            bots: updatedBots,
-                        };
-                    });
+                    updateBotBuild(index, "parliament")
                 }
             }
             if (kararlar?.buildings?.includes("farm")) {
-                setDataBots((prevdataBots: any) => {
-                    // bots dizisinin bir kopyasını oluştur
-                    const updatedBots = [...prevdataBots];
-                    // Verilen indeksteki axeman değerini artır
-                    updatedBots[index].farm += 1;
-                    // Güncellenmiş bots dizisiyle state'i güncelle
-                    return {
-                        ...prevdataBots,
-                        bots: updatedBots,
-                    };
-                });
+                updateBotBuild(index, "farm")
             }
             if (kararlar?.buildings?.includes("woodcutter")) {
                 if (build_costs.woodcutter.gold <= dataBots[index].gold &&
@@ -127,24 +120,7 @@ export const BotsEndTurn = async (dataBots: any[], setDataBots: (data: any) => v
                     build_costs.woodcutter.clay <= dataBots[index].clay &&
                     build_costs.woodcutter.iron <= dataBots[index].iron
                 ) {
-                    setDataBots((prevdataBots: any) => {
-                        // Önce botların eski halini al
-                        const updatedBots = [...prevdataBots];
-                        // index'teki botu güncelle
-                        updatedBots[index] = {
-                            ...updatedBots[index],
-                            woodcutter: updatedBots[index].woodcutter++,
-                            gold: Math.round(updatedBots[index].gold - build_costs.woodcutter.gold),
-                            wood: Math.round(updatedBots[index].wood - build_costs.woodcutter.wood),
-                            clay: Math.round(updatedBots[index].clay - build_costs.woodcutter.clay),
-                            iron: Math.round(updatedBots[index].iron - build_costs.woodcutter.iron),
-                        };
-                        // Güncellenmiş botları geri döndür
-                        return {
-                            ...prevdataBots,
-                            bots: updatedBots,
-                        };
-                    });
+                    updateBotBuild(index, "woodcutter")
                 }
             }
             if (kararlar?.buildings?.includes("brickhouse")) {
@@ -153,38 +129,11 @@ export const BotsEndTurn = async (dataBots: any[], setDataBots: (data: any) => v
                     build_costs.brickhouse.clay <= dataBots[index].clay &&
                     build_costs.brickhouse.iron <= dataBots[index].iron
                 ) {
-                    setDataBots((prevdataBots: any) => {
-                        // Önce botların eski halini al
-                        const updatedBots = [...prevdataBots];
-                        // index'teki botu güncelle
-                        updatedBots[index] = {
-                            ...updatedBots[index],
-                            brickhouse: updatedBots[index].brickhouse++,
-                            gold: Math.round(updatedBots[index].gold - build_costs.brickhouse.gold),
-                            wood: Math.round(updatedBots[index].wood - build_costs.brickhouse.wood),
-                            clay: Math.round(updatedBots[index].clay - build_costs.brickhouse.clay),
-                            iron: Math.round(updatedBots[index].iron - build_costs.brickhouse.iron),
-                        };
-                        // Güncellenmiş botları geri döndür
-                        return {
-                            ...prevdataBots,
-                            bots: updatedBots,
-                        };
-                    });
+                    updateBotBuild(index, "brickhouse")
                 }
             }
             if (kararlar?.buildings?.includes("mine")) {
-                setDataBots((prevdataBots: any) => {
-                    // bots dizisinin bir kopyasını oluştur
-                    const updatedBots = [...prevdataBots];
-                    // Verilen indeksteki axeman değerini artır
-                    updatedBots[index].mine += 1;
-                    // Güncellenmiş bots dizisiyle state'i güncelle
-                    return {
-                        ...prevdataBots,
-                        bots: updatedBots,
-                    };
-                });
+                updateBotBuild(index, "mine")
             }
             if (kararlar?.buildings?.includes("trade_center")) {
                 if (build_costs.trade_center.gold <= dataBots[index].gold &&
@@ -192,24 +141,7 @@ export const BotsEndTurn = async (dataBots: any[], setDataBots: (data: any) => v
                     build_costs.trade_center.clay <= dataBots[index].clay &&
                     build_costs.trade_center.iron <= dataBots[index].iron
                 ) {
-                    setDataBots((prevdataBots: any) => {
-                        // Önce botların eski halini al
-                        const updatedBots = [...prevdataBots];
-                        // index'teki botu güncelle
-                        updatedBots[index] = {
-                            ...updatedBots[index],
-                            trade_center: updatedBots[index].trade_center++,
-                            gold: Math.round(updatedBots[index].gold - build_costs.trade_center.gold),
-                            wood: Math.round(updatedBots[index].wood - build_costs.trade_center.wood),
-                            clay: Math.round(updatedBots[index].clay - build_costs.trade_center.clay),
-                            iron: Math.round(updatedBots[index].iron - build_costs.trade_center.iron),
-                        };
-                        // Güncellenmiş botları geri döndür
-                        return {
-                            ...prevdataBots,
-                            bots: updatedBots,
-                        };
-                    });
+                    updateBotBuild(index, "trade_center")
                 }
             }
             if (kararlar?.buildings?.includes("barracks")) {
@@ -218,24 +150,7 @@ export const BotsEndTurn = async (dataBots: any[], setDataBots: (data: any) => v
                     build_costs.barracks.clay <= dataBots[index].clay &&
                     build_costs.barracks.iron <= dataBots[index].iron
                 ) {
-                    setDataBots((prevdataBots: any) => {
-                        // Önce botların eski halini al
-                        const updatedBots = [...prevdataBots];
-                        // index'teki botu güncelle
-                        updatedBots[index] = {
-                            ...updatedBots[index],
-                            barracks: updatedBots[index].barracks++,
-                            gold: Math.round(updatedBots[index].gold - build_costs.barracks.gold),
-                            wood: Math.round(updatedBots[index].wood - build_costs.barracks.wood),
-                            clay: Math.round(updatedBots[index].clay - build_costs.barracks.clay),
-                            iron: Math.round(updatedBots[index].iron - build_costs.barracks.iron),
-                        };
-                        // Güncellenmiş botları geri döndür
-                        return {
-                            ...prevdataBots,
-                            bots: updatedBots,
-                        };
-                    });
+                    updateBotBuild(index, "barracks")
                 }
             }
             if (kararlar?.buildings?.includes("castle")) {
@@ -244,24 +159,7 @@ export const BotsEndTurn = async (dataBots: any[], setDataBots: (data: any) => v
                     build_costs.castle.clay <= dataBots[index].clay &&
                     build_costs.castle.iron <= dataBots[index].iron
                 ) {
-                    setDataBots((prevdataBots: any) => {
-                        // Önce botların eski halini al
-                        const updatedBots = [...prevdataBots];
-                        // index'teki botu güncelle
-                        updatedBots[index] = {
-                            ...updatedBots[index],
-                            castle: updatedBots[index].castle++,
-                            gold: Math.round(updatedBots[index].gold - build_costs.castle.gold),
-                            wood: Math.round(updatedBots[index].wood - build_costs.castle.wood),
-                            clay: Math.round(updatedBots[index].clay - build_costs.castle.clay),
-                            iron: Math.round(updatedBots[index].iron - build_costs.castle.iron),
-                        };
-                        // Güncellenmiş botları geri döndür
-                        return {
-                            ...prevdataBots,
-                            bots: updatedBots,
-                        };
-                    });
+                    updateBotBuild(index, "castle")
                 }
             }
             if (kararlar?.buildings?.includes("tower")) {
@@ -270,24 +168,7 @@ export const BotsEndTurn = async (dataBots: any[], setDataBots: (data: any) => v
                     build_costs.tower.clay <= dataBots[index].clay &&
                     build_costs.tower.iron <= dataBots[index].iron
                 ) {
-                    setDataBots((prevdataBots: any) => {
-                        // Önce botların eski halini al
-                        const updatedBots = [...prevdataBots];
-                        // index'teki botu güncelle
-                        updatedBots[index] = {
-                            ...updatedBots[index],
-                            tower: updatedBots[index].tower++,
-                            gold: Math.round(updatedBots[index].gold - build_costs.tower.gold),
-                            wood: Math.round(updatedBots[index].wood - build_costs.tower.wood),
-                            clay: Math.round(updatedBots[index].clay - build_costs.tower.clay),
-                            iron: Math.round(updatedBots[index].iron - build_costs.tower.iron),
-                        };
-                        // Güncellenmiş botları geri döndür
-                        return {
-                            ...prevdataBots,
-                            bots: updatedBots,
-                        };
-                    });
+                    updateBotBuild(index, "trade_center")
                 }
             }
         }
@@ -323,13 +204,13 @@ export const BotsEndTurn = async (dataBots: any[], setDataBots: (data: any) => v
 
 
         setTimeout(() => {
-            setDataBots((prevdataBots: any) => {
-                // Önce botların eski halini al
-                const updatedBots = [...prevdataBots];
-                // index'teki botu güncelle
+            setDataBots((prevDataBots: any[]) => {
+                // Yeni bir array oluşturun
+                const updatedBots = [...prevDataBots];
+                // Verilen indexteki bot ile işlem yap
+                // parametre olarak gelen değerini bir artırın
                 updatedBots[index] = {
                     ...updatedBots[index],
-                    // gold: updatedBots[index].gold + income,
                     inflation: 1,
                     population: resultPopulation,
                     income: income - (buildMaintenanceGold + armyMaintenanceGold),
@@ -338,12 +219,8 @@ export const BotsEndTurn = async (dataBots: any[], setDataBots: (data: any) => v
                     clay: updatedBots[index].clay + Math.round(buildIncomeClay - (buildMaintenanceClay + armyMaintenanceClay)),
                     iron: updatedBots[index].wood + Math.round(buildIncomeIron - (buildMaintenanceIron + armyMaintenanceIron)),
                 };
-                // Güncellenmiş botları geri döndür
-                return {
-                    ...prevdataBots,
-                    bots: updatedBots,
-                };
+                return updatedBots;
             });
-        }, 0.2 * 1000);
+        }, 0.3 * 1000);
     })
 }
