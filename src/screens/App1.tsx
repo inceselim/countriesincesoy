@@ -2,42 +2,11 @@
 import React, { Component, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, Pressable } from 'react-native';
 import Sound from "react-native-sound"
+import { PlaySoundClick } from '../utils/PlaySoundClick';
 // create a component
 export const App = () => {
 
-    const [currentSoundIndex, setCurrentSoundIndex] = useState(0);
-    const [soundInstance, setSoundInstance] = useState<any>(null);
-
-    // Çalmak istediğiniz ses dosyalarının listesi
-    const soundFiles = ["arrow.wav", "bird1.wav", "click1.wav"];
-
-    useEffect(() => {
-        // İlk ses dosyasını başlat
-        playSound(currentSoundIndex);
-
-        // Cleanup: Sound nesnesini serbest bırak
-        return () => {
-            if (soundInstance) {
-                soundInstance.release();
-            }
-        };
-    }, [currentSoundIndex]);
-
-    const playSound = (index: any) => {
-        if (index >= soundFiles.length) {
-            // Eğer listedeki tüm sesler çalındıysa başa dön
-            setCurrentSoundIndex(0);
-            return;
-        }
-    };
-
-    const stopAllSounds = () => {
-        if (soundInstance) {
-            soundInstance.stop(() => {
-                console.log('Tüm sesler durduruldu.');
-            });
-        }
-    };
+  
 
 
 
@@ -130,6 +99,7 @@ export const App = () => {
             <View>
                 <Pressable onPress={() => {
                     updateBotBuild(0, "parliament")
+                    PlaySoundClick()
                 }}>
                     <Text style={{ fontSize: 16 }}>Parliament: {dataBots[0].parliament}</Text>
                 </Pressable>

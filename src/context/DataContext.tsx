@@ -4,6 +4,7 @@ import YoutubePlayer from "react-native-youtube-iframe";
 import { build_income } from '../data/build_income';
 import { ArmyMaintenanceGold, ArmyMaintenanceWood, ArmyMaintenanceClay, ArmyMaintenanceIron } from '../utils/ArmyMaintenance';
 import { BuildMaintenanceGold, BuildMaintenanceWood, BuildMaintenanceClay, BuildMaintenanceIron } from '../utils/BuildMaintenance';
+import Sound from 'react-native-sound';
 
 const DataContext = createContext<any>(undefined);
 
@@ -298,6 +299,61 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
     const togglePlaying = useCallback(() => {
         setPlaying((prev) => !prev);
     }, []);
+
+    const [currentSoundIndex, setCurrentSoundIndex] = useState(0);
+    const [soundInstance, setSoundInstance] = useState<any>(null);
+
+    // Çalmak istediğiniz ses dosyalarının listesi
+    const soundFiles = ["mehter1.mp3", "bg1.mp3", "arrow.wav", "bird1.wav", "click1.wav"];
+    Sound
+    useEffect(() => {
+        // İlk ses dosyasını başlat
+        playSound(currentSoundIndex);
+
+        // Cleanup: Sound nesnesini serbest bırak
+        return () => {
+            if (soundInstance) {
+                soundInstance.release();
+            }
+        };
+    }, [currentSoundIndex]);
+
+    const playSound = (index: any) => {
+        if (index >= soundFiles.length) {
+            // Eğer listedeki tüm sesler çalındıysa başa dön
+            setCurrentSoundIndex(0);
+            return;
+        }
+
+        // Yeni ses nesnesi oluştur
+        const newSound = new Sound(soundFiles[index], Sound.MAIN_BUNDLE, (error) => {
+            if (error) {
+                console.log(`Ses dosyası yüklenemedi: ${soundFiles[index]}`, error);
+                return;
+            }
+            newSound.setVolume(0.25)
+            console.log(`Şu anda çalıyor: ${soundFiles[index]}`);
+            newSound.play((success) => {
+                if (success) {
+                    console.log(`Bitti: ${soundFiles[index]}`);
+                    setCurrentSoundIndex((prevIndex: any) => prevIndex + 1); // Sıradaki sesi çal
+                } else {
+                    console.log(`Çalma sırasında hata oluştu: ${soundFiles[index]}`);
+                }
+            });
+
+            // Sound nesnesini state'e kaydet
+            setSoundInstance(newSound);
+        });
+    };
+
+    const stopAllSounds = () => {
+        if (soundInstance) {
+            soundInstance.stop(() => {
+                console.log('Tüm sesler durduruldu.');
+            });
+        }
+    };
 
     let buildIncomeWood: number = ((build_income.woodcutter.wood * data.woodcutter) + (build_income.avm.wood * data.avm))
     let buildIncomeClay: number = ((build_income.brickhouse.clay * data.brickhouse) + (build_income.avm.clay * data.avm))

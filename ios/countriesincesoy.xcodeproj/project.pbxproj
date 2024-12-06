@@ -13,11 +13,16 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		32AC589A1AC4FFDCCAA59FDC /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 352ABB930D08C27D3FA10E67 /* PrivacyInfo.xcprivacy */; };
 		3D06C72D2CAC21A100F3C648 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D06C72C2CAC21A100F3C648 /* GoogleService-Info.plist */; };
-		3D26504F2D032E040039D49D /* click1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D26504A2D032E040039D49D /* click1.wav */; };
-		3D2650502D032E040039D49D /* arrow.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D26504B2D032E040039D49D /* arrow.wav */; };
-		3D2650512D032E040039D49D /* punch1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D26504C2D032E040039D49D /* punch1.wav */; };
-		3D2650522D032E040039D49D /* bird1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D26504D2D032E040039D49D /* bird1.wav */; };
-		3D2650532D032E040039D49D /* vacuum1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D26504E2D032E040039D49D /* vacuum1.wav */; };
+		3D2650812D0342E80039D49D /* flute1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3D2650772D0342E80039D49D /* flute1.mp3 */; };
+		3D2650822D0342E80039D49D /* click1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D2650782D0342E80039D49D /* click1.wav */; };
+		3D2650832D0342E80039D49D /* arrow.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D2650792D0342E80039D49D /* arrow.wav */; };
+		3D2650842D0342E80039D49D /* mehter2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3D26507A2D0342E80039D49D /* mehter2.mp3 */; };
+		3D2650852D0342E80039D49D /* mehter1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3D26507B2D0342E80039D49D /* mehter1.mp3 */; };
+		3D2650862D0342E80039D49D /* bg1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3D26507C2D0342E80039D49D /* bg1.mp3 */; };
+		3D2650872D0342E80039D49D /* punch1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D26507D2D0342E80039D49D /* punch1.wav */; };
+		3D2650882D0342E80039D49D /* click2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3D26507E2D0342E80039D49D /* click2.mp3 */; };
+		3D2650892D0342E80039D49D /* bird1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D26507F2D0342E80039D49D /* bird1.wav */; };
+		3D26508A2D0342E80039D49D /* vacuum1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3D2650802D0342E80039D49D /* vacuum1.wav */; };
 		54696F6FC3E230D2389E69C5 /* Pods_countriesincesoy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 117132A526D5BA16644346CD /* Pods_countriesincesoy.framework */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		B725CF2F73C7631023156FE1 /* Pods_countriesincesoy_countriesincesoyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2455662DF4CCF5ED7FAD05 /* Pods_countriesincesoy_countriesincesoyTests.framework */; };
@@ -49,11 +54,16 @@
 		352ABB930D08C27D3FA10E67 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = countriesincesoy/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-countriesincesoy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countriesincesoy.debug.xcconfig"; path = "Target Support Files/Pods-countriesincesoy/Pods-countriesincesoy.debug.xcconfig"; sourceTree = "<group>"; };
 		3D06C72C2CAC21A100F3C648 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "countriesincesoy/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		3D26504A2D032E040039D49D /* click1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click1.wav; sourceTree = "<group>"; };
-		3D26504B2D032E040039D49D /* arrow.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = arrow.wav; sourceTree = "<group>"; };
-		3D26504C2D032E040039D49D /* punch1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = punch1.wav; sourceTree = "<group>"; };
-		3D26504D2D032E040039D49D /* bird1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bird1.wav; sourceTree = "<group>"; };
-		3D26504E2D032E040039D49D /* vacuum1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = vacuum1.wav; sourceTree = "<group>"; };
+		3D2650772D0342E80039D49D /* flute1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = flute1.mp3; sourceTree = "<group>"; };
+		3D2650782D0342E80039D49D /* click1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click1.wav; sourceTree = "<group>"; };
+		3D2650792D0342E80039D49D /* arrow.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = arrow.wav; sourceTree = "<group>"; };
+		3D26507A2D0342E80039D49D /* mehter2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mehter2.mp3; sourceTree = "<group>"; };
+		3D26507B2D0342E80039D49D /* mehter1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mehter1.mp3; sourceTree = "<group>"; };
+		3D26507C2D0342E80039D49D /* bg1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bg1.mp3; sourceTree = "<group>"; };
+		3D26507D2D0342E80039D49D /* punch1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = punch1.wav; sourceTree = "<group>"; };
+		3D26507E2D0342E80039D49D /* click2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click2.mp3; sourceTree = "<group>"; };
+		3D26507F2D0342E80039D49D /* bird1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bird1.wav; sourceTree = "<group>"; };
+		3D2650802D0342E80039D49D /* vacuum1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = vacuum1.wav; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-countriesincesoy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countriesincesoy.release.xcconfig"; path = "Target Support Files/Pods-countriesincesoy/Pods-countriesincesoy.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-countriesincesoy-countriesincesoyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-countriesincesoy-countriesincesoyTests.debug.xcconfig"; path = "Target Support Files/Pods-countriesincesoy-countriesincesoyTests/Pods-countriesincesoy-countriesincesoyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = countriesincesoy/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -101,7 +111,7 @@
 		13B07FAE1A68108700A75B9A /* countriesincesoy */ = {
 			isa = PBXGroup;
 			children = (
-				3D2650492D032E040039D49D /* voices */,
+				3D2650762D0342E80039D49D /* voices */,
 				3D06C72C2CAC21A100F3C648 /* GoogleService-Info.plist */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
@@ -125,14 +135,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3D2650492D032E040039D49D /* voices */ = {
+		3D2650762D0342E80039D49D /* voices */ = {
 			isa = PBXGroup;
 			children = (
-				3D26504A2D032E040039D49D /* click1.wav */,
-				3D26504B2D032E040039D49D /* arrow.wav */,
-				3D26504C2D032E040039D49D /* punch1.wav */,
-				3D26504D2D032E040039D49D /* bird1.wav */,
-				3D26504E2D032E040039D49D /* vacuum1.wav */,
+				3D2650772D0342E80039D49D /* flute1.mp3 */,
+				3D2650782D0342E80039D49D /* click1.wav */,
+				3D2650792D0342E80039D49D /* arrow.wav */,
+				3D26507A2D0342E80039D49D /* mehter2.mp3 */,
+				3D26507B2D0342E80039D49D /* mehter1.mp3 */,
+				3D26507C2D0342E80039D49D /* bg1.mp3 */,
+				3D26507D2D0342E80039D49D /* punch1.wav */,
+				3D26507E2D0342E80039D49D /* click2.mp3 */,
+				3D26507F2D0342E80039D49D /* bird1.wav */,
+				3D2650802D0342E80039D49D /* vacuum1.wav */,
 			);
 			name = voices;
 			path = countriesincesoy/voices;
@@ -274,15 +289,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D2650892D0342E80039D49D /* bird1.wav in Resources */,
+				3D2650842D0342E80039D49D /* mehter2.mp3 in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
+				3D2650822D0342E80039D49D /* click1.wav in Resources */,
 				3D06C72D2CAC21A100F3C648 /* GoogleService-Info.plist in Resources */,
+				3D2650872D0342E80039D49D /* punch1.wav in Resources */,
+				3D2650832D0342E80039D49D /* arrow.wav in Resources */,
+				3D2650852D0342E80039D49D /* mehter1.mp3 in Resources */,
+				3D2650812D0342E80039D49D /* flute1.mp3 in Resources */,
+				3D2650882D0342E80039D49D /* click2.mp3 in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				3D2650532D032E040039D49D /* vacuum1.wav in Resources */,
+				3D26508A2D0342E80039D49D /* vacuum1.wav in Resources */,
 				32AC589A1AC4FFDCCAA59FDC /* PrivacyInfo.xcprivacy in Resources */,
-				3D2650512D032E040039D49D /* punch1.wav in Resources */,
-				3D2650502D032E040039D49D /* arrow.wav in Resources */,
-				3D26504F2D032E040039D49D /* click1.wav in Resources */,
-				3D2650522D032E040039D49D /* bird1.wav in Resources */,
+				3D2650862D0342E80039D49D /* bg1.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -654,10 +674,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
@@ -741,10 +758,7 @@
 					"-DFOLLY_CFG_NO_COROUTINES=1",
 					"-DFOLLY_HAVE_CLOCK_GETTIME=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				USE_HERMES = true;
