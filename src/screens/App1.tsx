@@ -1,48 +1,43 @@
 //import liraries
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { View, Text, StyleSheet, SafeAreaView, Pressable } from 'react-native';
 import Sound from "react-native-sound"
 // create a component
 export const App = () => {
 
-    Sound.setCategory('Playback');
+    const [currentSoundIndex, setCurrentSoundIndex] = useState(0);
+    const [soundInstance, setSoundInstance] = useState<any>(null);
 
-    // Load the sound file 'whoosh.mp3' from the app bundle
-    // See notes below about preloading sounds within initialization code below.
-    var whoosh = new Sound('bird1.wav', Sound.MAIN_BUNDLE, (error) => {
-        if (error) {
-            console.log('failed to load the sound', error);
+    // Çalmak istediğiniz ses dosyalarının listesi
+    const soundFiles = ["arrow.wav", "bird1.wav", "click1.wav"];
+
+    useEffect(() => {
+        // İlk ses dosyasını başlat
+        playSound(currentSoundIndex);
+
+        // Cleanup: Sound nesnesini serbest bırak
+        return () => {
+            if (soundInstance) {
+                soundInstance.release();
+            }
+        };
+    }, [currentSoundIndex]);
+
+    const playSound = (index: any) => {
+        if (index >= soundFiles.length) {
+            // Eğer listedeki tüm sesler çalındıysa başa dön
+            setCurrentSoundIndex(0);
             return;
         }
-        whoosh.play((success) => {
-            if (success) {
-                console.log('successfully finished playing');
-            } else {
-                console.log('playback failed due to audio decoding errors');
-            }
-        });
-    });
+    };
 
-    // Reduce the volume by half
-    whoosh.setVolume(1.0);
-
-    // Position the sound to the full right in a stereo field
-    whoosh.setPan(0);
-    // Loop indefinitely until stop() is called
-    whoosh.setNumberOfLoops(-1);
-
-    // Pause the sound
-    whoosh.pause();
-
-    // Stop the sound and rewind to the beginning
-    whoosh.stop(() => {
-        // Note: If you want to play a sound after stopping and rewinding it,
-        // it is important to call play() in a callback.
-        whoosh.play();
-    });
-
-    // Release the audio player resource
-    whoosh.release();
+    const stopAllSounds = () => {
+        if (soundInstance) {
+            soundInstance.stop(() => {
+                console.log('Tüm sesler durduruldu.');
+            });
+        }
+    };
 
 
 
