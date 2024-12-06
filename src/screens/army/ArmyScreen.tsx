@@ -18,6 +18,7 @@ import { build_costs } from '../../data/build_costs';
 import { calculateSoldierAmount } from '../../utils/CalculateSoldierAmount';
 import HeaderMenuContent from '../../components/HeaderMenu/HeaderMenuContent';
 import G1 from '../../ads/G1';
+import { PlaySoundClickLevel } from '../../utils/PlaySoundClickLevel';
 
 // create a component
 const ArmyScreen = () => {
@@ -61,7 +62,10 @@ const ArmyScreen = () => {
                                     marginEnd: 12
                                 }]}></Text>
                                 <ButtonSelect text={"Level Up"}
-                                    onPress={() => BarracksUpdate(data, setData)}
+                                    onPress={() => {
+                                        BarracksUpdate(data, setData)
+                                        PlaySoundClickLevel()
+                                    }}
                                     disabled={(data.gold < build_costs.barracks.gold || data.barracks >= 20 || data.wood < build_costs.barracks.wood || data.clay < build_costs.barracks.clay || data.clay < build_costs.barracks.clay || data.iron < build_costs.barracks.iron)} />
                             </View>
 

@@ -14,6 +14,7 @@ import CardView from '../../components/CardView/CardView';
 import { build_maintenance } from '../../data/build_maintenance';
 import G1 from '../../ads/G1';
 import LottieView from 'lottie-react-native';
+import { PlaySoundClickLevel } from '../../utils/PlaySoundClickLevel';
 
 // create a component
 const GovermentScreen = () => {
@@ -220,7 +221,10 @@ const GovermentScreen = () => {
                                             resizeMode: "contain"
                                         }} />
                                 </TouchableOpacity> */}
-                                    <ButtonSelect onPress={() => updateParliamentAndGold()} text={"Level Up"}
+                                    <ButtonSelect onPress={() => {
+                                        updateParliamentAndGold()
+                                        PlaySoundClickLevel()
+                                    }} text={"Level Up"}
                                         disabled={(data.gold < build_costs.parliament.gold || data.wood < build_costs.parliament.wood || data.clay < build_costs.parliament.clay || data.clay < build_costs.parliament.clay || data.iron < build_costs.parliament.iron)} />
                                 </View>
                             </View>

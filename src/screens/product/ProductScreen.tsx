@@ -13,6 +13,7 @@ import HeaderMenuContent from '../../components/HeaderMenu/HeaderMenuContent';
 import { BuildUpdate } from '../../utils/BuildUpdate';
 import { build_income } from '../../data/build_income';
 import G1 from '../../ads/G1';
+import { PlaySoundClickLevel } from '../../utils/PlaySoundClickLevel';
 
 // create a component
 const ProductScreen = () => {
@@ -56,7 +57,10 @@ const ProductScreen = () => {
                                     marginEnd: 12
                                 }]}></Text>
                                 <ButtonSelect text={"Level Up"}
-                                    onPress={() => BuildUpdate("farm", data, setData)}
+                                    onPress={() => {
+                                        BuildUpdate("farm", data, setData)
+                                        PlaySoundClickLevel()
+                                    }}
                                     disabled={!(data.gold >= build_costs.farm.gold && data.wood >= build_costs.farm.wood && data.clay >= build_costs.farm.clay && data.iron >= build_costs.farm.iron)} />
                             </View>
                         </View>

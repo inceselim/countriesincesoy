@@ -20,6 +20,7 @@ import { BuildUpdate } from '../../utils/BuildUpdate';
 import { build_defence_powers } from '../../data/build_defence_powers';
 import HeaderMenuContent from '../../components/HeaderMenu/HeaderMenuContent';
 import G1 from '../../ads/G1';
+import { PlaySoundClickLevel } from '../../utils/PlaySoundClickLevel';
 
 const CastleScreen = () => {
     const navigation: any = useNavigation();
@@ -62,7 +63,10 @@ const CastleScreen = () => {
                                     marginEnd: 12
                                 }]}></Text>
                                 <ButtonSelect text={"Level Up"}
-                                    onPress={() => BuildUpdate("castle", data, setData)}
+                                    onPress={() => {
+                                        BuildUpdate("castle", data, setData)
+                                        PlaySoundClickLevel()
+                                    }}
                                     disabled={(data.gold < build_costs.castle.gold || data.castle >= 20 || data.wood < build_costs.castle.wood || data.clay < build_costs.castle.clay || data.clay < build_costs.castle.clay || data.iron < build_costs.castle.iron)} />
                             </View>
                         </View>
@@ -99,7 +103,10 @@ const CastleScreen = () => {
                                     marginEnd: 12
                                 }]}></Text>
                                 <ButtonSelect text={"Level Up"}
-                                    onPress={() => BuildUpdate("tower", data, setData)}
+                                    onPress={() => {
+                                        BuildUpdate("tower", data, setData)
+                                        PlaySoundClickLevel()
+                                    }}
                                     disabled={(data.gold < build_costs.tower.gold || data.tower >= 20 || data.wood < build_costs.tower.wood || data.clay < build_costs.tower.clay || data.clay < build_costs.tower.clay || data.iron < build_costs.tower.iron)} />
                             </View>
                         </View>
