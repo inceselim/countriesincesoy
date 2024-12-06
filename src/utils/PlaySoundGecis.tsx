@@ -4,9 +4,9 @@ import { View, Text, StyleSheet } from 'react-native';
 import Sound from 'react-native-sound';
 
 // create a component
-export const PlaySoundClick = () => {
+export const PlaySoundGecis = () => {
     Sound.setCategory('Playback');
-    var whoosh = new Sound('click1.wav', Sound.MAIN_BUNDLE, (error) => {
+    var whoosh = new Sound('arrow.wav', Sound.MAIN_BUNDLE, (error) => {
         if (error) {
             console.log('failed to load the sound', error);
             return;
@@ -20,6 +20,5 @@ export const PlaySoundClick = () => {
             }
         });
     });
-    whoosh.setCurrentTime(1.5);
     whoosh.setVolume(1.0)
 };

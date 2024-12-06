@@ -287,25 +287,25 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
             console.error('Hata:', e);
         }
     };
-    const videolar = ["yrbiWj5BGr8"]
-    const [playing, setPlaying] = useState(false);
+    // const videolar = ["yrbiWj5BGr8"]
+    // const [playing, setPlaying] = useState(false);
 
-    const onStateChange = React.useCallback((state: any) => {
-        if (state === "ended") {
-            setPlaying(false);
-        }
-    }, []);
+    // const onStateChange = React.useCallback((state: any) => {
+    //     if (state === "ended") {
+    //         setPlaying(false);
+    //     }
+    // }, []);
 
-    const togglePlaying = useCallback(() => {
-        setPlaying((prev) => !prev);
-    }, []);
+    // const togglePlaying = useCallback(() => {
+    //     setPlaying((prev) => !prev);
+    // }, []);
 
     const [currentSoundIndex, setCurrentSoundIndex] = useState(0);
     const [soundInstance, setSoundInstance] = useState<any>(null);
 
     // Çalmak istediğiniz ses dosyalarının listesi
     const soundFiles = ["mehter1.mp3", "bg1.mp3", "arrow.wav", "bird1.wav", "click1.wav"];
-    Sound
+
     useEffect(() => {
         // İlk ses dosyasını başlat
         playSound(currentSoundIndex);
@@ -331,7 +331,7 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
                 console.log(`Ses dosyası yüklenemedi: ${soundFiles[index]}`, error);
                 return;
             }
-            newSound.setVolume(0.25)
+            newSound.setVolume(0.2)
             console.log(`Şu anda çalıyor: ${soundFiles[index]}`);
             newSound.play((success) => {
                 if (success) {
@@ -391,14 +391,14 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
             armyMaintenanceIron,
         }}>
             {children}
-            <YoutubePlayer
+            {/* <YoutubePlayer
                 height={0}
                 play={true}
-                volume={70}
+                volume={10}
                 videoId={videolar[0]}
                 onChangeState={onStateChange}
                 mute={false}
-            />
+            /> */}
         </DataContext.Provider>
     );
 };

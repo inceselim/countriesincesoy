@@ -23,6 +23,7 @@ import AdMob, { AdMobPlus, RewardedAd } from '@admob-plus/react-native'
 import LoadingScreen from '../loading/LoadingScreen';
 import LottieView from 'lottie-react-native';
 import { BotsEndTurn } from '../../utils/BotsEndTurn';
+import { PlaySoundClick } from '../../utils/PlaySoundClick';
 
 
 const adUnitId = Platform.OS === "ios" ?
@@ -163,7 +164,10 @@ const HomeScreen = () => {
                                             }}>
                                                 <TourGuideZone zone={1} shape={'rectangle'}
                                                     text={'Devlet'}>
-                                                    <HomeCard onPress={() => navigation.navigate("Goverment")}>
+                                                    <HomeCard onPress={() => {
+                                                        PlaySoundClick()
+                                                        navigation.navigate("Goverment")
+                                                    }}>
                                                         {/* <Image source={require("../../assets/capitol.png")} style={{
                                                         width: "70%",
                                                         height: "60%",
