@@ -156,7 +156,7 @@ export const BuyGemsScreen = () => {
                                                     marginHorizontal: 12,
                                                     marginVertical: 6
                                                 }}>
-                                                <Image source={require("../../assets/diamond.png")}
+                                                <Image source={require("../../assets/images/diamond.png")}
                                                     style={{
                                                         width: 60,
                                                         height: 60,

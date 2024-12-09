@@ -34,7 +34,7 @@ const CastleScreen = () => {
                 paddingHorizontal: "2%",
             }}>
                 <CardView>
-                    <Image source={require("../../assets/castle.png")}
+                    <Image source={require("../../assets/images/castle.png")}
                         style={{
                             height: 80,
                             width: 80,
@@ -114,7 +114,7 @@ const CastleScreen = () => {
                 </CardView>
 
                 <CardView>
-                    <Image source={require("../../assets/espionage.png")}
+                    <Image source={require("../../assets/images/espionage.png")}
                         style={{
                             height: 80,
                             width: 80,

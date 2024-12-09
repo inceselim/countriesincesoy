@@ -211,7 +211,7 @@ const HomeScreen = () => {
                                                     }}>Army</Text>
                                                 </HomeCard>
                                                 <HomeCard onPress={() => navigation.navigate("Castle")}>
-                                                    <Image source={require("../../assets/castle.png")} style={{
+                                                    <Image source={require("../../assets/images/castle.png")} style={{
                                                         width: "70%",
                                                         height: "60%",
                                                         resizeMode: "contain"
@@ -225,7 +225,7 @@ const HomeScreen = () => {
                                                     }}>Castle</Text>
                                                 </HomeCard>
                                                 <HomeCard onPress={() => navigation.navigate("Product")}>
-                                                    <Image source={require("../../assets/factory.png")} style={{
+                                                    <Image source={require("../../assets/images/factory.png")} style={{
                                                         width: "70%",
                                                         height: "60%",
                                                         resizeMode: "contain"
@@ -257,7 +257,7 @@ const HomeScreen = () => {
                                                     </HomeCard>
                                                 }
                                                 <HomeCard onPress={() => navigation.navigate("Finance")}>
-                                                    <Image source={require("../../assets/finance1.png")} style={{
+                                                    <Image source={require("../../assets/images/finance1.png")} style={{
                                                         width: "70%",
                                                         height: "60%",
                                                         resizeMode: "contain"
@@ -273,7 +273,7 @@ const HomeScreen = () => {
                                                 {
                                                     data.polity == "" &&
                                                     <HomeCard onPress={() => setVisiblePolity(true)}>
-                                                        <Image source={require("../../assets/crown.png")} style={{
+                                                        <Image source={require("../../assets/images/crown.png")} style={{
                                                             width: "70%",
                                                             height: "60%",
                                                             resizeMode: "contain"
@@ -333,7 +333,7 @@ const HomeScreen = () => {
                                                     }}>Statistic</Text>
                                                 </HomeCard>
                                                 <HomeCard onPress={() => navigation.navigate("BuyGems")}>
-                                                    <Image source={require("../../assets/diamond.png")} style={{
+                                                    <Image source={require("../../assets/images/diamond.png")} style={{
                                                         width: "70%",
                                                         height: "60%",
                                                         resizeMode: "contain"
@@ -361,7 +361,7 @@ const HomeScreen = () => {
                                                     }}>Settings</Text>
                                                 </HomeCard> */}
                                                 <HomeCard onPress={() => loadFromStorage()}>
-                                                    <Image source={require("../../assets/loadgame.png")} style={{
+                                                    <Image source={require("../../assets/images/loadgame.png")} style={{
                                                         width: "70%",
                                                         height: "60%",
                                                         resizeMode: "contain"
@@ -405,7 +405,7 @@ const HomeScreen = () => {
                                                     }}>Market</Text>
                                                 </HomeCard>
                                                 <HomeCard onPress={() => ShowAdRewarded()}>
-                                                    <Image source={require("../../assets/earn1.png")} style={{
+                                                    <Image source={require("../../assets/images/earn1.png")} style={{
                                                         width: "70%",
                                                         height: "60%",
                                                         resizeMode: "contain"
@@ -423,7 +423,7 @@ const HomeScreen = () => {
                                                     BotsEndTurn(dataBots, setDataBots)
                                                 }
                                                 }>
-                                                    <Image source={require("../../assets/hourglass.png")} style={{
+                                                    <Image source={require("../../assets/images/hourglass.png")} style={{
                                                         width: "70%",
                                                         height: "60%",
                                                         resizeMode: "contain"

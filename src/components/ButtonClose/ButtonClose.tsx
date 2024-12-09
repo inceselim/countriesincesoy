@@ -13,7 +13,7 @@ const ButtonClose = () => {
                 navigation.goBack()
                 PlaySoundGecis()
             }}>
-            <Image source={require("../../assets/close128.png")}
+            <Image source={require("../../assets/images/close128.png")}
                 style={{
                     height: 40,
                     width: 40

@@ -259,13 +259,13 @@ const GovermentScreen = () => {
                                 }}>
                                     {
                                         data.polity == "Monarchy" ?
-                                            <Image source={require("../../assets/crown.png")}
+                                            <Image source={require("../../assets/images/crown.png")}
                                                 style={{
                                                     height: 50,
                                                     width: 50
                                                 }} />
                                             : data.polity == "Aristocracy" ?
-                                                <Image source={require("../../assets/aristocracy.png")}
+                                                <Image source={require("../../assets/images/aristocracy.png")}
                                                     style={{
                                                         height: 50,
                                                         width: 50
@@ -283,7 +283,7 @@ const GovermentScreen = () => {
                                                                 width: 50
                                                             }} />
                                                         : data.polity == "Democracy" ?
-                                                            <Image source={require("../../assets/democracy.png")}
+                                                            <Image source={require("../../assets/images/democracy.png")}
                                                                 style={{
                                                                     height: 50,
                                                                     width: 50

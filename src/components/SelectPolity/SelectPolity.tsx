@@ -64,7 +64,7 @@ export const SelectPolity = ({ value, setValue }: any) => {
                                 paddingVertical: 12,
                                 justifyContent: "center",
                             }}>
-                                <Image source={require("../../assets/crown.png")}
+                                <Image source={require("../../assets/images/crown.png")}
                                     style={{
                                         height: 60,
                                         width: 60,
@@ -126,7 +126,7 @@ export const SelectPolity = ({ value, setValue }: any) => {
                                 paddingVertical: 12,
                                 justifyContent: "center",
                             }}>
-                                <Image source={require("../../assets/aristocracy.png")}
+                                <Image source={require("../../assets/images/aristocracy.png")}
                                     style={{
                                         height: 60,
                                         width: 60,
@@ -316,7 +316,7 @@ export const SelectPolity = ({ value, setValue }: any) => {
                                 justifyContent: "center",
                                 alignItems: "center"
                             }}>
-                                <Image source={require("../../assets/democracy.png")}
+                                <Image source={require("../../assets/images/democracy.png")}
                                     style={{
                                         height: 60,
                                         width: 60,
