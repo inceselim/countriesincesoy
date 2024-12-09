@@ -19,7 +19,7 @@ import { PlaySoundClickLevel } from '../../utils/PlaySoundClickLevel';
 const ProductScreen = () => {
     const navigation: any = useNavigation();
     // REKLAM
-    // G1()
+    G1()
     let { data, setData } = useContext(DataContext);
     return (
         <ContentView>

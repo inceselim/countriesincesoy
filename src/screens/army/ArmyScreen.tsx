@@ -23,7 +23,7 @@ import { PlaySoundClickLevel } from '../../utils/PlaySoundClickLevel';
 // create a component
 const ArmyScreen = () => {
     // REKLAM
-    // G1()
+    G1()
     const navigation: any = useNavigation();
     let { data, setData } = useContext(DataContext);
     return (

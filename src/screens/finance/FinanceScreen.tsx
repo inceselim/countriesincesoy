@@ -37,7 +37,7 @@ export const FinanceScreen = () => {
         armyMaintenanceIron,
     } = useContext(DataContext)
     // REKLAM
-    // G1()
+    G1()
     return (
         <ContentView>
             <HeaderMenuContent title={"Finance"} />

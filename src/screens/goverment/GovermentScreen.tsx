@@ -20,7 +20,7 @@ import { PlaySoundClickLevel } from '../../utils/PlaySoundClickLevel';
 const GovermentScreen = () => {
     const navigation: any = useNavigation();
     // REKLAM
-    // G1()
+    G1()
     let { data, setData } = useContext(DataContext);
     const handleCountryBonus = (bonus: string) => {
         setData((prevData: any) => ({

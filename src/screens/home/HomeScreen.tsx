@@ -24,6 +24,7 @@ import LoadingScreen from '../loading/LoadingScreen';
 import LottieView from 'lottie-react-native';
 import { BotsEndTurn } from '../../utils/BotsEndTurn';
 import { PlaySoundClick } from '../../utils/PlaySoundClick';
+import G2 from '../../ads/G2';
 
 
 const adUnitId = Platform.OS === "ios" ?
@@ -31,6 +32,7 @@ const adUnitId = Platform.OS === "ios" ?
     "ca-app-pub-1017432203303316/9289906584"
 
 const HomeScreen = () => {
+    G2()
     const { t } = useTranslation();
     const iconProps = { size: 40, color: '#888' }
     let { data, setData, dataBots, setDataBots, loadFromStorage, saveToStorage } = useContext(DataContext)

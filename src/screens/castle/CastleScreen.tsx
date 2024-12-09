@@ -26,7 +26,7 @@ const CastleScreen = () => {
     const navigation: any = useNavigation();
     let { data, setData } = useContext(DataContext);
     // REKLAM
-    // G1()
+    G1()
     return (
         <ContentView>
             <HeaderMenuContent title={"Castle"} />
