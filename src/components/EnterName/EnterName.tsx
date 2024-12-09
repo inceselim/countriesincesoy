@@ -20,7 +20,7 @@ export const EnterName = (props: any) => {
         setValue(false)
     };
     return (
-        <ImageBackground source={require("../../assets/parchment.png")}
+        <ImageBackground source={require("../../assets/images/parchment.png")}
             style={{
                 width: "100%",
                 height: "100%"

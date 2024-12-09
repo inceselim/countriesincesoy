@@ -11,7 +11,7 @@ const ContentView = ({ children }: any) => {
             backgroundColor: colors.bg,
             flex: 1,
         }}>
-            <ImageBackground source={require("../../assets/parchment.png")}
+            <ImageBackground source={require("../../assets/images/parchment.png")}
                 style={{
                     width: "100%",
                     height: "100%",

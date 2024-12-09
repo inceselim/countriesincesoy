@@ -82,7 +82,7 @@ const GovermentScreen = () => {
                             alignItems: "center",
                             backgroundColor: colors.kavun
                         }}>
-                        <Image source={require("../../assets/swords.png")}
+                        <Image source={require("../../assets/images/swords.png")}
                             style={{
                                 height: 40,
                                 width: 40
@@ -102,7 +102,7 @@ const GovermentScreen = () => {
                             alignItems: "center",
                             backgroundColor: colors.kavun
                         }}>
-                        <Image source={require("../../assets/shield512.png")}
+                        <Image source={require("../../assets/images/shield512.png")}
                             style={{
                                 height: 40,
                                 width: 40
@@ -122,7 +122,7 @@ const GovermentScreen = () => {
                             alignItems: "center",
                             backgroundColor: colors.kavun
                         }}>
-                        <Image source={require("../../assets/population.png")}
+                        <Image source={require("../../assets/images/population.png")}
                             style={{
                                 height: 40,
                                 width: 40
@@ -142,7 +142,7 @@ const GovermentScreen = () => {
                             alignItems: "center",
                             backgroundColor: colors.kavun
                         }}>
-                        <Image source={require("../../assets/money-growth.png")}
+                        <Image source={require("../../assets/images/money-growth.png")}
                             style={{
                                 height: 40,
                                 width: 40
@@ -163,7 +163,7 @@ const GovermentScreen = () => {
                             alignItems: "center",
                             backgroundColor: colors.kavun
                         }}>
-                        <Image source={require("../../assets/premium.png")}
+                        <Image source={require("../../assets/images/premium.png")}
                             style={{
                                 height: 40,
                                 width: 40
@@ -271,13 +271,13 @@ const GovermentScreen = () => {
                                                         width: 50
                                                     }} />
                                                 : data.polity == "Theocracy" ?
-                                                    <Image source={require("../../assets/religious.png")}
+                                                    <Image source={require("../../assets/images/religious.png")}
                                                         style={{
                                                             height: 50,
                                                             width: 50
                                                         }} />
                                                     : data.polity == "Dictator" ?
-                                                        <Image source={require("../../assets/supreme.png")}
+                                                        <Image source={require("../../assets/images/supreme.png")}
                                                             style={{
                                                                 height: 50,
                                                                 width: 50

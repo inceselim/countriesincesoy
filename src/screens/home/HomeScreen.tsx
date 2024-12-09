@@ -242,7 +242,7 @@ const HomeScreen = () => {
                                                     data?.countryName == "" &&
 
                                                     <HomeCard onPress={() => setVisibleCountryName(true)}>
-                                                        <Image source={require("../../assets/parchmentIcon.png")} style={{
+                                                        <Image source={require("../../assets/images/parchmentIcon.png")} style={{
                                                             width: "50%",
                                                             height: "40%",
                                                             resizeMode: "contain"
@@ -319,7 +319,7 @@ const HomeScreen = () => {
                                                     }}>War</Text>
                                                 </HomeCard>
                                                 <HomeCard onPress={() => navigation.navigate("Statistic")}>
-                                                    <Image source={require("../../assets/statistic1.png")} style={{
+                                                    <Image source={require("../../assets/images/statistic1.png")} style={{
                                                         width: "70%",
                                                         height: "60%",
                                                         resizeMode: "contain"
@@ -377,7 +377,7 @@ const HomeScreen = () => {
                                                 <HomeCard onPress={() => {
                                                     saveToStorage(data, dataBots)
                                                 }}>
-                                                    <Image source={require("../../assets/savegame.png")} style={{
+                                                    <Image source={require("../../assets/images/savegame.png")} style={{
                                                         width: "70%",
                                                         height: "60%",
                                                         resizeMode: "contain"
@@ -391,7 +391,7 @@ const HomeScreen = () => {
                                                     }}>Save Game</Text>
                                                 </HomeCard>
                                                 <HomeCard onPress={() => navigation.navigate("Market")}>
-                                                    <Image source={require("../../assets/market.png")} style={{
+                                                    <Image source={require("../../assets/images/market.png")} style={{
                                                         width: "70%",
                                                         height: "60%",
                                                         resizeMode: "contain"

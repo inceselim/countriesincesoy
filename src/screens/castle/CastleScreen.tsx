@@ -74,7 +74,7 @@ const CastleScreen = () => {
                 </CardView>
 
                 <CardView>
-                    <Image source={require("../../assets/tower512.png")}
+                    <Image source={require("../../assets/images/tower512.png")}
                         style={{
                             height: 80,
                             width: 80,

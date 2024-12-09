@@ -25,7 +25,7 @@ export const SelectPolity = ({ value, setValue }: any) => {
         setValue(!value)
     };
     return (
-        <ImageBackground source={require("../../assets/parchment.png")}
+        <ImageBackground source={require("../../assets/images/parchment.png")}
             style={{
                 width: "100%",
                 height: "100%"
@@ -188,7 +188,7 @@ export const SelectPolity = ({ value, setValue }: any) => {
                                 paddingVertical: 12,
                                 justifyContent: "center",
                             }}>
-                                <Image source={require("../../assets/religious.png")}
+                                <Image source={require("../../assets/images/religious.png")}
                                     style={{
                                         height: 60,
                                         width: 60,
@@ -252,7 +252,7 @@ export const SelectPolity = ({ value, setValue }: any) => {
                                 justifyContent: "center",
                                 alignItems: "center"
                             }}>
-                                <Image source={require("../../assets/supreme.png")}
+                                <Image source={require("../../assets/images/supreme.png")}
                                     style={{
                                         height: 60,
                                         width: 60,
