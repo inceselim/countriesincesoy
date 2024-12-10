@@ -15,6 +15,7 @@ import { build_maintenance } from '../../data/build_maintenance';
 import G1 from '../../ads/G1';
 import LottieView from 'lottie-react-native';
 import { PlaySoundClickLevel } from '../../utils/PlaySoundClickLevel';
+import { PlaySoundImportant } from '../../utils/PlaySoundImportant';
 
 // create a component
 const GovermentScreen = () => {
@@ -69,7 +70,10 @@ const GovermentScreen = () => {
                     marginVertical: 6,
                     justifyContent: "center"
                 }}>
-                    <TouchableOpacity onPress={() => handleCountryBonus("attack")}
+                    <TouchableOpacity onPress={() => {
+                        PlaySoundImportant()
+                        handleCountryBonus("attack")
+                    }}
                         disabled={data.countryFocus == "attack"}
                         style={{
                             opacity: data.countryFocus == "attack" ? 1 : 0.52,
@@ -89,7 +93,10 @@ const GovermentScreen = () => {
                             }} />
                         <Text style={[styles.txtCenter, styles.txtUyumlu]}>%10 Attack Power</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => handleCountryBonus("defence")}
+                    <TouchableOpacity onPress={() => {
+                        PlaySoundImportant()
+                        handleCountryBonus("defence")
+                    }}
                         disabled={data.countryFocus == "defence"}
                         style={{
                             opacity: data.countryFocus == "defence" ? 1 : 0.52,
@@ -109,7 +116,10 @@ const GovermentScreen = () => {
                             }} />
                         <Text style={[styles.txtCenter, styles.txtUyumlu]}>%10 Defence Power</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => handleCountryBonus("pop")}
+                    <TouchableOpacity onPress={() => {
+                        PlaySoundImportant()
+                        handleCountryBonus("pop")
+                    }}
                         disabled={data.countryFocus == "pop"}
                         style={{
                             opacity: data.countryFocus == "pop" ? 1 : 0.52,
@@ -129,7 +139,10 @@ const GovermentScreen = () => {
                             }} />
                         <Text style={[styles.txtCenter, styles.txtUyumlu]}>%20 Population Growth</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => handleCountryBonus("income")}
+                    <TouchableOpacity onPress={() => {
+                        PlaySoundImportant()
+                        handleCountryBonus("income")
+                    }}
                         disabled={data.countryFocus == "income"}
                         style={{
                             opacity: data.countryFocus == "income" ? 1 : 0.52,
@@ -149,7 +162,10 @@ const GovermentScreen = () => {
                             }} />
                         <Text style={[styles.txtCenter, styles.txtUyumlu]}>%10 Income Growth</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => handleCountryBonusPremium("premium")}
+                    <TouchableOpacity onPress={() => {
+                        PlaySoundImportant()
+                        handleCountryBonusPremium("premium")
+                    }}
                         disabled={data.countryFocus == "premium"}
                         style={{
                             opacity: data.countryFocus == "premium" ? 1 : 0.52,
