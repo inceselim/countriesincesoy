@@ -58,8 +58,8 @@ const ProductScreen = () => {
                                 }]}></Text>
                                 <ButtonSelect text={"Level Up"}
                                     onPress={() => {
-                                        BuildUpdate("farm", data, setData)
                                         PlaySoundClickLevel()
+                                        BuildUpdate("farm", data, setData)
                                     }}
                                     disabled={!(data.gold >= build_costs.farm.gold && data.wood >= build_costs.farm.wood && data.clay >= build_costs.farm.clay && data.iron >= build_costs.farm.iron)} />
                             </View>
@@ -105,7 +105,10 @@ const ProductScreen = () => {
                                 alignItems: "center"
                             }}>
                                 <Text style={styles.txtDark}>Amount: {data.mine}</Text>
-                                <ButtonSelect text={"+"} onPress={() => BuildUpdate("mine", data, setData)}
+                                <ButtonSelect text={"+"} onPress={() => {
+                                    PlaySoundClickLevel()
+                                    BuildUpdate("mine", data, setData)
+                                }}
                                     disabled={!(data.gold >= build_costs.mine.gold && data.wood >= build_costs.mine.wood && data.clay >= build_costs.mine.clay)} />
                             </View>
                         </View>
@@ -144,7 +147,10 @@ const ProductScreen = () => {
                                 alignItems: "center"
                             }}>
                                 <Text style={styles.txtDark}>Amount: {data.woodcutter}</Text>
-                                <ButtonSelect text={"+"} onPress={() => BuildUpdate("woodcutter", data, setData)}
+                                <ButtonSelect text={"+"} onPress={() => {
+                                    PlaySoundClickLevel()
+                                    BuildUpdate("woodcutter", data, setData)
+                                }}
                                     disabled={!(data.gold >= build_costs.woodcutter.gold && data.clay >= build_costs.woodcutter.clay && data.iron >= build_costs.woodcutter.iron)} />
                             </View>
                         </View>
@@ -183,7 +189,10 @@ const ProductScreen = () => {
                                 alignItems: "center"
                             }}>
                                 <Text style={styles.txtDark}>Amount: {data.brickhouse}</Text>
-                                <ButtonSelect text={"+"} onPress={() => BuildUpdate("brickhouse", data, setData)}
+                                <ButtonSelect text={"+"} onPress={() => {
+                                    PlaySoundClickLevel()
+                                    BuildUpdate("brickhouse", data, setData)
+                                }}
                                     disabled={!(data.gold >= build_costs.brickhouse.gold && data.wood >= build_costs.brickhouse.wood && data.iron >= build_costs.brickhouse.iron)} />
                             </View>
                         </View>
@@ -261,7 +270,10 @@ const ProductScreen = () => {
                                 alignItems: "center"
                             }}>
                                 <Text style={styles.txtDark}>Amount: {data.avm}</Text>
-                                <ButtonSelect text={"+"} onPress={() => BuildUpdate("avm", data, setData)}
+                                <ButtonSelect text={"+"} onPress={() => {
+                                    PlaySoundClickLevel()
+                                    BuildUpdate("avm", data, setData)
+                                }}
                                     disabled={(data.gems < 1)} />
                             </View>
                         </View>

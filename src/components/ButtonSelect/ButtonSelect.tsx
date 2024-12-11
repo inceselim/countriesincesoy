@@ -11,7 +11,7 @@ const ButtonSelect = ({ onPress, text = "Select", disabled = false }: any) => {
             backgroundColor: colors.kavunKoyu,
             borderRadius: 8,
             paddingHorizontal: 24,
-            paddingVertical: 6,
+            paddingVertical: 3,
             opacity: disabled ? 0.52 : 1
         }}
             disabled={disabled}

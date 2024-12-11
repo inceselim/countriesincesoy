@@ -25,6 +25,7 @@ import LottieView from 'lottie-react-native';
 import { BotsEndTurn } from '../../utils/BotsEndTurn';
 import { PlaySoundClick } from '../../utils/PlaySoundClick';
 import G2 from '../../ads/G2';
+import { PlaySoundImportant } from '../../utils/PlaySoundImportant';
 
 
 const adUnitId = Platform.OS === "ios" ?
@@ -191,7 +192,10 @@ const HomeScreen = () => {
                                                         }}>Goverment</Text>
                                                     </HomeCard>
                                                 </TourGuideZone>
-                                                <HomeCard onPress={() => navigation.navigate("Army")}>
+                                                <HomeCard onPress={() => {
+                                                    PlaySoundClick()
+                                                    navigation.navigate("Army")
+                                                }}>
                                                     {/* <Image source={require("../../assets/army.png")} style={{
                                                     width: "70%",
                                                     height: "60%",
@@ -212,7 +216,10 @@ const HomeScreen = () => {
                                                         color: colors.txtWhite
                                                     }}>Army</Text>
                                                 </HomeCard>
-                                                <HomeCard onPress={() => navigation.navigate("Castle")}>
+                                                <HomeCard onPress={() => {
+                                                    PlaySoundClick()
+                                                    navigation.navigate("Castle")
+                                                }}>
                                                     <Image source={require("../../assets/images/castle.png")} style={{
                                                         width: "70%",
                                                         height: "60%",
@@ -226,7 +233,10 @@ const HomeScreen = () => {
                                                         color: colors.txtWhite
                                                     }}>Castle</Text>
                                                 </HomeCard>
-                                                <HomeCard onPress={() => navigation.navigate("Product")}>
+                                                <HomeCard onPress={() => {
+                                                    PlaySoundClick()
+                                                    navigation.navigate("Product")
+                                                }}>
                                                     <Image source={require("../../assets/images/factory.png")} style={{
                                                         width: "70%",
                                                         height: "60%",
@@ -243,7 +253,10 @@ const HomeScreen = () => {
                                                 {
                                                     data?.countryName == "" &&
 
-                                                    <HomeCard onPress={() => setVisibleCountryName(true)}>
+                                                    <HomeCard onPress={() => {
+                                                        PlaySoundClick()
+                                                        setVisibleCountryName(true)
+                                                    }}>
                                                         <Image source={require("../../assets/images/parchmentIcon.png")} style={{
                                                             width: "50%",
                                                             height: "40%",
@@ -258,7 +271,10 @@ const HomeScreen = () => {
                                                         }}>Enter Name</Text>
                                                     </HomeCard>
                                                 }
-                                                <HomeCard onPress={() => navigation.navigate("Finance")}>
+                                                <HomeCard onPress={() => {
+                                                    PlaySoundClick()
+                                                    navigation.navigate("Finance")
+                                                }}>
                                                     <Image source={require("../../assets/images/finance1.png")} style={{
                                                         width: "70%",
                                                         height: "60%",
@@ -274,7 +290,10 @@ const HomeScreen = () => {
                                                 </HomeCard>
                                                 {
                                                     data.polity == "" &&
-                                                    <HomeCard onPress={() => setVisiblePolity(true)}>
+                                                    <HomeCard onPress={() => {
+                                                        PlaySoundImportant()
+                                                        setVisiblePolity(true)
+                                                    }}>
                                                         <Image source={require("../../assets/images/crown.png")} style={{
                                                             width: "70%",
                                                             height: "60%",
@@ -304,7 +323,10 @@ const HomeScreen = () => {
                                                 }}>Blacksmith</Text>
                                             </HomeCard> */}
 
-                                                <HomeCard onPress={() => navigation.navigate("War")}>
+                                                <HomeCard onPress={() => {
+                                                    PlaySoundClick()
+                                                    navigation.navigate("War")
+                                                }}>
                                                     <LottieView
                                                         autoPlay
                                                         loop
@@ -320,7 +342,10 @@ const HomeScreen = () => {
                                                         color: colors.txtWhite
                                                     }}>War</Text>
                                                 </HomeCard>
-                                                <HomeCard onPress={() => navigation.navigate("Statistic")}>
+                                                <HomeCard onPress={() => {
+                                                    PlaySoundClick()
+                                                    navigation.navigate("Statistic")
+                                                }}>
                                                     <Image source={require("../../assets/images/statistic1.png")} style={{
                                                         width: "70%",
                                                         height: "60%",
@@ -334,7 +359,10 @@ const HomeScreen = () => {
                                                         color: colors.txtWhite
                                                     }}>Statistic</Text>
                                                 </HomeCard>
-                                                <HomeCard onPress={() => navigation.navigate("BuyGems")}>
+                                                <HomeCard onPress={() => {
+                                                    PlaySoundClick()
+                                                    navigation.navigate("BuyGems")
+                                                }}>
                                                     <Image source={require("../../assets/images/diamond.png")} style={{
                                                         width: "70%",
                                                         height: "60%",
@@ -392,7 +420,10 @@ const HomeScreen = () => {
                                                         color: colors.txtWhite
                                                     }}>Save Game</Text>
                                                 </HomeCard>
-                                                <HomeCard onPress={() => navigation.navigate("Market")}>
+                                                <HomeCard onPress={() => {
+                                                    PlaySoundClick()
+                                                    navigation.navigate("Market")
+                                                }}>
                                                     <Image source={require("../../assets/images/market.png")} style={{
                                                         width: "70%",
                                                         height: "60%",
@@ -421,6 +452,7 @@ const HomeScreen = () => {
                                                     }}>Earn 100$</Text>
                                                 </HomeCard>
                                                 <HomeCard onPress={() => {
+                                                    PlaySoundClick()
                                                     EndTurn(data, setData, setLoading)
                                                     BotsEndTurn(dataBots, setDataBots)
                                                 }
