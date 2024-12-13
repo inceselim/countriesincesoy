@@ -304,7 +304,7 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
     const [soundInstance, setSoundInstance] = useState<any>(null);
 
     // Çalmak istediğiniz ses dosyalarının listesi
-    const soundFiles = ["bg1.mp3", "bird1.wav", "arrow.wav", "click1.wav"];
+    const soundFiles = ["mehter1.mp3","bg1.mp3", "bird1.wav",  "arrow.wav", "click1.wav"];
 
     useEffect(() => {
         // İlk ses dosyasını başlat
