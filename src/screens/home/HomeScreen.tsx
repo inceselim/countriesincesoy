@@ -33,7 +33,6 @@ const adUnitId = Platform.OS === "ios" ?
     "ca-app-pub-1017432203303316/9289906584"
 
 const HomeScreen = () => {
-    G2()
     const { t } = useTranslation();
     const iconProps = { size: 40, color: '#888' }
     let { data, setData, dataBots, setDataBots, loadFromStorage, saveToStorage } = useContext(DataContext)

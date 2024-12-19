@@ -16,12 +16,14 @@ import G1 from '../../ads/G1';
 import LottieView from 'lottie-react-native';
 import { PlaySoundClickLevel } from '../../utils/PlaySoundClickLevel';
 import { PlaySoundImportant } from '../../utils/PlaySoundImportant';
+import G2 from '../../ads/G2';
 
 // create a component
 const GovermentScreen = () => {
     const navigation: any = useNavigation();
     // REKLAM
     G1()
+    G2()
     let { data, setData } = useContext(DataContext);
     const handleCountryBonus = (bonus: string) => {
         setData((prevData: any) => ({
