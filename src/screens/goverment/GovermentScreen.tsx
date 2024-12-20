@@ -73,7 +73,7 @@ const GovermentScreen = () => {
                     justifyContent: "center"
                 }}>
                     <TouchableOpacity onPress={() => {
-                        PlaySoundImportant()
+                        //PlaySoundImportant()
                         handleCountryBonus("attack")
                     }}
                         disabled={data.countryFocus == "attack"}
@@ -96,7 +96,7 @@ const GovermentScreen = () => {
                         <Text style={[styles.txtCenter, styles.txtUyumlu]}>%10 Attack Power</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        PlaySoundImportant()
+                        //PlaySoundImportant()
                         handleCountryBonus("defence")
                     }}
                         disabled={data.countryFocus == "defence"}
@@ -119,7 +119,7 @@ const GovermentScreen = () => {
                         <Text style={[styles.txtCenter, styles.txtUyumlu]}>%10 Defence Power</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        PlaySoundImportant()
+                        //PlaySoundImportant()
                         handleCountryBonus("pop")
                     }}
                         disabled={data.countryFocus == "pop"}
@@ -142,7 +142,7 @@ const GovermentScreen = () => {
                         <Text style={[styles.txtCenter, styles.txtUyumlu]}>%20 Population Growth</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        PlaySoundImportant()
+                        //PlaySoundImportant()
                         handleCountryBonus("income")
                     }}
                         disabled={data.countryFocus == "income"}
@@ -165,7 +165,7 @@ const GovermentScreen = () => {
                         <Text style={[styles.txtCenter, styles.txtUyumlu]}>%10 Income Growth</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        PlaySoundImportant()
+                        //PlaySoundImportant()
                         handleCountryBonusPremium("premium")
                     }}
                         disabled={data.countryFocus == "premium"}
@@ -241,7 +241,7 @@ const GovermentScreen = () => {
                                 </TouchableOpacity> */}
                                     <ButtonSelect onPress={() => {
                                         updateParliamentAndGold()
-                                        PlaySoundClickLevel()
+                                        //PlaySoundClickLevel()
                                     }} text={"Level Up"}
                                         disabled={(data.gold < build_costs.parliament.gold || data.wood < build_costs.parliament.wood || data.clay < build_costs.parliament.clay || data.clay < build_costs.parliament.clay || data.iron < build_costs.parliament.iron)} />
                                 </View>

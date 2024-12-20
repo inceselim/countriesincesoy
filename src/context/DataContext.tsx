@@ -300,60 +300,60 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
     //     setPlaying((prev) => !prev);
     // }, []);
 
-    const [currentSoundIndex, setCurrentSoundIndex] = useState(0);
-    const [soundInstance, setSoundInstance] = useState<any>(null);
+    // const [currentSoundIndex, setCurrentSoundIndex] = useState(0);
+    // const [soundInstance, setSoundInstance] = useState<any>(null);
 
-    // Çalmak istediğiniz ses dosyalarının listesi
-    const soundFiles = ["mehter1.mp3","bg1.mp3", "bird1.wav",  "arrow.wav", "click1.wav"];
+    // // Çalmak istediğiniz ses dosyalarının listesi
+    // const soundFiles = ["mehter1.mp3","bg1.mp3", "bird1.wav",  "arrow.wav", "click1.wav"];
 
-    useEffect(() => {
-        // İlk ses dosyasını başlat
-        playSound(currentSoundIndex);
+    // useEffect(() => {
+    //     // İlk ses dosyasını başlat
+    //     playSound(currentSoundIndex);
 
-        // Cleanup: Sound nesnesini serbest bırak
-        return () => {
-            if (soundInstance) {
-                soundInstance.release();
-            }
-        };
-    }, [currentSoundIndex]);
+    //     // Cleanup: Sound nesnesini serbest bırak
+    //     return () => {
+    //         if (soundInstance) {
+    //             soundInstance.release();
+    //         }
+    //     };
+    // }, [currentSoundIndex]);
 
-    const playSound = (index: any) => {
-        if (index >= soundFiles.length) {
-            // Eğer listedeki tüm sesler çalındıysa başa dön
-            setCurrentSoundIndex(0);
-            return;
-        }
+    // const playSound = (index: any) => {
+    //     if (index >= soundFiles.length) {
+    //         // Eğer listedeki tüm sesler çalındıysa başa dön
+    //         setCurrentSoundIndex(0);
+    //         return;
+    //     }
 
-        // Yeni ses nesnesi oluştur
-        const newSound = new Sound(soundFiles[index], Sound.MAIN_BUNDLE, (error) => {
-            if (error) {
-                console.log(`Ses dosyası yüklenemedi: ${soundFiles[index]}`, error);
-                return;
-            }
-            newSound.setVolume(0.2)
-            console.log(`Şu anda çalıyor: ${soundFiles[index]}`);
-            newSound.play((success) => {
-                if (success) {
-                    console.log(`Bitti: ${soundFiles[index]}`);
-                    setCurrentSoundIndex((prevIndex: any) => prevIndex + 1); // Sıradaki sesi çal
-                } else {
-                    console.log(`Çalma sırasında hata oluştu: ${soundFiles[index]}`);
-                }
-            });
+    //     // Yeni ses nesnesi oluştur
+    //     const newSound = new Sound(soundFiles[index], Sound.MAIN_BUNDLE, (error) => {
+    //         if (error) {
+    //             console.log(`Ses dosyası yüklenemedi: ${soundFiles[index]}`, error);
+    //             return;
+    //         }
+    //         newSound.setVolume(0.2)
+    //         console.log(`Şu anda çalıyor: ${soundFiles[index]}`);
+    //         newSound.play((success) => {
+    //             if (success) {
+    //                 console.log(`Bitti: ${soundFiles[index]}`);
+    //                 setCurrentSoundIndex((prevIndex: any) => prevIndex + 1); // Sıradaki sesi çal
+    //             } else {
+    //                 console.log(`Çalma sırasında hata oluştu: ${soundFiles[index]}`);
+    //             }
+    //         });
 
-            // Sound nesnesini state'e kaydet
-            setSoundInstance(newSound);
-        });
-    };
+    //         // Sound nesnesini state'e kaydet
+    //         setSoundInstance(newSound);
+    //     });
+    // };
 
-    const stopAllSounds = () => {
-        if (soundInstance) {
-            soundInstance.stop(() => {
-                console.log('Tüm sesler durduruldu.');
-            });
-        }
-    };
+    // const stopAllSounds = () => {
+    //     if (soundInstance) {
+    //         soundInstance.stop(() => {
+    //             console.log('Tüm sesler durduruldu.');
+    //         });
+    //     }
+    // };
 
     let buildIncomeWood: number = ((build_income.woodcutter.wood * data.woodcutter) + (build_income.avm.wood * data.avm))
     let buildIncomeClay: number = ((build_income.brickhouse.clay * data.brickhouse) + (build_income.avm.clay * data.avm))

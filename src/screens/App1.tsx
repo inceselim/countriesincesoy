@@ -99,7 +99,7 @@ export const App = () => {
             <View>
                 <Pressable onPress={() => {
                     updateBotBuild(0, "parliament")
-                    PlaySoundClick()
+                    //PlaySoundClick()
                 }}>
                     <Text style={{ fontSize: 16 }}>Parliament: {dataBots[0].parliament}</Text>
                 </Pressable>

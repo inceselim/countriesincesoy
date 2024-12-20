@@ -64,7 +64,7 @@ const CastleScreen = () => {
                                 }]}></Text>
                                 <ButtonSelect text={"Level Up"}
                                     onPress={() => {
-                                        PlaySoundClickLevel()
+                                        //PlaySoundClickLevel()
                                         BuildUpdate("castle", data, setData)
                                     }}
                                     disabled={(data.gold < build_costs.castle.gold || data.castle >= 20 || build_costs.castle.wood > data.wood || build_costs.castle.clay > data.clay || build_costs.castle.iron > data.iron)} />
@@ -105,7 +105,7 @@ const CastleScreen = () => {
                                 <ButtonSelect text={"Level Up"}
                                     onPress={() => {
                                         BuildUpdate("tower", data, setData)
-                                        PlaySoundClickLevel()
+                                        //PlaySoundClickLevel()
                                     }}
                                     disabled={(data.gold < build_costs.tower.gold || data.tower >= 20 || data.wood < build_costs.tower.wood || data.clay < build_costs.tower.clay || data.clay < build_costs.tower.clay || data.iron < build_costs.tower.iron)} />
                             </View>

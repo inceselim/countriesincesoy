@@ -63,7 +63,7 @@ const ArmyScreen = () => {
                                 }]}></Text>
                                 <ButtonSelect text={"Level Up"}
                                     onPress={() => {
-                                        PlaySoundClickLevel()
+                                        //PlaySoundClickLevel()
                                         BarracksUpdate(data, setData)
                                     }}
                                     disabled={(data.gold < build_costs.barracks.gold || data.barracks >= 20 || data.wood < build_costs.barracks.wood || data.clay < build_costs.barracks.clay || data.clay < build_costs.barracks.clay || data.iron < build_costs.barracks.iron)} />
@@ -128,7 +128,7 @@ const ArmyScreen = () => {
                             }}>
                                 <Text style={styles.txtDark}>Amount: {data.spearman}</Text>
                                 <ButtonSelect text={"+"} onPress={() => {
-                                    PlaySoundClickLevel()
+                                    //PlaySoundClickLevel()
                                     RecruitSoldier("spearman", data, setData)
                                 }}
                                     disabled={((data.barracks * 50 <= calculateSoldierAmount(data)) || data.gold < soldier_costs.spearman.gold || data.wood < soldier_costs.spearman.wood || data.clay < soldier_costs.spearman.clay || data.clay < soldier_costs.spearman.clay || data.iron < soldier_costs.spearman.iron)} />
@@ -187,7 +187,7 @@ const ArmyScreen = () => {
                             }}>
                                 <Text style={styles.txtDark}>Amount: {data.bowman}</Text>
                                 <ButtonSelect text={"+"} onPress={() => {
-                                    PlaySoundClickLevel()
+                                    //PlaySoundClickLevel()
                                     RecruitSoldier("bowman", data, setData)
                                 }}
                                     disabled={((data.barracks * 50 <= calculateSoldierAmount(data)) || data.gold < soldier_costs.bowman.gold || data.wood < soldier_costs.bowman.wood || data.clay < soldier_costs.bowman.clay || data.clay < soldier_costs.bowman.clay || data.iron < soldier_costs.bowman.iron)} />
@@ -246,7 +246,7 @@ const ArmyScreen = () => {
                             }}>
                                 <Text style={styles.txtDark}>Amount: {data.swordman}</Text>
                                 <ButtonSelect text={"+"} onPress={() => {
-                                    PlaySoundClickLevel()
+                                    //PlaySoundClickLevel()
                                     RecruitSoldier("swordman", data, setData)
                                 }}
                                     disabled={((data.barracks * 50 <= calculateSoldierAmount(data)) || data.gold < soldier_costs.swordman.gold || data.wood < soldier_costs.swordman.wood || data.clay < soldier_costs.swordman.clay || data.clay < soldier_costs.swordman.clay || data.iron < soldier_costs.swordman.iron)} />
@@ -305,7 +305,7 @@ const ArmyScreen = () => {
                             }}>
                                 <Text style={styles.txtDark}>Amount: {data.axeman}</Text>
                                 <ButtonSelect text={"+"} onPress={() => {
-                                    PlaySoundClickLevel()
+                                    //PlaySoundClickLevel()
                                     RecruitSoldier("axeman", data, setData)
                                 }}
                                     disabled={((data.barracks * 50 <= calculateSoldierAmount(data)) || data.gold < soldier_costs.axeman.gold || data.wood < soldier_costs.axeman.wood || data.clay < soldier_costs.axeman.clay || data.clay < soldier_costs.axeman.clay || data.iron < soldier_costs.axeman.iron)} />
@@ -364,7 +364,7 @@ const ArmyScreen = () => {
                             }}>
                                 <Text style={styles.txtDark}>Amount: {data.knight}</Text>
                                 <ButtonSelect text={"+"} onPress={() => {
-                                    PlaySoundClickLevel()
+                                    //PlaySoundClickLevel()
                                     RecruitSoldier("knight", data, setData)
                                 }}
                                     disabled={((data.barracks * 50 <= calculateSoldierAmount(data)) || data.gold < soldier_costs.knight.gold || data.wood < soldier_costs.knight.wood || data.clay < soldier_costs.knight.clay || data.clay < soldier_costs.knight.clay || data.iron < soldier_costs.knight.iron)} />
@@ -423,7 +423,7 @@ const ArmyScreen = () => {
                             }}>
                                 <Text style={styles.txtDark}>Amount: {data.catapult}</Text>
                                 <ButtonSelect text={"+"} onPress={() => {
-                                    PlaySoundClickLevel()
+                                    //PlaySoundClickLevel()
                                     RecruitSoldier("catapult", data, setData)
                                 }}
                                     disabled={((data.barracks * 50 <= calculateSoldierAmount(data)) || data.gold < soldier_costs.catapult.gold || data.wood < soldier_costs.catapult.wood || data.clay < soldier_costs.catapult.clay || data.clay < soldier_costs.catapult.clay || data.iron < soldier_costs.catapult.iron)} />
