@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Dimensions, TouchableHighlight } from 'react-native';
 
 // create a component
-export const HomeCard = ({ children, onPress }: any) => {
+export const HomeCard = ({ children, onPress, disabled = false }: any) => {
     return (
-        <TouchableHighlight onPress={onPress}>
+        <TouchableHighlight onPress={onPress} disabled={disabled}>
             <View style={styles.container}>
                 {children}
             </View>
