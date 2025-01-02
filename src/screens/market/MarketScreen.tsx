@@ -38,7 +38,7 @@ export const MarketScreen = () => {
         armyMaintenanceIron,
     } = useContext(DataContext)
     // REKLAM
-    G1()
+    // G1()
 
     const sellMaterial = ({ item, state }: any) => {
         // state 0 sıfır ise satış demektir.

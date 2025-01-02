@@ -38,7 +38,7 @@ export const WarScreen = () => {
         armyMaintenanceIron,
     } = useContext(DataContext)
     // REKLAM
-    G1()
+    // G1()
 
     return (
         <ContentView>

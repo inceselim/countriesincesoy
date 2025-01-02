@@ -22,8 +22,8 @@ import G2 from '../../ads/G2';
 const GovermentScreen = () => {
     const navigation: any = useNavigation();
     // REKLAM
-    G1()
-    G2()
+    // G1()
+    // G2()
     let { data, setData } = useContext(DataContext);
     const handleCountryBonus = (bonus: string) => {
         setData((prevData: any) => ({
