@@ -181,7 +181,7 @@ const HomeScreen = () => {
                                                             style={{ width: "100%", height: "60%" }}
                                                         />
                                                         <Text style={{
-                                                            fontSize: 14,
+                                                            fontSize: 12,
                                                             marginTop: 6,
                                                             fontWeight: "bold",
                                                             textAlign: "center",
@@ -208,7 +208,7 @@ const HomeScreen = () => {
                                                             style={{ width: "100%", height: "60%" }}
                                                         />
                                                         <Text style={{
-                                                            fontSize: 14,
+                                                            fontSize: 12,paddingHorizontal:2,
                                                             marginTop: 6,
                                                             fontWeight: "bold",
                                                             textAlign: "center",
@@ -228,7 +228,7 @@ const HomeScreen = () => {
                                                             resizeMode: "contain"
                                                         }} />
                                                         <Text style={{
-                                                            fontSize: 14,
+                                                            fontSize: 12,paddingHorizontal:2,
                                                             marginTop: 6,
                                                             fontWeight: "bold",
                                                             textAlign: "center",
@@ -248,7 +248,7 @@ const HomeScreen = () => {
                                                             resizeMode: "contain"
                                                         }} />
                                                         <Text style={{
-                                                            fontSize: 14,
+                                                            fontSize: 12,paddingHorizontal:2,
                                                             marginTop: 6,
                                                             fontWeight: "bold",
                                                             textAlign: "center",
@@ -269,7 +269,7 @@ const HomeScreen = () => {
                                                             resizeMode: "contain"
                                                         }} />
                                                         <Text style={{
-                                                            fontSize: 14,
+                                                            fontSize: 12,paddingHorizontal:2,
                                                             marginTop: 6,
                                                             fontWeight: "bold",
                                                             textAlign: "center",
@@ -287,7 +287,7 @@ const HomeScreen = () => {
                                                         resizeMode: "contain"
                                                     }} />
                                                     <Text style={{
-                                                        fontSize: 14,
+                                                        fontSize: 12,paddingHorizontal:2,
                                                         marginTop: 6,
                                                         fontWeight: "bold",
                                                         textAlign: "center",
@@ -306,7 +306,7 @@ const HomeScreen = () => {
                                                             resizeMode: "contain"
                                                         }} />
                                                         <Text style={{
-                                                            fontSize: 14,
+                                                            fontSize: 12,paddingHorizontal:2,
                                                             marginTop: 6,
                                                             fontWeight: "bold",
                                                             textAlign: "center",
@@ -321,7 +321,7 @@ const HomeScreen = () => {
                                                     resizeMode: "contain"
                                                 }} />
                                                 <Text style={{
-                                                    fontSize: 14,
+                                                    fontSize: 12,paddingHorizontal:2,
                                                     marginTop: 6,
                                                     fontWeight: "bold",
                                                     textAlign: "center",
@@ -329,7 +329,7 @@ const HomeScreen = () => {
                                                 }}>Blacksmith</Text>
                                             </HomeCard> */}
 
-                                                <HomeCard onPress={() => {
+                                                {/* <HomeCard onPress={() => {
                                                     //PlaySoundClick()
                                                     navigation.navigate("War")
                                                 }}>
@@ -341,13 +341,13 @@ const HomeScreen = () => {
                                                         style={{ width: "100%", height: "60%" }}
                                                     />
                                                     <Text style={{
-                                                        fontSize: 14,
+                                                        fontSize: 12,paddingHorizontal:2,
                                                         marginTop: 6,
                                                         fontWeight: "bold",
                                                         textAlign: "center",
                                                         color: colors.txtWhite
                                                     }}>War</Text>
-                                                </HomeCard>
+                                                </HomeCard> */}
                                                 <HomeCard onPress={() => {
                                                     //PlaySoundClick()
                                                     navigation.navigate("Statistic")
@@ -358,7 +358,7 @@ const HomeScreen = () => {
                                                         resizeMode: "contain"
                                                     }} />
                                                     <Text style={{
-                                                        fontSize: 14,
+                                                        fontSize: 12,paddingHorizontal:2,
                                                         marginTop: 6,
                                                         fontWeight: "bold",
                                                         textAlign: "center",
@@ -375,7 +375,7 @@ const HomeScreen = () => {
                                                         resizeMode: "contain"
                                                     }} />
                                                     <Text style={{
-                                                        fontSize: 14,
+                                                        fontSize: 12,paddingHorizontal:2,
                                                         marginTop: 6,
                                                         fontWeight: "bold",
                                                         textAlign: "center",
@@ -389,7 +389,7 @@ const HomeScreen = () => {
                                                         resizeMode: "contain"
                                                     }} />
                                                     <Text style={{
-                                                        fontSize: 14,
+                                                        fontSize: 12,paddingHorizontal:2,
                                                         marginTop: 6,
                                                         fontWeight: "bold",
                                                         textAlign: "center",
@@ -403,7 +403,7 @@ const HomeScreen = () => {
                                                         resizeMode: "contain"
                                                     }} />
                                                     <Text style={{
-                                                        fontSize: 14,
+                                                        fontSize: 12,paddingHorizontal:2,
                                                         marginTop: 6,
                                                         fontWeight: "bold",
                                                         textAlign: "center",
@@ -421,7 +421,7 @@ const HomeScreen = () => {
                                                             resizeMode: "contain"
                                                         }} />
                                                         <Text style={{
-                                                            fontSize: 14,
+                                                            fontSize: 12,paddingHorizontal:2,
                                                             marginTop: 6,
                                                             fontWeight: "bold",
                                                             textAlign: "center",
@@ -439,7 +439,7 @@ const HomeScreen = () => {
                                                         resizeMode: "contain"
                                                     }} />
                                                     <Text style={{
-                                                        fontSize: 14,
+                                                        fontSize: 12,paddingHorizontal:2,
                                                         marginTop: 6,
                                                         fontWeight: "bold",
                                                         textAlign: "center",
@@ -455,7 +455,7 @@ const HomeScreen = () => {
                                                             resizeMode: "contain"
                                                         }} />
                                                         <Text style={{
-                                                            fontSize: 14,
+                                                            fontSize: 12,paddingHorizontal:2,
                                                             marginTop: 6,
                                                             fontWeight: "bold",
                                                             textAlign: "center",
@@ -477,7 +477,7 @@ const HomeScreen = () => {
                                                             resizeMode: "contain"
                                                         }} />
                                                         <Text style={{
-                                                            fontSize: 14,
+                                                            fontSize: 12,paddingHorizontal:2,
                                                             marginTop: 6,
                                                             fontWeight: "bold",
                                                             textAlign: "center",
@@ -511,7 +511,7 @@ const style = StyleSheet.create({
         resizeMode: "contain"
     },
     bottomBtnTxt: {
-        fontSize: 14,
+        fontSize: 12,paddingHorizontal:2,
         fontWeight: "bold",
         color: colors.white,
         textAlign: "center"
