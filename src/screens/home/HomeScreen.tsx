@@ -19,12 +19,10 @@ import { DataContext } from '../../context/DataContext';
 import { EndTurn } from '../../utils/EndTurn';
 import { EnterName } from '../../components/EnterName/EnterName';
 import { SelectPolity } from '../../components/SelectPolity/SelectPolity';
-import AdMob, { AdMobPlus, RewardedAd } from '@admob-plus/react-native'
 import LoadingScreen from '../loading/LoadingScreen';
 import LottieView from 'lottie-react-native';
 import { BotsEndTurn } from '../../utils/BotsEndTurn';
 import { PlaySoundClick } from '../../utils/PlaySoundClick';
-import G2 from '../../ads/G2';
 import { PlaySoundImportant } from '../../utils/PlaySoundImportant';
 
 
@@ -109,23 +107,6 @@ const HomeScreen = () => {
         }
     }, [data.turn])
 
-    const ShowAdRewarded = async () => {
-        await AdMobPlus.start()
-        const rewarded = new RewardedAd({
-            adUnitId: adUnitId,
-        })
-        await rewarded.load()
-        await rewarded.show().then(() => {
-            setData((prevData: any) => ({
-                ...prevData,
-                gold: prevData.gold + 100,
-                wood: prevData.wood + 20,
-                clay: prevData.clay + 20,
-                iron: prevData.iron + 20,
-            }
-            ));
-        })
-    }
     return (
         <SafeAreaView style={styles.container}>
             {
@@ -446,7 +427,7 @@ const HomeScreen = () => {
                                                         color: colors.txtWhite
                                                     }}>Market</Text>
                                                 </HomeCard>
-                                                <TourGuideZone zone={7} shape={'rectangle'}
+                                                {/* <TourGuideZone zone={7} shape={'rectangle'}
                                                     text={'Click for Rewards'}>
                                                     <HomeCard onPress={() => ShowAdRewarded()}>
                                                         <Image source={require("../../assets/images/earn1.png")} style={{
@@ -462,8 +443,8 @@ const HomeScreen = () => {
                                                             color: colors.txtWhite
                                                         }}>Earn 100$</Text>
                                                     </HomeCard>
-                                                </TourGuideZone>
-                                                <TourGuideZone zone={8} shape={'rectangle'}
+                                                </TourGuideZone> */}
+                                                <TourGuideZone zone={7} shape={'rectangle'}
                                                     text={'Click for End Turn'}>
                                                     <HomeCard onPress={() => {
                                                         //PlaySoundClick()
