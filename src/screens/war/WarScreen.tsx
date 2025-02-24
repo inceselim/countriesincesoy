@@ -19,8 +19,6 @@ import { build_maintenance } from '../../data/build_maintenance';
 import { BuildUpdate } from '../../utils/BuildUpdate';
 import { build_defence_powers } from '../../data/build_defence_powers';
 import HeaderMenuContent from '../../components/HeaderMenu/HeaderMenuContent';
-import G1 from '../../ads/G1';
-
 export const WarScreen = () => {
     const navigation: any = useNavigation();
     const [segment, setSegment] = useState(0)
@@ -37,8 +35,6 @@ export const WarScreen = () => {
         armyMaintenanceClay,
         armyMaintenanceIron,
     } = useContext(DataContext)
-    // REKLAM
-    G1()
 
     return (
         <ContentView>

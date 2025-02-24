@@ -6,20 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 import ButtonClose from '../../components/ButtonClose/ButtonClose';
 import { colors } from '../../styles/colors';
 import { DataContext } from '../../context/DataContext';
-import ButtonSelect from '../../components/ButtonSelect/ButtonSelect';
-import { BarracksUpdate } from '../../utils/BarracksUpdate';
 import CardView from '../../components/CardView/CardView';
-import { RecruitSoldier } from '../../utils/RecruitSoldier';
-import { soldier_power } from '../../data/soldier_powers';
-import { soldier_costs } from '../../data/soldier_costs';
-import { soldier_maintenance } from '../../data/soldier_maintenance';
-import { build_costs } from '../../data/build_costs';
-import { calculateSoldierAmount } from '../../utils/CalculateSoldierAmount';
-import { build_maintenance } from '../../data/build_maintenance';
-import { BuildUpdate } from '../../utils/BuildUpdate';
-import { build_defence_powers } from '../../data/build_defence_powers';
 import HeaderMenuContent from '../../components/HeaderMenu/HeaderMenuContent';
-import G1 from '../../ads/G1';
 import { PlaySoundClickLevel } from '../../utils/PlaySoundClickLevel';
 
 export const MarketScreen = () => {
@@ -37,8 +25,6 @@ export const MarketScreen = () => {
         armyMaintenanceClay,
         armyMaintenanceIron,
     } = useContext(DataContext)
-    // REKLAM
-    G1()
 
     const sellMaterial = ({ item, state }: any) => {
         // state 0 sıfır ise satış demektir.
@@ -112,7 +98,7 @@ export const MarketScreen = () => {
                         <View style={{ paddingHorizontal: 12, flex: 0.5 }}>
                             <Text style={[styles.txtDarkTitle, { paddingStart: 12, }]}>Sell</Text>
                             <Pressable onPress={() => {
-                                //PlaySoundClickLevel()
+                                PlaySoundClickLevel()
                                 sellMaterial({ item: "wood", state: 0 })
                             }}
                                 style={{
@@ -128,7 +114,7 @@ export const MarketScreen = () => {
                                 <Text style={[styles.txtDarkBold]}>100🪵 - 70💰</Text>
                             </Pressable>
                             <Pressable onPress={() => {
-                                //PlaySoundClickLevel()
+                                PlaySoundClickLevel()
                                 sellMaterial({ item: "clay", state: 0 })
                             }}
                                 style={{
@@ -144,7 +130,7 @@ export const MarketScreen = () => {
                                 <Text style={[styles.txtDarkBold]}>100🧱 - 70💰</Text>
                             </Pressable>
                             <Pressable onPress={() => {
-                                //PlaySoundClickLevel()
+                                PlaySoundClickLevel()
                                 sellMaterial({ item: "iron", state: 0 })
                             }}
                                 style={{
@@ -164,7 +150,7 @@ export const MarketScreen = () => {
                         <View style={{ paddingStart: 12, flex: 0.5 }}>
                             <Text style={[styles.txtDarkTitle, { paddingStart: 0, }]}>Buy</Text>
                             <Pressable onPress={() => {
-                                //PlaySoundClickLevel()
+                                PlaySoundClickLevel()
                                 sellMaterial({ item: "wood", state: 1 })
                             }}
                                 style={{
@@ -180,7 +166,7 @@ export const MarketScreen = () => {
                                 <Text style={[styles.txtDarkBold]}>70💰 - 70🪵</Text>
                             </Pressable>
                             <Pressable onPress={() => {
-                                //PlaySoundClickLevel()
+                                PlaySoundClickLevel()
                                 sellMaterial({ item: "clay", state: 1 })
                             }}
                                 style={{
@@ -196,7 +182,7 @@ export const MarketScreen = () => {
                                 <Text style={[styles.txtDarkBold]}>70💰 - 70🧱</Text>
                             </Pressable>
                             <Pressable onPress={() => {
-                                //PlaySoundClickLevel()
+                                PlaySoundClickLevel()
                                 sellMaterial({ item: "iron", state: 1 })
                             }}
                                 style={{

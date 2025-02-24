@@ -12,14 +12,11 @@ import { build_maintenance } from '../../data/build_maintenance';
 import HeaderMenuContent from '../../components/HeaderMenu/HeaderMenuContent';
 import { BuildUpdate } from '../../utils/BuildUpdate';
 import { build_income } from '../../data/build_income';
-import G1 from '../../ads/G1';
 import { PlaySoundClickLevel } from '../../utils/PlaySoundClickLevel';
 
 // create a component
 const ProductScreen = () => {
     const navigation: any = useNavigation();
-    // REKLAM
-    G1()
     let { data, setData } = useContext(DataContext);
     return (
         <ContentView>
@@ -28,7 +25,7 @@ const ProductScreen = () => {
                 paddingHorizontal: "2%",
             }}>
                 <CardView>
-                    <Image source={require("../../assets/build/farm1.png")}
+                    <Image source={require("../../assets/buldings/farm1.png")}
                         style={{
                             height: 90,
                             width: 100,
@@ -74,7 +71,7 @@ const ProductScreen = () => {
                 }}>
                     <CardView>
                         <View>
-                            <Image source={require("../../assets/build/mine.png")}
+                            <Image source={require("../../assets/buldings/mine.png")}
                                 style={{
                                     height: 70,
                                     width: 70,
@@ -116,7 +113,7 @@ const ProductScreen = () => {
 
                     <CardView>
                         <View>
-                            <Image source={require("../../assets/build/woodcutter.png")}
+                            <Image source={require("../../assets/buldings/woodcutter128.png")}
                                 style={{
                                     height: 70,
                                     width: 70,
@@ -158,7 +155,7 @@ const ProductScreen = () => {
 
                     <CardView>
                         <View>
-                            <Image source={require("../../assets/build/clay.png")}
+                            <Image source={require("../../assets/buldings/clay.png")}
                                 style={{
                                     height: 70,
                                     width: 70,
@@ -200,7 +197,7 @@ const ProductScreen = () => {
 
                     <CardView>
                         <View>
-                            <Image source={require("../../assets/build/trade_center.png")}
+                            <Image source={require("../../assets/buldings/trade_center.png")}
                                 style={{
                                     height: 70,
                                     width: 70,
@@ -239,7 +236,7 @@ const ProductScreen = () => {
 
                     <CardView>
                         <View>
-                            <Image source={require("../../assets/build/avm.png")}
+                            <Image source={require("../../assets/buldings/avm.png")}
                                 style={{
                                     height: 70,
                                     width: 70,

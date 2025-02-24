@@ -25,8 +25,6 @@ export const BuyGemsScreen = () => {
         armyMaintenanceClay,
         armyMaintenanceIron,
     } = useContext(DataContext)
-    // REKLAM
-    // G1()
 
     const skus = Platform.select({
         android: [

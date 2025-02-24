@@ -12,18 +12,13 @@ import { build_costs } from '../../data/build_costs';
 import ButtonSelect from '../../components/ButtonSelect/ButtonSelect';
 import CardView from '../../components/CardView/CardView';
 import { build_maintenance } from '../../data/build_maintenance';
-import G1 from '../../ads/G1';
 import LottieView from 'lottie-react-native';
 import { PlaySoundClickLevel } from '../../utils/PlaySoundClickLevel';
 import { PlaySoundImportant } from '../../utils/PlaySoundImportant';
-import G2 from '../../ads/G2';
 
 // create a component
 const GovermentScreen = () => {
     const navigation: any = useNavigation();
-    // REKLAM
-    G1()
-    G2()
     let { data, setData } = useContext(DataContext);
     const handleCountryBonus = (bonus: string) => {
         setData((prevData: any) => ({
@@ -73,7 +68,7 @@ const GovermentScreen = () => {
                     justifyContent: "center"
                 }}>
                     <TouchableOpacity onPress={() => {
-                        //PlaySoundImportant()
+                        PlaySoundImportant()
                         handleCountryBonus("attack")
                     }}
                         disabled={data.countryFocus == "attack"}
@@ -96,7 +91,7 @@ const GovermentScreen = () => {
                         <Text style={[styles.txtCenter, styles.txtUyumlu]}>%10 Attack Power</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        //PlaySoundImportant()
+                        PlaySoundImportant()
                         handleCountryBonus("defence")
                     }}
                         disabled={data.countryFocus == "defence"}
@@ -119,7 +114,7 @@ const GovermentScreen = () => {
                         <Text style={[styles.txtCenter, styles.txtUyumlu]}>%10 Defence Power</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        //PlaySoundImportant()
+                        PlaySoundImportant()
                         handleCountryBonus("pop")
                     }}
                         disabled={data.countryFocus == "pop"}
@@ -142,7 +137,7 @@ const GovermentScreen = () => {
                         <Text style={[styles.txtCenter, styles.txtUyumlu]}>%20 Population Growth</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
-                        //PlaySoundImportant()
+                        PlaySoundImportant()
                         handleCountryBonus("income")
                     }}
                         disabled={data.countryFocus == "income"}
@@ -241,7 +236,7 @@ const GovermentScreen = () => {
                                 </TouchableOpacity> */}
                                     <ButtonSelect onPress={() => {
                                         updateParliamentAndGold()
-                                        //PlaySoundClickLevel()
+                                        PlaySoundClickLevel()
                                     }} text={"Level Up"}
                                         disabled={(data.gold < build_costs.parliament.gold || data.wood < build_costs.parliament.wood || data.clay < build_costs.parliament.clay || data.clay < build_costs.parliament.clay || data.iron < build_costs.parliament.iron)} />
                                 </View>

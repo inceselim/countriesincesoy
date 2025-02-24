@@ -19,14 +19,11 @@ import { build_maintenance } from '../../data/build_maintenance';
 import { BuildUpdate } from '../../utils/BuildUpdate';
 import { build_defence_powers } from '../../data/build_defence_powers';
 import HeaderMenuContent from '../../components/HeaderMenu/HeaderMenuContent';
-import G1 from '../../ads/G1';
 import { PlaySoundClickLevel } from '../../utils/PlaySoundClickLevel';
 
 const CastleScreen = () => {
     const navigation: any = useNavigation();
     let { data, setData } = useContext(DataContext);
-    // REKLAM
-    G1()
     return (
         <ContentView>
             <HeaderMenuContent title={"Castle"} />

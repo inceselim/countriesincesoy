@@ -10,7 +10,7 @@ const ButtonClose = () => {
     return (
         <TouchableOpacity
             onPress={() => {
-                //PlaySoundGecis()
+                PlaySoundGecis()
                 setTimeout(() => {
                     navigation.goBack()
                 }, 0.2 * 1000);

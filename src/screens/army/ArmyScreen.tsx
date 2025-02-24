@@ -17,13 +17,10 @@ import { soldier_maintenance } from '../../data/soldier_maintenance';
 import { build_costs } from '../../data/build_costs';
 import { calculateSoldierAmount } from '../../utils/CalculateSoldierAmount';
 import HeaderMenuContent from '../../components/HeaderMenu/HeaderMenuContent';
-import G1 from '../../ads/G1';
 import { PlaySoundClickLevel } from '../../utils/PlaySoundClickLevel';
 
 // create a component
 const ArmyScreen = () => {
-    // REKLAM
-    G1()
     const navigation: any = useNavigation();
     let { data, setData } = useContext(DataContext);
     return (

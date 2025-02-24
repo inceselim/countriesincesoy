@@ -14,7 +14,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { HeaderMenu } from '../../components/HeaderMenu/HeaderMenu';
 import { HomeCard } from '../../components/HomeCard/HomeCard';
 import { colors } from '../../styles/colors';
-import { BottomCard } from '../../components/BottomCard/BottomCard';
 import { DataContext } from '../../context/DataContext';
 import { EndTurn } from '../../utils/EndTurn';
 import { EnterName } from '../../components/EnterName/EnterName';
@@ -146,7 +145,7 @@ const HomeScreen = () => {
                                                 <TourGuideZone zone={2} shape={'rectangle'}
                                                     text={'Goverment Focus'}>
                                                     <HomeCard onPress={() => {
-                                                        //PlaySoundClick()
+                                                        PlaySoundClick()
                                                         navigation.navigate("Goverment")
                                                     }}>
                                                         {/* <Image source={require("../../assets/capitol.png")} style={{
@@ -173,7 +172,7 @@ const HomeScreen = () => {
                                                 <TourGuideZone zone={3} shape={'rectangle'}
                                                     text={'Create your own army'}>
                                                     <HomeCard onPress={() => {
-                                                        //PlaySoundClick()
+                                                        PlaySoundClick()
                                                         navigation.navigate("Army")
                                                     }}>
                                                         {/* <Image source={require("../../assets/army.png")} style={{
@@ -200,7 +199,7 @@ const HomeScreen = () => {
                                                 <TourGuideZone zone={4} shape={'rectangle'}
                                                     text={'Improve Your Castle'}>
                                                     <HomeCard onPress={() => {
-                                                        //PlaySoundClick()
+                                                        PlaySoundClick()
                                                         navigation.navigate("Castle")
                                                     }}>
                                                         <Image source={require("../../assets/images/castle.png")} style={{
@@ -220,7 +219,7 @@ const HomeScreen = () => {
                                                 <TourGuideZone zone={5} shape={'rectangle'}
                                                     text={'Increase your income'}>
                                                     <HomeCard onPress={() => {
-                                                        //PlaySoundClick()
+                                                        PlaySoundClick()
                                                         navigation.navigate("Product")
                                                     }}>
                                                         <Image source={require("../../assets/images/factory.png")} style={{
@@ -241,7 +240,7 @@ const HomeScreen = () => {
                                                     data?.countryName == "" &&
 
                                                     <HomeCard onPress={() => {
-                                                        //PlaySoundClick()
+                                                        PlaySoundClick()
                                                         setVisibleCountryName(true)
                                                     }}>
                                                         <Image source={require("../../assets/images/parchmentIcon.png")} style={{
@@ -259,7 +258,7 @@ const HomeScreen = () => {
                                                     </HomeCard>
                                                 }
                                                 <HomeCard onPress={() => {
-                                                    //PlaySoundClick()
+                                                    PlaySoundClick()
                                                     navigation.navigate("Finance")
                                                 }}>
                                                     <Image source={require("../../assets/images/finance1.png")} style={{
@@ -311,7 +310,7 @@ const HomeScreen = () => {
                                             </HomeCard> */}
 
                                                 <HomeCard onPress={() => {
-                                                    //PlaySoundClick()
+                                                    PlaySoundClick()
                                                     navigation.navigate("War")
                                                 }}>
                                                     <LottieView
@@ -330,7 +329,7 @@ const HomeScreen = () => {
                                                     }}>War</Text>
                                                 </HomeCard>
                                                 <HomeCard onPress={() => {
-                                                    //PlaySoundClick()
+                                                    PlaySoundClick()
                                                     navigation.navigate("Statistic")
                                                 }}>
                                                     <Image source={require("../../assets/images/statistic1.png")} style={{
@@ -347,7 +346,7 @@ const HomeScreen = () => {
                                                     }}>Statistic</Text>
                                                 </HomeCard>
                                                 <HomeCard onPress={() => {
-                                                    //PlaySoundClick()
+                                                    PlaySoundClick()
                                                     navigation.navigate("BuyGems")
                                                 }}>
                                                     <Image source={require("../../assets/images/diamond.png")} style={{
@@ -411,7 +410,7 @@ const HomeScreen = () => {
                                                     </HomeCard>
                                                 </TourGuideZone>
                                                 <HomeCard onPress={() => {
-                                                    //PlaySoundClick()
+                                                    PlaySoundClick()
                                                     navigation.navigate("Market")
                                                 }}>
                                                     <Image source={require("../../assets/images/market.png")} style={{
@@ -447,7 +446,7 @@ const HomeScreen = () => {
                                                 <TourGuideZone zone={7} shape={'rectangle'}
                                                     text={'Click for End Turn'}>
                                                     <HomeCard onPress={() => {
-                                                        //PlaySoundClick()
+                                                        PlaySoundClick()
                                                         EndTurn(data, setData, setLoading)
                                                         BotsEndTurn(dataBots, setDataBots)
                                                     }
