@@ -1,4 +1,4 @@
-package com.countrieswarincesoy
+package com.countriesincesoy
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

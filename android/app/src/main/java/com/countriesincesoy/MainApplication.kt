@@ -1,4 +1,4 @@
-package com.countrieswarincesoy
+package com.countriesincesoy
 
 import android.app.Application
 import com.facebook.react.PackageList
