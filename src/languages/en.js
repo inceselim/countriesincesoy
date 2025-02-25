@@ -1,4 +1,6 @@
 export default {
     "Welcome": "Good Morning",
-    "Hello": "Hi"
+    "Hello": "Hi",
+    "Selected Polity": "Selected Polity",
+    "Monarchy": "Monarchy"
 }

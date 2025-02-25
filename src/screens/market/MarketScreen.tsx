@@ -12,6 +12,7 @@ import { PlaySoundClickLevel } from '../../utils/PlaySoundClickLevel';
 
 export const MarketScreen = () => {
     const navigation: any = useNavigation();
+    const [segment, setSegment] = useState(0);
     const { data, setData,
         buildIncomeWood,
         buildIncomeClay,
@@ -93,6 +94,62 @@ export const MarketScreen = () => {
                 <CardView>
                     <View style={{
                         flexDirection: "row",
+                        justifyContent: "space-between",
+                        flex: 1
+                    }}>
+                        <Pressable onPress={() => {
+                            PlaySoundClickLevel()
+                            setSegment(0)
+                        }}
+                            disabled={segment == 0}
+                            style={{
+                                backgroundColor: segment == 0 ? colors.kavun : colors.kavunKoyu,
+                                alignItems: "center",
+                                paddingHorizontal: 6,
+                                marginVertical: 6,
+                                flex: 1,
+                                paddingVertical: 6,
+                                // opacity: disabled ? 0.52 : 1
+                            }}>
+                            <Text style={[styles.txtDarkBold]}>1</Text>
+                        </Pressable>
+                        <Pressable onPress={() => {
+                            PlaySoundClickLevel()
+                            setSegment(1)
+                        }}
+                            disabled={segment == 1}
+                            style={{
+                                backgroundColor: segment == 1 ? colors.kavun : colors.kavunKoyu,
+                                alignItems: "center",
+                                paddingHorizontal: 6,
+                                flex: 1,
+                                marginVertical: 6,
+                                paddingVertical: 6,
+                                // opacity: disabled ? 0.52 : 1
+                            }}>
+                            <Text style={[styles.txtDarkBold]}>10</Text>
+                        </Pressable>
+                        <Pressable onPress={() => {
+                            PlaySoundClickLevel()
+                            setSegment(2)
+                        }}
+                            disabled={segment == 2}
+                            style={{
+                                backgroundColor: segment == 2 ? colors.kavun : colors.kavunKoyu,
+                                alignItems: "center",
+                                paddingHorizontal: 6,
+                                flex: 1,
+                                marginVertical: 6,
+                                paddingVertical: 6,
+                                // opacity: disabled ? 0.52 : 1
+                            }}>
+                            <Text style={[styles.txtDarkBold]}>100</Text>
+                        </Pressable>
+                    </View>
+                </CardView>
+                <CardView>
+                    <View style={{
+                        flexDirection: "row",
                         paddingBottom: 10,
                     }}>
                         <View style={{ paddingHorizontal: 12, flex: 0.5 }}>
@@ -104,7 +161,7 @@ export const MarketScreen = () => {
                                 style={{
                                     backgroundColor: colors.kavunKoyu,
                                     borderRadius: 8,
-                                    width: 120,
+
                                     alignItems: "center",
                                     paddingHorizontal: 6,
                                     marginVertical: 6,
@@ -120,7 +177,7 @@ export const MarketScreen = () => {
                                 style={{
                                     backgroundColor: colors.kavunKoyu,
                                     borderRadius: 8,
-                                    width: 120,
+
                                     alignItems: "center",
                                     paddingHorizontal: 6,
                                     marginVertical: 6,
@@ -136,7 +193,7 @@ export const MarketScreen = () => {
                                 style={{
                                     backgroundColor: colors.kavunKoyu,
                                     borderRadius: 8,
-                                    width: 120,
+
                                     alignItems: "center",
                                     paddingHorizontal: 6,
                                     marginVertical: 6,
@@ -156,14 +213,14 @@ export const MarketScreen = () => {
                                 style={{
                                     backgroundColor: colors.kavunKoyu,
                                     borderRadius: 8,
-                                    width: 120,
+
                                     alignItems: "center",
                                     paddingHorizontal: 6,
                                     marginVertical: 6,
                                     paddingVertical: 6,
                                     // opacity: disabled ? 0.52 : 1
                                 }}>
-                                <Text style={[styles.txtDarkBold]}>70💰 - 70🪵</Text>
+                                <Text style={[styles.txtDarkBold]}>{segment == 0 ? 70 : segment == 1 ? 700 : 7000} 💰  -  70 🪵</Text>
                             </Pressable>
                             <Pressable onPress={() => {
                                 PlaySoundClickLevel()
@@ -172,7 +229,7 @@ export const MarketScreen = () => {
                                 style={{
                                     backgroundColor: colors.kavunKoyu,
                                     borderRadius: 8,
-                                    width: 120,
+
                                     alignItems: "center",
                                     paddingHorizontal: 6,
                                     marginVertical: 6,
@@ -188,7 +245,7 @@ export const MarketScreen = () => {
                                 style={{
                                     backgroundColor: colors.kavunKoyu,
                                     borderRadius: 8,
-                                    width: 120,
+
                                     alignItems: "center",
                                     paddingHorizontal: 6,
                                     marginVertical: 6,

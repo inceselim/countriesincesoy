@@ -8,10 +8,12 @@ import ButtonSelect from '../ButtonSelect/ButtonSelect';
 import { polities } from '../../data/polity_bonuses';
 import ButtonClose from '../ButtonClose/ButtonClose';
 import { PlaySoundGecis } from '../../utils/PlaySoundGecis';
+import { useTranslation } from 'react-i18next';
 
 // create a component
 export const SelectPolity = ({ value, setValue }: any) => {
     let { data, setData } = useContext(DataContext)
+    const { t } = useTranslation();
     // Polities
     //Monarchy,Aristocracy,Theocracy,Dictator,Democracy
     const [selectedPolity, setSelectedPolity] = useState(data?.polity == "" ? "" : data.polity)
@@ -39,7 +41,7 @@ export const SelectPolity = ({ value, setValue }: any) => {
                     paddingVertical: 6
                 }}>
                     <Text style={[styles.txtDarkTitle, styles.txtCenter]}>
-                        Selected Polity: {selectedPolity == "Monarchy" ? "Monarchy" :
+                        {t("Selected Polity")}: {selectedPolity == "Monarchy" ? "Monarchy" :
                             selectedPolity == "Aristocracy" ? "Aristocracy"
                                 : selectedPolity == "Theocracy" ? "Theocracy"
                                     : selectedPolity == "Dictator" ? "Dictator"
