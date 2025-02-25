@@ -6,14 +6,16 @@ import { colors } from '../../styles/colors';
 import { styles } from '../../styles/styles';
 import ButtonSelect from '../ButtonSelect/ButtonSelect';
 import { polities } from '../../data/polity_bonuses';
+import ButtonClose from '../ButtonClose/ButtonClose';
+import { PlaySoundGecis } from '../../utils/PlaySoundGecis';
 
 // create a component
 export const SelectPolity = ({ value, setValue }: any) => {
     let { data, setData } = useContext(DataContext)
     // Polities
     //Monarchy,Aristocracy,Theocracy,Dictator,Democracy
-    const [selectedPolity, setSelectedPolity] = useState("")
-    
+    const [selectedPolity, setSelectedPolity] = useState(data?.polity == "" ? "" : data.polity)
+
     useEffect(() => {
     }, [data])
     const handleUpdatePolity = () => {
@@ -31,13 +33,32 @@ export const SelectPolity = ({ value, setValue }: any) => {
                 height: "100%"
             }}>
             <SafeAreaView style={{ flex: 1 }}>
-                <Text style={[styles.txtDarkTitle, styles.txtCenter]}>
-                    Selected Polity: {selectedPolity == "Monarchy" ? "Monarchy" :
-                        selectedPolity == "Aristocracy" ? "Aristocracy"
-                            : selectedPolity == "Theocracy" ? "Theocracy"
-                                : selectedPolity == "Dictator" ? "Dictator"
-                                    : selectedPolity == "Democracy" ? "Democracy" :
-                                        ""}</Text>
+                <View style={{
+                    flexDirection: "row",
+                    justifyContent: "space-evenly",
+                    paddingVertical: 6
+                }}>
+                    <Text style={[styles.txtDarkTitle, styles.txtCenter]}>
+                        Selected Polity: {selectedPolity == "Monarchy" ? "Monarchy" :
+                            selectedPolity == "Aristocracy" ? "Aristocracy"
+                                : selectedPolity == "Theocracy" ? "Theocracy"
+                                    : selectedPolity == "Dictator" ? "Dictator"
+                                        : selectedPolity == "Democracy" ? "Democracy" :
+                                            ""}</Text>
+                    <TouchableOpacity
+                        onPress={() => {
+                            PlaySoundGecis()
+                            setTimeout(() => {
+                                setValue(false)
+                            }, 0.2 * 1000);
+                        }}>
+                        <Image source={require("../../assets/images/close128.png")}
+                            style={{
+                                height: 40,
+                                width: 40
+                            }} />
+                    </TouchableOpacity>
+                </View>
                 <ScrollView>
                     <View style={{
                         flexDirection: "column",

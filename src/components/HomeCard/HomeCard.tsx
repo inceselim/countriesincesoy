@@ -17,7 +17,7 @@ export const HomeCard = ({ children, onPress }: any) => {
 const styles = StyleSheet.create({
     container: {
         height: Dimensions.get("screen").height / 3 - 30,
-        width: Dimensions.get("screen").width / 7 - 40,
+        width: Dimensions.get("screen").width / 6 - 40,
         borderRadius: 8,
         marginHorizontal: "1%",
         marginVertical: "2%",

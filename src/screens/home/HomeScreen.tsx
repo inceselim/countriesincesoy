@@ -33,7 +33,6 @@ const HomeScreen = () => {
     const { t } = useTranslation();
     const iconProps = { size: 40, color: '#888' }
     let { data, setData, dataBots, setDataBots, loadFromStorage, saveToStorage } = useContext(DataContext)
-    const [isVisibleCountryName, setVisibleCountryName] = useState(false)
     const [isVisiblePolity, setVisiblePolity] = useState(false)
     const [loading, setLoading] = useState(false)
     const {
@@ -42,9 +41,6 @@ const HomeScreen = () => {
         stop, // a function  to stopping it
         eventEmitter, // an object for listening some events
     }: any = useTourGuideController()
-
-    const [loadedReklam, setLoadedReklam] = useState(false);
-    const MAX_TURNS_BEFORE_WAR = 10;
 
     React.useEffect(() => {
         if (canStart) {
@@ -112,152 +108,129 @@ const HomeScreen = () => {
                 loading ?
                     <LoadingScreen />
                     :
-                    isVisibleCountryName == true ?
-                        <EnterName value={isVisibleCountryName} setValue={setVisibleCountryName} />
+                    isVisiblePolity == true ?
+                        <SelectPolity value={isVisiblePolity} setValue={setVisiblePolity} />
                         :
-                        isVisiblePolity == true ?
-                            <SelectPolity value={isVisiblePolity} setValue={setVisiblePolity} />
-                            :
-                            <View style={styles.content}>
-                                <TourGuideZone zone={0} shape={'rectangle'}
-                                    text={'Turn Number and Your balance'}>
-                                    <HeaderMenu />
-                                </TourGuideZone>
-                                <ScrollView>
-                                    <View style={{ alignItems: "center", paddingVertical: 12 }}>
-                                        <TourGuideZone zone={1} shape={'rectangle'}
-                                            text={'Your Country Name'}>
-                                            <Text style={styles.txtBold}>•👑{data.countryName}•</Text>
-                                        </TourGuideZone>
-                                    </View>
-                                    <View style={{ flexDirection: "row", flex: 1 }}>
+                        <View style={styles.content}>
+                            <TourGuideZone zone={0} shape={'rectangle'}
+                                text={'Turn Number and Your balance'}>
+                                <HeaderMenu />
+                            </TourGuideZone>
+                            <ScrollView>
+                                <View style={{ alignItems: "center", paddingVertical: 12 }}>
+                                    <TourGuideZone zone={1} shape={'rectangle'}
+                                        text={'Your Country Name'}>
+                                        <Text style={styles.txtBold}>•👑{data.countryName}•</Text>
+                                    </TourGuideZone>
+                                </View>
+                                <View style={{ flexDirection: "row", flex: 1 }}>
+                                    <View style={{
+                                        flex: 1,
+                                        flexDirection: "row",
+                                        flexWrap: "wrap",
+                                    }}>
                                         <View style={{
                                             flex: 1,
                                             flexDirection: "row",
-                                            flexWrap: "wrap",
+                                            justifyContent: "center",
+                                            flexWrap: "wrap"
                                         }}>
-                                            <View style={{
-                                                flex: 1,
-                                                flexDirection: "row",
-                                                justifyContent: "center",
-                                                flexWrap: "wrap"
-                                            }}>
-                                                <TourGuideZone zone={2} shape={'rectangle'}
-                                                    text={'Goverment Focus'}>
-                                                    <HomeCard onPress={() => {
-                                                        PlaySoundClick()
-                                                        navigation.navigate("Goverment")
-                                                    }}>
-                                                        {/* <Image source={require("../../assets/capitol.png")} style={{
+                                            <TourGuideZone zone={2} shape={'rectangle'}
+                                                text={'Goverment Focus'}>
+                                                <HomeCard onPress={() => {
+                                                    PlaySoundClick()
+                                                    navigation.navigate("Goverment")
+                                                }}>
+                                                    {/* <Image source={require("../../assets/capitol.png")} style={{
                                                         width: "70%",
                                                         height: "60%",
                                                         resizeMode: "contain"
                                                     }} /> */}
-                                                        <LottieView
-                                                            autoPlay
-                                                            loop
-                                                            // ref={animationRef}
-                                                            source={require("../../assets/animation/bina.json")}
-                                                            style={{ width: "100%", height: "60%" }}
-                                                        />
-                                                        <Text style={{
-                                                            fontSize: 14,
-                                                            marginTop: 6,
-                                                            fontWeight: "bold",
-                                                            textAlign: "center",
-                                                            color: colors.txtWhite
-                                                        }}>Goverment</Text>
-                                                    </HomeCard>
-                                                </TourGuideZone>
-                                                <TourGuideZone zone={3} shape={'rectangle'}
-                                                    text={'Create your own army'}>
-                                                    <HomeCard onPress={() => {
-                                                        PlaySoundClick()
-                                                        navigation.navigate("Army")
-                                                    }}>
-                                                        {/* <Image source={require("../../assets/army.png")} style={{
+                                                    <LottieView
+                                                        autoPlay
+                                                        loop
+                                                        // ref={animationRef}
+                                                        source={require("../../assets/animation/bina.json")}
+                                                        style={{ width: "100%", height: "60%" }}
+                                                    />
+                                                    <Text style={{
+                                                        fontSize: 14,
+                                                        marginTop: 6,
+                                                        fontWeight: "bold",
+                                                        textAlign: "center",
+                                                        color: colors.txtWhite
+                                                    }}>Goverment</Text>
+                                                </HomeCard>
+                                            </TourGuideZone>
+                                            <TourGuideZone zone={3} shape={'rectangle'}
+                                                text={'Create your own army'}>
+                                                <HomeCard onPress={() => {
+                                                    PlaySoundClick()
+                                                    navigation.navigate("Army")
+                                                }}>
+                                                    {/* <Image source={require("../../assets/army.png")} style={{
                                                     width: "70%",
                                                     height: "60%",
                                                     resizeMode: "contain"
                                                 }} /> */}
-                                                        <LottieView
-                                                            autoPlay
-                                                            loop
-                                                            // ref={animationRef}
-                                                            source={require("../../assets/animation/army.json")}
-                                                            style={{ width: "100%", height: "60%" }}
-                                                        />
-                                                        <Text style={{
-                                                            fontSize: 14,
-                                                            marginTop: 6,
-                                                            fontWeight: "bold",
-                                                            textAlign: "center",
-                                                            color: colors.txtWhite
-                                                        }}>Army</Text>
-                                                    </HomeCard>
-                                                </TourGuideZone>
-                                                <TourGuideZone zone={4} shape={'rectangle'}
-                                                    text={'Improve Your Castle'}>
-                                                    <HomeCard onPress={() => {
-                                                        PlaySoundClick()
-                                                        navigation.navigate("Castle")
-                                                    }}>
-                                                        <Image source={require("../../assets/images/castle.png")} style={{
-                                                            width: "70%",
-                                                            height: "60%",
-                                                            resizeMode: "contain"
-                                                        }} />
-                                                        <Text style={{
-                                                            fontSize: 14,
-                                                            marginTop: 6,
-                                                            fontWeight: "bold",
-                                                            textAlign: "center",
-                                                            color: colors.txtWhite
-                                                        }}>Castle</Text>
-                                                    </HomeCard>
-                                                </TourGuideZone>
-                                                <TourGuideZone zone={5} shape={'rectangle'}
-                                                    text={'Increase your income'}>
-                                                    <HomeCard onPress={() => {
-                                                        PlaySoundClick()
-                                                        navigation.navigate("Product")
-                                                    }}>
-                                                        <Image source={require("../../assets/images/factory.png")} style={{
-                                                            width: "70%",
-                                                            height: "60%",
-                                                            resizeMode: "contain"
-                                                        }} />
-                                                        <Text style={{
-                                                            fontSize: 14,
-                                                            marginTop: 6,
-                                                            fontWeight: "bold",
-                                                            textAlign: "center",
-                                                            color: colors.txtWhite
-                                                        }}>Product</Text>
-                                                    </HomeCard>
-                                                </TourGuideZone>
-                                                {
-                                                    data?.countryName == "" &&
-
-                                                    <HomeCard onPress={() => {
-                                                        PlaySoundClick()
-                                                        setVisibleCountryName(true)
-                                                    }}>
-                                                        <Image source={require("../../assets/images/parchmentIcon.png")} style={{
-                                                            width: "50%",
-                                                            height: "40%",
-                                                            resizeMode: "contain"
-                                                        }} />
-                                                        <Text style={{
-                                                            fontSize: 14,
-                                                            marginTop: 6,
-                                                            fontWeight: "bold",
-                                                            textAlign: "center",
-                                                            color: colors.txtWhite
-                                                        }}>Enter Name</Text>
-                                                    </HomeCard>
-                                                }
+                                                    <LottieView
+                                                        autoPlay
+                                                        loop
+                                                        // ref={animationRef}
+                                                        source={require("../../assets/animation/army.json")}
+                                                        style={{ width: "100%", height: "60%" }}
+                                                    />
+                                                    <Text style={{
+                                                        fontSize: 14,
+                                                        marginTop: 6,
+                                                        fontWeight: "bold",
+                                                        textAlign: "center",
+                                                        color: colors.txtWhite
+                                                    }}>Army</Text>
+                                                </HomeCard>
+                                            </TourGuideZone>
+                                            <TourGuideZone zone={4} shape={'rectangle'}
+                                                text={'Improve Your Castle'}>
                                                 <HomeCard onPress={() => {
+                                                    PlaySoundClick()
+                                                    navigation.navigate("Castle")
+                                                }}>
+                                                    <Image source={require("../../assets/images/castle.png")} style={{
+                                                        width: "70%",
+                                                        height: "60%",
+                                                        resizeMode: "contain"
+                                                    }} />
+                                                    <Text style={{
+                                                        fontSize: 14,
+                                                        marginTop: 6,
+                                                        fontWeight: "bold",
+                                                        textAlign: "center",
+                                                        color: colors.txtWhite
+                                                    }}>Castle</Text>
+                                                </HomeCard>
+                                            </TourGuideZone>
+                                            <TourGuideZone zone={5} shape={'rectangle'}
+                                                text={'Increase your income'}>
+                                                <HomeCard onPress={() => {
+                                                    PlaySoundClick()
+                                                    navigation.navigate("Product")
+                                                }}>
+                                                    <Image source={require("../../assets/images/factory.png")} style={{
+                                                        width: "70%",
+                                                        height: "60%",
+                                                        resizeMode: "contain"
+                                                    }} />
+                                                    <Text style={{
+                                                        fontSize: 14,
+                                                        marginTop: 6,
+                                                        fontWeight: "bold",
+                                                        textAlign: "center",
+                                                        color: colors.txtWhite
+                                                    }}>Product</Text>
+                                                </HomeCard>
+                                            </TourGuideZone>
+
+                                            {/* <HomeCard onPress={() => {
                                                     PlaySoundClick()
                                                     navigation.navigate("Finance")
                                                 }}>
@@ -273,28 +246,25 @@ const HomeScreen = () => {
                                                         textAlign: "center",
                                                         color: colors.txtWhite
                                                     }}>Finance</Text>
-                                                </HomeCard>
-                                                {
-                                                    data.polity == "" &&
-                                                    <HomeCard onPress={() => {
-                                                        //PlaySoundImportant()
-                                                        setVisiblePolity(true)
-                                                    }}>
-                                                        <Image source={require("../../assets/images/crown.png")} style={{
-                                                            width: "70%",
-                                                            height: "60%",
-                                                            resizeMode: "contain"
-                                                        }} />
-                                                        <Text style={{
-                                                            fontSize: 14,
-                                                            marginTop: 6,
-                                                            fontWeight: "bold",
-                                                            textAlign: "center",
-                                                            color: colors.txtWhite
-                                                        }}>Select Polity</Text>
-                                                    </HomeCard>
-                                                }
-                                                {/* <HomeCard onPress={() => navigation.navigate("Product")}>
+                                                </HomeCard> */}
+                                            <HomeCard onPress={() => {
+                                                //PlaySoundImportant()
+                                                setVisiblePolity(true)
+                                            }}>
+                                                <Image source={require("../../assets/images/crown.png")} style={{
+                                                    width: "70%",
+                                                    height: "60%",
+                                                    resizeMode: "contain"
+                                                }} />
+                                                <Text style={{
+                                                    fontSize: 14,
+                                                    marginTop: 6,
+                                                    fontWeight: "bold",
+                                                    textAlign: "center",
+                                                    color: colors.txtWhite
+                                                }}>Select Polity</Text>
+                                            </HomeCard>
+                                            {/* <HomeCard onPress={() => navigation.navigate("Product")}>
                                                 <Image source={require("../../assets/armies/blacksmith.png")} style={{
                                                     width: "70%",
                                                     height: "60%",
@@ -309,60 +279,60 @@ const HomeScreen = () => {
                                                 }}>Blacksmith</Text>
                                             </HomeCard> */}
 
-                                                <HomeCard onPress={() => {
-                                                    PlaySoundClick()
-                                                    navigation.navigate("War")
-                                                }}>
-                                                    <LottieView
-                                                        autoPlay
-                                                        loop
-                                                        // ref={animationRef}
-                                                        source={require("../../assets/animation/warAnimation.json")}
-                                                        style={{ width: "100%", height: "60%" }}
-                                                    />
-                                                    <Text style={{
-                                                        fontSize: 14,
-                                                        marginTop: 6,
-                                                        fontWeight: "bold",
-                                                        textAlign: "center",
-                                                        color: colors.txtWhite
-                                                    }}>War</Text>
-                                                </HomeCard>
-                                                <HomeCard onPress={() => {
-                                                    PlaySoundClick()
-                                                    navigation.navigate("Statistic")
-                                                }}>
-                                                    <Image source={require("../../assets/images/statistic1.png")} style={{
-                                                        width: "70%",
-                                                        height: "60%",
-                                                        resizeMode: "contain"
-                                                    }} />
-                                                    <Text style={{
-                                                        fontSize: 14,
-                                                        marginTop: 6,
-                                                        fontWeight: "bold",
-                                                        textAlign: "center",
-                                                        color: colors.txtWhite
-                                                    }}>Statistic</Text>
-                                                </HomeCard>
-                                                <HomeCard onPress={() => {
-                                                    PlaySoundClick()
-                                                    navigation.navigate("BuyGems")
-                                                }}>
-                                                    <Image source={require("../../assets/images/diamond.png")} style={{
-                                                        width: "70%",
-                                                        height: "60%",
-                                                        resizeMode: "contain"
-                                                    }} />
-                                                    <Text style={{
-                                                        fontSize: 14,
-                                                        marginTop: 6,
-                                                        fontWeight: "bold",
-                                                        textAlign: "center",
-                                                        color: colors.txtWhite
-                                                    }}>Buy Gems</Text>
-                                                </HomeCard>
-                                                {/* <HomeCard onPress={() => navigation.navigate("Product")}>
+                                            <HomeCard onPress={() => {
+                                                PlaySoundClick()
+                                                navigation.navigate("War")
+                                            }}>
+                                                <LottieView
+                                                    autoPlay
+                                                    loop
+                                                    // ref={animationRef}
+                                                    source={require("../../assets/animation/warAnimation.json")}
+                                                    style={{ width: "100%", height: "60%" }}
+                                                />
+                                                <Text style={{
+                                                    fontSize: 14,
+                                                    marginTop: 6,
+                                                    fontWeight: "bold",
+                                                    textAlign: "center",
+                                                    color: colors.txtWhite
+                                                }}>War</Text>
+                                            </HomeCard>
+                                            <HomeCard onPress={() => {
+                                                PlaySoundClick()
+                                                navigation.navigate("Statistic")
+                                            }}>
+                                                <Image source={require("../../assets/images/statistic1.png")} style={{
+                                                    width: "70%",
+                                                    height: "60%",
+                                                    resizeMode: "contain"
+                                                }} />
+                                                <Text style={{
+                                                    fontSize: 14,
+                                                    marginTop: 6,
+                                                    fontWeight: "bold",
+                                                    textAlign: "center",
+                                                    color: colors.txtWhite
+                                                }}>Statistic</Text>
+                                            </HomeCard>
+                                            <HomeCard onPress={() => {
+                                                PlaySoundClick()
+                                                navigation.navigate("BuyGems")
+                                            }}>
+                                                <Image source={require("../../assets/images/diamond.png")} style={{
+                                                    width: "70%",
+                                                    height: "60%",
+                                                    resizeMode: "contain"
+                                                }} />
+                                                <Text style={{
+                                                    fontSize: 14,
+                                                    marginTop: 6,
+                                                    fontWeight: "bold",
+                                                    textAlign: "center",
+                                                    color: colors.txtWhite
+                                                }}>Buy Gems</Text>
+                                            </HomeCard>
+                                            {/* <HomeCard onPress={() => navigation.navigate("Product")}>
                                                     <Image source={require("../../assets/settings.png")} style={{
                                                         width: "70%",
                                                         height: "60%",
@@ -376,44 +346,26 @@ const HomeScreen = () => {
                                                         color: colors.txtWhite
                                                     }}>Settings</Text>
                                                 </HomeCard> */}
-                                                <HomeCard onPress={() => loadFromStorage()}>
-                                                    <Image source={require("../../assets/images/loadgame.png")} style={{
-                                                        width: "70%",
-                                                        height: "60%",
-                                                        resizeMode: "contain"
-                                                    }} />
-                                                    <Text style={{
-                                                        fontSize: 14,
-                                                        marginTop: 6,
-                                                        fontWeight: "bold",
-                                                        textAlign: "center",
-                                                        color: colors.txtWhite
-                                                    }}>Load Game</Text>
-                                                </HomeCard>
-                                                <TourGuideZone zone={6} shape={'rectangle'}
-                                                    text={'Remember save your game before exit'}>
-                                                    <HomeCard onPress={() => {
-                                                        saveToStorage(data, dataBots)
-                                                    }}>
-                                                        <Image source={require("../../assets/images/savegame.png")} style={{
-                                                            width: "70%",
-                                                            height: "60%",
-                                                            resizeMode: "contain"
-                                                        }} />
-                                                        <Text style={{
-                                                            fontSize: 14,
-                                                            marginTop: 6,
-                                                            fontWeight: "bold",
-                                                            textAlign: "center",
-                                                            color: colors.txtWhite
-                                                        }}>Save Game</Text>
-                                                    </HomeCard>
-                                                </TourGuideZone>
+                                            <HomeCard onPress={() => loadFromStorage()}>
+                                                <Image source={require("../../assets/images/loadgame.png")} style={{
+                                                    width: "70%",
+                                                    height: "60%",
+                                                    resizeMode: "contain"
+                                                }} />
+                                                <Text style={{
+                                                    fontSize: 14,
+                                                    marginTop: 6,
+                                                    fontWeight: "bold",
+                                                    textAlign: "center",
+                                                    color: colors.txtWhite
+                                                }}>Load Game</Text>
+                                            </HomeCard>
+                                            <TourGuideZone zone={6} shape={'rectangle'}
+                                                text={'Remember save your game before exit'}>
                                                 <HomeCard onPress={() => {
-                                                    PlaySoundClick()
-                                                    navigation.navigate("Market")
+                                                    saveToStorage(data, dataBots)
                                                 }}>
-                                                    <Image source={require("../../assets/images/market.png")} style={{
+                                                    <Image source={require("../../assets/images/savegame.png")} style={{
                                                         width: "70%",
                                                         height: "60%",
                                                         resizeMode: "contain"
@@ -424,9 +376,27 @@ const HomeScreen = () => {
                                                         fontWeight: "bold",
                                                         textAlign: "center",
                                                         color: colors.txtWhite
-                                                    }}>Market</Text>
+                                                    }}>Save Game</Text>
                                                 </HomeCard>
-                                                {/* <TourGuideZone zone={7} shape={'rectangle'}
+                                            </TourGuideZone>
+                                            <HomeCard onPress={() => {
+                                                PlaySoundClick()
+                                                navigation.navigate("Market")
+                                            }}>
+                                                <Image source={require("../../assets/images/market.png")} style={{
+                                                    width: "70%",
+                                                    height: "60%",
+                                                    resizeMode: "contain"
+                                                }} />
+                                                <Text style={{
+                                                    fontSize: 14,
+                                                    marginTop: 6,
+                                                    fontWeight: "bold",
+                                                    textAlign: "center",
+                                                    color: colors.txtWhite
+                                                }}>Market</Text>
+                                            </HomeCard>
+                                            {/* <TourGuideZone zone={7} shape={'rectangle'}
                                                     text={'Click for Rewards'}>
                                                     <HomeCard onPress={() => ShowAdRewarded()}>
                                                         <Image source={require("../../assets/images/earn1.png")} style={{
@@ -443,33 +413,33 @@ const HomeScreen = () => {
                                                         }}>Earn 100$</Text>
                                                     </HomeCard>
                                                 </TourGuideZone> */}
-                                                <TourGuideZone zone={7} shape={'rectangle'}
-                                                    text={'Click for End Turn'}>
-                                                    <HomeCard onPress={() => {
-                                                        PlaySoundClick()
-                                                        EndTurn(data, setData, setLoading)
-                                                        BotsEndTurn(dataBots, setDataBots)
-                                                    }
-                                                    }>
-                                                        <Image source={require("../../assets/images/hourglass.png")} style={{
-                                                            width: "70%",
-                                                            height: "60%",
-                                                            resizeMode: "contain"
-                                                        }} />
-                                                        <Text style={{
-                                                            fontSize: 14,
-                                                            marginTop: 6,
-                                                            fontWeight: "bold",
-                                                            textAlign: "center",
-                                                            color: colors.txtWhite
-                                                        }}>End Turn</Text>
-                                                    </HomeCard>
-                                                </TourGuideZone>
-                                            </View>
+                                            <TourGuideZone zone={7} shape={'rectangle'}
+                                                text={'Click for End Turn'}>
+                                                <HomeCard onPress={() => {
+                                                    PlaySoundClick()
+                                                    EndTurn(data, setData, setLoading)
+                                                    BotsEndTurn(dataBots, setDataBots)
+                                                }
+                                                }>
+                                                    <Image source={require("../../assets/images/hourglass.png")} style={{
+                                                        width: "70%",
+                                                        height: "60%",
+                                                        resizeMode: "contain"
+                                                    }} />
+                                                    <Text style={{
+                                                        fontSize: 14,
+                                                        marginTop: 6,
+                                                        fontWeight: "bold",
+                                                        textAlign: "center",
+                                                        color: colors.txtWhite
+                                                    }}>End Turn</Text>
+                                                </HomeCard>
+                                            </TourGuideZone>
                                         </View>
                                     </View>
-                                </ScrollView>
-                            </View>
+                                </View>
+                            </ScrollView>
+                        </View>
             }
         </SafeAreaView >
     );
