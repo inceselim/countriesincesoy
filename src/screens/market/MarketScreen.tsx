@@ -35,22 +35,22 @@ export const MarketScreen = () => {
                 case "wood":
                     setData((prevData: any) => ({
                         ...prevData,
-                        gold: prevData.gold + 70,
-                        wood: prevData.wood - 100,
+                        gold: prevData.gold + (segment == 0 ? 70 : segment == 1 ? 700 : 7000),
+                        wood: prevData.wood - (segment == 0 ? 100 : segment == 1 ? 1000 : 10000),
                     }))
                     break;
                 case "clay":
                     setData((prevData: any) => ({
                         ...prevData,
-                        gold: prevData.gold + 70,
-                        clay: prevData.clay - 100
+                        gold: prevData.gold + (segment == 0 ? 70 : segment == 1 ? 700 : 7000),
+                        clay: prevData.clay - (segment == 0 ? 100 : segment == 1 ? 1000 : 10000)
                     }))
                     break;
                 case "iron":
                     setData((prevData: any) => ({
                         ...prevData,
-                        gold: prevData.gold + 90,
-                        iron: prevData.iron - 100
+                        gold: prevData.gold + (segment == 0 ? 70 : segment == 1 ? 700 : 7000),
+                        iron: prevData.iron - (segment == 0 ? 100 : segment == 1 ? 1000 : 10000)
                     }))
                     break;
                 default:
@@ -62,22 +62,22 @@ export const MarketScreen = () => {
                 case "wood":
                     setData((prevData: any) => ({
                         ...prevData,
-                        gold: prevData.gold - 70,
-                        wood: prevData.wood + 70,
+                        gold: prevData.gold - (segment == 0 ? 70 : segment == 1 ? 700 : 7000),
+                        wood: prevData.wood + (segment == 0 ? 70 : segment == 1 ? 700 : 7000),
                     }))
                     break;
                 case "clay":
                     setData((prevData: any) => ({
                         ...prevData,
-                        gold: prevData.gold - 70,
-                        clay: prevData.clay + 70
+                        gold: prevData.gold - (segment == 0 ? 70 : segment == 1 ? 700 : 7000),
+                        clay: prevData.clay + (segment == 0 ? 70 : segment == 1 ? 700 : 7000)
                     }))
                     break;
                 case "iron":
                     setData((prevData: any) => ({
                         ...prevData,
-                        gold: prevData.gold - 90,
-                        iron: prevData.iron + 70
+                        gold: prevData.gold - (segment == 0 ? 70 : segment == 1 ? 700 : 7000),
+                        iron: prevData.iron + (segment == 0 ? 70 : segment == 1 ? 700 : 7000)
                     }))
                     break;
                 default:
@@ -168,7 +168,7 @@ export const MarketScreen = () => {
                                     paddingVertical: 6,
                                     // opacity: disabled ? 0.52 : 1
                                 }}>
-                                <Text style={[styles.txtDarkBold]}>100🪵 - 70💰</Text>
+                                <Text style={[styles.txtDarkBold]}>{segment == 0 ? 100 : segment == 1 ? 1000 : 10000} 🪵 - {segment == 0 ? 70 : segment == 1 ? 700 : 7000} 💰</Text>
                             </Pressable>
                             <Pressable onPress={() => {
                                 PlaySoundClickLevel()
@@ -184,7 +184,7 @@ export const MarketScreen = () => {
                                     paddingVertical: 6,
                                     // opacity: disabled ? 0.52 : 1
                                 }}>
-                                <Text style={[styles.txtDarkBold]}>100🧱 - 70💰</Text>
+                                <Text style={[styles.txtDarkBold]}>{segment == 0 ? 100 : segment == 1 ? 1000 : 10000} 🧱 - {segment == 0 ? 70 : segment == 1 ? 700 : 7000} 💰</Text>
                             </Pressable>
                             <Pressable onPress={() => {
                                 PlaySoundClickLevel()
@@ -200,7 +200,7 @@ export const MarketScreen = () => {
                                     paddingVertical: 6,
                                     // opacity: disabled ? 0.52 : 1
                                 }}>
-                                <Text style={[styles.txtDarkBold]}>100🪨 - 90💰</Text>
+                                <Text style={[styles.txtDarkBold]}>{segment == 0 ? 100 : segment == 1 ? 1000 : 10000} 🪨 - {segment == 0 ? 70 : segment == 1 ? 700 : 7000} 💰</Text>
                             </Pressable>
                         </View>
 
@@ -220,7 +220,7 @@ export const MarketScreen = () => {
                                     paddingVertical: 6,
                                     // opacity: disabled ? 0.52 : 1
                                 }}>
-                                <Text style={[styles.txtDarkBold]}>{segment == 0 ? 70 : segment == 1 ? 700 : 7000} 💰  -  70 🪵</Text>
+                                <Text style={[styles.txtDarkBold]}>{segment == 0 ? 70 : segment == 1 ? 700 : 7000} 💰 -  {segment == 0 ? 70 : segment == 1 ? 700 : 7000} 🪵</Text>
                             </Pressable>
                             <Pressable onPress={() => {
                                 PlaySoundClickLevel()
@@ -236,7 +236,7 @@ export const MarketScreen = () => {
                                     paddingVertical: 6,
                                     // opacity: disabled ? 0.52 : 1
                                 }}>
-                                <Text style={[styles.txtDarkBold]}>70💰 - 70🧱</Text>
+                                <Text style={[styles.txtDarkBold]}>{segment == 0 ? 70 : segment == 1 ? 700 : 7000} 💰 - {segment == 0 ? 70 : segment == 1 ? 700 : 7000} 🧱</Text>
                             </Pressable>
                             <Pressable onPress={() => {
                                 PlaySoundClickLevel()
@@ -252,7 +252,7 @@ export const MarketScreen = () => {
                                     paddingVertical: 6,
                                     // opacity: disabled ? 0.52 : 1
                                 }}>
-                                <Text style={[styles.txtDarkBold]}>70💰 - 70🪨</Text>
+                                <Text style={[styles.txtDarkBold]}>{segment == 0 ? 70 : segment == 1 ? 700 : 7000} 💰 - {segment == 0 ? 70 : segment == 1 ? 700 : 7000} 🪨</Text>
                             </Pressable>
                         </View>
                     </View>
