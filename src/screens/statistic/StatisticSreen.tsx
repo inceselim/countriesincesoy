@@ -34,22 +34,39 @@ export const StatisticScreen = () => {
             }}>
                 <CardView>
                     {
-                        data.espionage == 1 ?
-                            <View style={{ flex: 1 }}>
-                                <Text style={[styles.txtDarkTitle, styles.txtCenter]}>Build Espionage</Text>
-                                <Text style={[styles.txtDark]}>You need to build a espionage building for data</Text>
-                                <Pressable onPress={() => navigation.navigate("Castle")}
-                                    style={{
-                                        backgroundColor: colors.kavunKoyu,
-                                        borderRadius: 8,
-                                        width: 145,
-                                        alignItems: "center",
-                                        paddingHorizontal: 12,
-                                        marginVertical: 8,
-                                        paddingVertical: 6,
-                                    }}>
-                                    <Text style={[styles.txtDarkBold]}>Go Castle</Text>
-                                </Pressable>
+                        data.espionage == 0 ?
+                            <View style={{
+                                flexDirection: "row",
+                                alignItems: "center"
+                            }}>
+                                <View>
+                                    <Image source={require("../../assets/images/espionage.png")}
+                                        style={{
+                                            height: 80,
+                                            width: 80,
+                                            resizeMode: "contain"
+                                        }} />
+                                </View>
+
+                                <View style={{
+                                    flexDirection: "column",
+                                    paddingStart: 12,
+                                }}>
+                                    <Text style={[styles.txtDarkTitle, { paddingStart: 0 }]}>Build Espionage</Text>
+                                    <Text style={[styles.txtDark]}>You need to build a espionage building for data</Text>
+                                    <Pressable onPress={() => navigation.navigate("Castle")}
+                                        style={{
+                                            backgroundColor: colors.kavunKoyu,
+                                            borderRadius: 8,
+                                            width: 145,
+                                            alignItems: "center",
+                                            paddingHorizontal: 12,
+                                            marginVertical: 12,
+                                            paddingVertical: 12,
+                                        }}>
+                                        <Text style={[styles.txtDarkBold]}>Go Castle</Text>
+                                    </Pressable>
+                                </View>
                             </View>
                             :
                             <View style={{
@@ -240,7 +257,7 @@ export const StatisticScreen = () => {
                             </View>
                     }
                 </CardView>
-            </ScrollView>
+            </ScrollView >
         </ContentView >
     );
 };

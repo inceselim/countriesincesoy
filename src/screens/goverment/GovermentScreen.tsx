@@ -466,33 +466,47 @@ const GovermentScreen = () => {
                                                 </>
                                             }
                                         </View>
-                                        {
-                                            data?.countryName == "" &&
-                                            <TouchableOpacity onPress={() => {
-                                                PlaySoundImportant()
-                                                handleCountryBonus("attack")
-                                            }}
-                                                style={{
-                                                    opacity: 1,
-                                                    height: Dimensions.get("window").width / 8,
-                                                    width: Dimensions.get("window").width / 8,
-                                                    marginHorizontal: 12,
-                                                    borderRadius: 90,
-                                                    borderWidth: 2,
-                                                    justifyContent: "center",
-                                                    alignItems: "center",
-                                                    backgroundColor: colors.kavun
-                                                }}>
-                                                <Image source={require("../../assets/images/parchmentIcon.png")}
-                                                    style={{
-                                                        height: 40,
-                                                        width: 40
-                                                    }} />
-                                                <Text style={[styles.txtCenter, styles.txtUyumlu]}>Enter Name</Text>
-                                            </TouchableOpacity>
-                                        }
                                     </View>
                                 }
+                                <CardView>
+                                    <View style={{
+                                        flexDirection: "row",
+                                        marginVertical: 6,
+                                        alignItems: "center"
+                                        // justifyContent: "center"
+                                    }}>
+                                        <Image source={require("../../assets/images/parchmentIcon.png")}
+                                            style={{
+                                                height: 80,
+                                                width: 80
+                                            }} />
+                                        <View style={{ paddingStart: 12, flex: 1 }}>
+                                            <Text style={[styles.txtDarkTitle, { paddingStart: 0 }]}>Enter Your Country Name</Text>
+                                            <Text style={[styles.txtDark, { paddingStart: 0 }]}>You can always update your name! Select a good name...</Text>
+                                            <View style={{
+                                                flexDirection: "row",
+                                                alignItems: "center",
+                                                marginVertical: 6
+                                            }}>
+                                                <View style={{
+                                                    flexDirection: "row",
+                                                    alignItems: "center",
+                                                    marginVertical: 6
+                                                }}>
+                                                    <Text style={[styles.txtDarkBold, {
+                                                        marginVertical: 6,
+                                                        marginEnd: 12
+                                                    }]}></Text>
+                                                    <ButtonSelect onPress={() => {
+                                                        PlaySoundImportant()
+                                                        setVisibleCountryName(true)
+                                                    }} text={"Enter Name"}
+                                                        disabled={(data.gold < build_costs.parliament.gold || data.wood < build_costs.parliament.wood || data.clay < build_costs.parliament.clay || data.clay < build_costs.parliament.clay || data.iron < build_costs.parliament.iron)} />
+                                                </View>
+                                            </View>
+                                        </View>
+                                    </View>
+                                </CardView>
                             </View>
                         </ScrollView>
                     </>

@@ -1,5 +1,5 @@
-import React, { Component, useContext, useState } from 'react';
-import { View, Text, Image, TouchableOpacity, Dimensions, ScrollView, Pressable, Alert } from 'react-native';
+import React, { useContext } from 'react';
+import { View, Text, Image, ScrollView, } from 'react-native';
 import { styles } from '../../styles/styles';
 import ContentView from '../../components/ContentView/ContentView';
 import { useNavigation } from '@react-navigation/native';

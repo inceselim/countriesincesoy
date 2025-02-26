@@ -12,7 +12,8 @@ const ButtonSelect = ({ onPress, text = "Select", disabled = false }: any) => {
             borderRadius: 8,
             paddingHorizontal: 24,
             paddingVertical: 3,
-            opacity: disabled ? 0.52 : 1
+            opacity: disabled ? 0.52 : 1,
+            marginHorizontal: 12,
         }}
             disabled={disabled}
             onPress={onPress}>

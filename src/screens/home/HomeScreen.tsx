@@ -315,7 +315,7 @@ const HomeScreen = () => {
                                                     color: colors.txtWhite
                                                 }}>Statistic</Text>
                                             </HomeCard>
-                                            <HomeCard onPress={() => {
+                                            {/* <HomeCard onPress={() => {
                                                 PlaySoundClick()
                                                 navigation.navigate("BuyGems")
                                             }}>
@@ -331,21 +331,8 @@ const HomeScreen = () => {
                                                     textAlign: "center",
                                                     color: colors.txtWhite
                                                 }}>Buy Gems</Text>
-                                            </HomeCard>
-                                            {/* <HomeCard onPress={() => navigation.navigate("Product")}>
-                                                    <Image source={require("../../assets/settings.png")} style={{
-                                                        width: "70%",
-                                                        height: "60%",
-                                                        resizeMode: "contain"
-                                                    }} />
-                                                    <Text style={{
-                                                        fontSize: 14,
-                                                        marginTop: 6,
-                                                        fontWeight: "bold",
-                                                        textAlign: "center",
-                                                        color: colors.txtWhite
-                                                    }}>Settings</Text>
-                                                </HomeCard> */}
+                                            </HomeCard> */}
+
                                             <HomeCard onPress={() => loadFromStorage()}>
                                                 <Image source={require("../../assets/images/loadgame.png")} style={{
                                                     width: "70%",
@@ -416,7 +403,7 @@ const HomeScreen = () => {
                                             <TourGuideZone zone={7} shape={'rectangle'}
                                                 text={'Click for End Turn'}>
                                                 <HomeCard onPress={() => {
-                                                    PlaySoundClick()
+                                                    // PlaySoundClick()
                                                     EndTurn(data, setData, setLoading)
                                                     BotsEndTurn(dataBots, setDataBots)
                                                 }
