@@ -34,7 +34,7 @@ export const StatisticScreen = () => {
             }}>
                 <CardView>
                     {
-                        data.espionage == 0 ?
+                        data.espionage == 1 ?
                             <View style={{
                                 flexDirection: "row",
                                 alignItems: "center"

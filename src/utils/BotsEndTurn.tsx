@@ -6,6 +6,7 @@ import { CalculatePopBot } from "./CalculatePopBot"
 import { BotBuildDecision } from "./BotBuildDecision"
 import { build_costs } from "../data/build_costs"
 import { calculateSoldierAmount } from "./CalculateSoldierAmount"
+import { soldier_costs } from "../data/soldier_costs"
 
 
 export const BotsEndTurn = async (dataBots: any[], setDataBots: (data: any) => void) => {
@@ -19,7 +20,31 @@ export const BotsEndTurn = async (dataBots: any[], setDataBots: (data: any) => v
             // parametre olarak gelen değerini bir artırın
             updatedBots[index] = {
                 ...updatedBots[index],
-                [tmpBuild]: (updatedBots[index][tmpBuild]) + 1
+                [tmpBuild]: (updatedBots[index][tmpBuild]) + 1,
+                gold: dataBots[index].gold - build_costs[tmpBuild].gold,
+                wood: dataBots[index].wood - build_costs[tmpBuild].wood,
+                clay: dataBots[index].clay - build_costs[tmpBuild].clay,
+                iron: dataBots[index].iron - build_costs[tmpBuild].iron,
+            };
+            return updatedBots;
+        });
+    }
+    const updateBotTroops = (index: number, troop: string) => {
+        let tmpTroop = troop
+        console.log("Asker Basıldı: ", troop)
+        setDataBots((prevDataBots: any[]) => {
+            // Yeni bir array oluşturun
+            const updatedBots: any[] = [...prevDataBots];
+            // Verilen indexteki bot ile işlem yap
+            // parametre olarak gelen değerini bir artırın
+            updatedBots[index] = {
+                ...updatedBots[index],
+                [tmpTroop]: (updatedBots[index][tmpTroop]) + 1,
+                gold: dataBots[index].gold - soldier_costs.spearman.gold,
+                wood: dataBots[index].wood - soldier_costs.spearman.wood,
+                clay: dataBots[index].clay - soldier_costs.spearman.clay,
+                iron: dataBots[index].iron - soldier_costs.spearman.iron,
+                population: dataBots[index].population - soldier_costs.spearman.population
             };
             return updatedBots;
         });
@@ -167,38 +192,72 @@ export const BotsEndTurn = async (dataBots: any[], setDataBots: (data: any) => v
                     build_costs.tower.clay <= dataBots[index].clay &&
                     build_costs.tower.iron <= dataBots[index].iron
                 ) {
-                    updateBotBuild(index, "trade_center")
+                    updateBotBuild(index, "tower")
                 }
             }
         }
-        // if (kararlar?.troops?.length > 0) {
-        //     if (kararlar?.buildings?.includes("tower")) {
-        //         if (build_costs.tower.gold <= dataBots[index].gold &&
-        //             build_costs.tower.wood <= dataBots[index].wood &&
-        //             build_costs.tower.clay <= dataBots[index].clay &&
-        //             build_costs.tower.iron <= dataBots[index].iron
-        //         ) {
-        //             setDataBots((prevdataBots: any) => {
-        //                 // Önce botların eski halini al
-        //                 const updatedBots = [...prevdataBots];
-        //                 // index'teki botu güncelle
-        //                 updatedBots[index] = {
-        //                     ...updatedBots[index],
-        //                     tower: updatedBots[index].tower + 1,
-        //                     gold: Math.round(updatedBots[index].gold - build_costs.tower.gold),
-        //                     wood: Math.round(updatedBots[index].wood - build_costs.tower.wood),
-        //                     clay: Math.round(updatedBots[index].clay - build_costs.tower.clay),
-        //                     iron: Math.round(updatedBots[index].iron - build_costs.tower.iron),
-        //                 };
-        //                 // Güncellenmiş botları geri döndür
-        //                 return {
-        //                     ...prevdataBots,
-        //                     bots: updatedBots,
-        //                 };
-        //             });
-        //         }
-        //     }
-        // }
+        if (kararlar?.troops?.length > 0) {
+            if (kararlar?.troops?.includes("spearman")) {
+                if (soldier_costs.spearman.gold <= dataBots[index].gold &&
+                    soldier_costs.spearman.wood <= dataBots[index].wood &&
+                    soldier_costs.spearman.clay <= dataBots[index].clay &&
+                    soldier_costs.spearman.iron <= dataBots[index].iron &&
+                    soldier_costs.spearman.population <= dataBots[index].population
+                ) {
+                    updateBotTroops(index, "spearman")
+                }
+            }
+            if (kararlar?.troops?.includes("bowman")) {
+                if (soldier_costs.bowman.gold <= dataBots[index].gold &&
+                    soldier_costs.bowman.wood <= dataBots[index].wood &&
+                    soldier_costs.bowman.clay <= dataBots[index].clay &&
+                    soldier_costs.bowman.iron <= dataBots[index].iron &&
+                    soldier_costs.bowman.population <= dataBots[index].population
+                ) {
+                    updateBotTroops(index, "bowman")
+                }
+            }
+            if (kararlar?.troops?.includes("swordman")) {
+                if (soldier_costs.swordman.gold <= dataBots[index].gold &&
+                    soldier_costs.swordman.wood <= dataBots[index].wood &&
+                    soldier_costs.swordman.clay <= dataBots[index].clay &&
+                    soldier_costs.swordman.iron <= dataBots[index].iron &&
+                    soldier_costs.swordman.population <= dataBots[index].population
+                ) {
+                    updateBotTroops(index, "swordman")
+                }
+            }
+            if (kararlar?.troops?.includes("axeman")) {
+                if (soldier_costs.axeman.gold <= dataBots[index].gold &&
+                    soldier_costs.axeman.wood <= dataBots[index].wood &&
+                    soldier_costs.axeman.clay <= dataBots[index].clay &&
+                    soldier_costs.axeman.iron <= dataBots[index].iron &&
+                    soldier_costs.axeman.population <= dataBots[index].population
+                ) {
+                    updateBotTroops(index, "axeman")
+                }
+            }
+            if (kararlar?.troops?.includes("knight")) {
+                if (soldier_costs.knight.gold <= dataBots[index].gold &&
+                    soldier_costs.knight.wood <= dataBots[index].wood &&
+                    soldier_costs.knight.clay <= dataBots[index].clay &&
+                    soldier_costs.knight.iron <= dataBots[index].iron &&
+                    soldier_costs.knight.population <= dataBots[index].population
+                ) {
+                    updateBotTroops(index, "knight")
+                }
+            }
+            if (kararlar?.troops?.includes("catapult")) {
+                if (soldier_costs.knight.gold <= dataBots[index].gold &&
+                    soldier_costs.knight.wood <= dataBots[index].wood &&
+                    soldier_costs.knight.clay <= dataBots[index].clay &&
+                    soldier_costs.knight.iron <= dataBots[index].iron &&
+                    soldier_costs.knight.population <= dataBots[index].population
+                ) {
+                    updateBotTroops(index, "catapult")
+                }
+            }
+        }
 
 
 

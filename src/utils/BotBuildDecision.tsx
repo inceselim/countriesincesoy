@@ -75,11 +75,11 @@ export const BotBuildDecision = (data: any, index: number) => {
 
 
     // data.bots[index].gold >= 300 && data.bots[index].wood >= 100 && data.bots[index].clay >= 100 && data.bots[index].iron >= 100
-    if (data.gold >= 300 && data.clay >= 10) {
+    if (data.gold >= 300 && data.clay >= 100) {
         // if (data.bots[index].gold >= 300 && data.bots[index].wood >= 100) {
         recruitments.push('spearman');
     }
-    if (data.gold >= 300 && incomeClay >= 10) {
+    if (data.gold >= 300 && incomeClay >= 100) {
         recruitments.push('bowman');
     }
     if (data.gold >= 300 && incomeIron >= 100) {
@@ -88,10 +88,10 @@ export const BotBuildDecision = (data: any, index: number) => {
     if (data.gold >= 300 && data.wood >= 100 && data.spearman >= data.axeman) {
         recruitments.push('axeman');
     }
-    if (data.gold >= 300 && data.iron >= 100) {
+    if ((data.gold >= 1000 && data.iron >= 100) && (data.spearman - 20 > data.knight)) {
         recruitments.push('knight');
     }
-    if (incomeWood >= 50 && incomeClay >= 100) {
+    if (((data.spearman - 10) + (data.bowman - 5) + (data.knight - 10)) > data.catapult && incomeClay >= 100) {
         recruitments.push('catapult');
     }
     return {

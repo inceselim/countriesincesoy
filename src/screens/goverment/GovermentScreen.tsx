@@ -500,8 +500,7 @@ const GovermentScreen = () => {
                                                     <ButtonSelect onPress={() => {
                                                         PlaySoundImportant()
                                                         setVisibleCountryName(true)
-                                                    }} text={"Enter Name"}
-                                                        disabled={(data.gold < build_costs.parliament.gold || data.wood < build_costs.parliament.wood || data.clay < build_costs.parliament.clay || data.clay < build_costs.parliament.clay || data.iron < build_costs.parliament.iron)} />
+                                                    }} text={"Enter Name"} />
                                                 </View>
                                             </View>
                                         </View>

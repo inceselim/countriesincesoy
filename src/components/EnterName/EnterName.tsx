@@ -10,8 +10,7 @@ export const EnterName = (props: any) => {
     // export const EnterName = (data: any, setData: (data: any) => void, visible: any) => {
     let { data, setData } = useContext(DataContext)
     const [newCountryName, setNewCountryName] = useState("")
-    useEffect(() => {
-    }, [data])
+
     const handleUpdate = () => {
         setData((prevData: any) => ({
             ...prevData,
