@@ -1,0 +1,25 @@
+import React, { Component, useEffect, useState } from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from '@react-navigation/native';
+import HomeScreen from '../screens/home/HomeScreen';
+import GovermentScreen from '../screens/goverment/GovermentScreen';
+import ArmyScreen from '../screens/army/ArmyScreen';
+import CastleScreen from '../screens/castle/CastleScreen';
+import ProductScreen from '../screens/product/ProductScreen';
+
+const Stack = createNativeStackNavigator()
+const AppNavigator = () => {
+    return (
+        <NavigationContainer>
+            <Stack.Navigator screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="Home" component={HomeScreen} />
+                <Stack.Screen name="Goverment" component={GovermentScreen} />
+                <Stack.Screen name="Army" component={ArmyScreen} />
+                <Stack.Screen name="Castle" component={CastleScreen} />
+                <Stack.Screen name="Product" component={ProductScreen} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    )
+};
+
+export default AppNavigator;

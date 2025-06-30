@@ -5,15 +5,10 @@ import { DataContext } from '../../context/DataContext';
 import { colors } from '../../styles/colors';
 import { styles } from '../../styles/styles';
 import ButtonSelect from '../ButtonSelect/ButtonSelect';
-import { polities } from '../../data/polity_bonuses';
-import ButtonClose from '../ButtonClose/ButtonClose';
-import { PlaySoundGecis } from '../../utils/PlaySoundGecis';
-import { useTranslation } from 'react-i18next';
+// import { PlaySoundGecis } from '../../utils/PlaySoundGecis';
 
-// create a component
 export const SelectPolity = ({ value, setValue }: any) => {
     let { data, setData } = useContext(DataContext)
-    const { t } = useTranslation();
     // Polities
     //Monarchy,Aristocracy,Theocracy,Dictator,Democracy
     const [selectedPolity, setSelectedPolity] = useState(data?.polity == "" ? "" : data.polity)
@@ -41,7 +36,7 @@ export const SelectPolity = ({ value, setValue }: any) => {
                     paddingVertical: 6
                 }}>
                     <Text style={[styles.txtDarkTitle, styles.txtCenter]}>
-                        {t("Selected Polity")}: {selectedPolity == "Monarchy" ? "Monarchy" :
+                        Selected Polity: {selectedPolity == "Monarchy" ? "Monarchy" :
                             selectedPolity == "Aristocracy" ? "Aristocracy"
                                 : selectedPolity == "Theocracy" ? "Theocracy"
                                     : selectedPolity == "Dictator" ? "Dictator"
@@ -49,7 +44,7 @@ export const SelectPolity = ({ value, setValue }: any) => {
                                             ""}</Text>
                     <TouchableOpacity
                         onPress={() => {
-                            PlaySoundGecis()
+                            // PlaySoundGecis()
                             setTimeout(() => {
                                 setValue(false)
                             }, 0.2 * 1000);
@@ -65,7 +60,7 @@ export const SelectPolity = ({ value, setValue }: any) => {
                     <View style={{
                         flexDirection: "column",
                         marginVertical: 6,
-                        marginHorizontal: 12,
+                        marginHorizontal: 6,
                         alignItems: "center",
                     }}>
                         <TouchableOpacity onPress={() => setSelectedPolity("Monarchy")}
@@ -84,7 +79,7 @@ export const SelectPolity = ({ value, setValue }: any) => {
                             <View style={{
                                 marginHorizontal: 12,
                                 paddingHorizontal: 12,
-                                paddingVertical: 12,
+                                paddingVertical: 6,
                                 justifyContent: "center",
                             }}>
                                 <Image source={require("../../assets/images/crown.png")}
@@ -97,8 +92,8 @@ export const SelectPolity = ({ value, setValue }: any) => {
                                 <Text style={[styles.txtUyumlu]}>Monarchy</Text>
                             </View>
                             <View style={{
-                                marginHorizontal: 12,
-                                paddingVertical: 12,
+                                marginHorizontal: 6,
+                                paddingVertical: 6,
                                 justifyContent: "center",
                             }}>
                                 <Text style={[styles.txtDarkBold]}>Election: 40 Turn</Text>
@@ -107,7 +102,7 @@ export const SelectPolity = ({ value, setValue }: any) => {
                                     justifyContent: "space-between"
                                 }}>
                                     <View style={{
-                                        marginEnd: 12
+                                        marginEnd: 6
                                     }}>
                                         <Text style={[styles.txtDarkBold]}>Positive</Text>
                                         <Text style={[styles.txtUyumlu]}>%20 Attack</Text>
@@ -120,7 +115,7 @@ export const SelectPolity = ({ value, setValue }: any) => {
                                         <Text style={[styles.txtUyumlu]}>-%20 Population</Text>
                                     </View>
                                     <View style={{
-                                        marginStart: 12,
+                                        marginStart: 2,
                                     }}>
                                         {
                                             selectedPolity == "Monarchy" &&

@@ -1,6 +1,5 @@
 import React, { createContext, useState, useEffect, ReactNode, useCallback } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import YoutubePlayer from "react-native-youtube-iframe";
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 import { build_income } from '../data/build_income';
 import { ArmyMaintenanceGold, ArmyMaintenanceWood, ArmyMaintenanceClay, ArmyMaintenanceIron } from '../utils/ArmyMaintenance';
 import { BuildMaintenanceGold, BuildMaintenanceWood, BuildMaintenanceClay, BuildMaintenanceIron } from '../utils/BuildMaintenance';

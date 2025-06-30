@@ -1,40 +1,23 @@
-//import liraries
-import React, { Component, useContext, useEffect, useState } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, Pressable, TouchableOpacity, Image, Dimensions, ScrollView, Platform, Alert } from 'react-native';
-import { styles } from '../../styles/styles';
-import { useNavigation } from '@react-navigation/native';
-import {
-    TourGuideProvider, // Main provider
-    TourGuideZone, // Main wrapper of highlight component
-    TourGuideZoneByPosition, // Component to use mask on overlay (ie, position absolute)
-    useTourGuideController, // hook to start, etc.
-} from 'rn-tourguide'
-import { useTranslation } from 'react-i18next';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { HeaderMenu } from '../../components/HeaderMenu/HeaderMenu';
-import { HomeCard } from '../../components/HomeCard/HomeCard';
+import { View, Text, SafeAreaView, Image, ScrollView } from 'react-native'
+import React, { useContext, useState } from 'react'
+import { HomeCard } from '../../components/HomeCard/HomeCard'
+import { useNavigation } from '@react-navigation/native'
 import { colors } from '../../styles/colors';
-import { DataContext } from '../../context/DataContext';
-import { EndTurn } from '../../utils/EndTurn';
-import { EnterName } from '../../components/EnterName/EnterName';
-import { SelectPolity } from '../../components/SelectPolity/SelectPolity';
+import { styles } from '../../styles/styles';
 import LoadingScreen from '../loading/LoadingScreen';
-import LottieView from 'lottie-react-native';
-import { BotsEndTurn } from '../../utils/BotsEndTurn';
+import { SelectPolity } from '../../components/SelectPolity/SelectPolity';
 import { PlaySoundClick } from '../../utils/PlaySoundClick';
-import { PlaySoundImportant } from '../../utils/PlaySoundImportant';
+import { HeaderMenu } from '../../components/HeaderMenu/HeaderMenu';
+import { TourGuideZone, useTourGuideController } from 'rn-tourguide';
+import { DataContext } from '../../context/DataContext';
+import LottieView from 'lottie-react-native';
 
-
-const adUnitId = Platform.OS === "ios" ?
-    "ca-app-pub-1017432203303316/9452089505" :
-    "ca-app-pub-1017432203303316/9289906584"
-
-const HomeScreen = () => {
-    const { t } = useTranslation();
-    const iconProps = { size: 40, color: '#888' }
-    let { data, setData, dataBots, setDataBots, loadFromStorage, saveToStorage } = useContext(DataContext)
-    const [isVisiblePolity, setVisiblePolity] = useState(false)
+export default function HomeScreen() {
+    const navigation: any = useNavigation();
     const [loading, setLoading] = useState(false)
+    const [isVisiblePolity, setVisiblePolity] = useState(false)
+    let { data, setData, dataBots, setDataBots, loadFromStorage, saveToStorage } = useContext(DataContext)
+
     const {
         canStart, // a boolean indicate if you can start tour guide
         start, // a function to start the tourguide
@@ -57,6 +40,10 @@ const HomeScreen = () => {
     const handleOnStepChange = () => console.log(`stepChange`)
 
     React.useEffect(() => {
+        if (!eventEmitter) {
+            console.warn('eventEmitter is undefined!')
+            return
+        }
         eventEmitter.on('start', handleOnStart)
         eventEmitter.on('stop', handleOnStop)
         eventEmitter.on('stepChange', handleOnStepChange)
@@ -67,41 +54,6 @@ const HomeScreen = () => {
             eventEmitter.off('stepChange', handleOnStepChange)
         }
     }, [])
-    const navigation: any = useNavigation();
-    const [election, setElection] = useState(0)
-    useEffect(() => {
-        const turnChange = () => {
-            setElection(election + 1)
-            console.log(election)
-        }
-        turnChange()
-        if (data.polity == "Monarchy") {
-            if (election >= 40) {
-                setElection(0)
-                console.log("KING CHANGED")
-            }
-        }
-        if (data.polity == "Aristocracy") {
-            if (election >= 20) {
-                setElection(0)
-                console.log("Aristocracy CHANGED")
-            }
-        }
-        if (data.polity == "Theocracy") {
-            if (election >= 10) {
-                setElection(0)
-                console.log("Theocracy CHANGED")
-                Alert.alert("Election Made")
-            }
-        }
-        if (data.polity == "Democracy") {
-            if (election >= 5) {
-                setElection(0)
-                console.log("Democracy CHANGED")
-            }
-        }
-    }, [data.turn])
-
     return (
         <SafeAreaView style={styles.container}>
             {
@@ -138,7 +90,7 @@ const HomeScreen = () => {
                                             <TourGuideZone zone={2} shape={'rectangle'}
                                                 text={'Goverment Focus'}>
                                                 <HomeCard onPress={() => {
-                                                    PlaySoundClick()
+                                                    //PlaySoundClick()
                                                     navigation.navigate("Goverment")
                                                 }}>
                                                     {/* <Image source={require("../../assets/capitol.png")} style={{
@@ -165,7 +117,7 @@ const HomeScreen = () => {
                                             <TourGuideZone zone={3} shape={'rectangle'}
                                                 text={'Create your own army'}>
                                                 <HomeCard onPress={() => {
-                                                    PlaySoundClick()
+                                                    //PlaySoundClick()
                                                     navigation.navigate("Army")
                                                 }}>
                                                     {/* <Image source={require("../../assets/army.png")} style={{
@@ -192,7 +144,7 @@ const HomeScreen = () => {
                                             <TourGuideZone zone={4} shape={'rectangle'}
                                                 text={'Improve Your Castle'}>
                                                 <HomeCard onPress={() => {
-                                                    PlaySoundClick()
+                                                    //PlaySoundClick()
                                                     navigation.navigate("Castle")
                                                 }}>
                                                     <Image source={require("../../assets/images/castle.png")} style={{
@@ -212,7 +164,7 @@ const HomeScreen = () => {
                                             <TourGuideZone zone={5} shape={'rectangle'}
                                                 text={'Increase your income'}>
                                                 <HomeCard onPress={() => {
-                                                    PlaySoundClick()
+                                                    //PlaySoundClick()
                                                     navigation.navigate("Product")
                                                 }}>
                                                     <Image source={require("../../assets/images/factory.png")} style={{
@@ -230,23 +182,6 @@ const HomeScreen = () => {
                                                 </HomeCard>
                                             </TourGuideZone>
 
-                                            {/* <HomeCard onPress={() => {
-                                                    PlaySoundClick()
-                                                    navigation.navigate("Finance")
-                                                }}>
-                                                    <Image source={require("../../assets/images/finance1.png")} style={{
-                                                        width: "70%",
-                                                        height: "60%",
-                                                        resizeMode: "contain"
-                                                    }} />
-                                                    <Text style={{
-                                                        fontSize: 14,
-                                                        marginTop: 6,
-                                                        fontWeight: "bold",
-                                                        textAlign: "center",
-                                                        color: colors.txtWhite
-                                                    }}>Finance</Text>
-                                                </HomeCard> */}
                                             <HomeCard onPress={() => {
                                                 //PlaySoundImportant()
                                                 setVisiblePolity(true)
@@ -280,7 +215,7 @@ const HomeScreen = () => {
                                             </HomeCard> */}
 
                                             <HomeCard onPress={() => {
-                                                PlaySoundClick()
+                                                //PlaySoundClick()
                                                 navigation.navigate("War")
                                             }}>
                                                 <LottieView
@@ -299,7 +234,7 @@ const HomeScreen = () => {
                                                 }}>War</Text>
                                             </HomeCard>
                                             <HomeCard onPress={() => {
-                                                PlaySoundClick()
+                                                //PlaySoundClick()
                                                 navigation.navigate("Statistic")
                                             }}>
                                                 <Image source={require("../../assets/images/statistic1.png")} style={{
@@ -316,7 +251,7 @@ const HomeScreen = () => {
                                                 }}>Statistic</Text>
                                             </HomeCard>
                                             {/* <HomeCard onPress={() => {
-                                                PlaySoundClick()
+                                                //PlaySoundClick()
                                                 navigation.navigate("BuyGems")
                                             }}>
                                                 <Image source={require("../../assets/images/diamond.png")} style={{
@@ -367,7 +302,7 @@ const HomeScreen = () => {
                                                 </HomeCard>
                                             </TourGuideZone>
                                             <HomeCard onPress={() => {
-                                                PlaySoundClick()
+                                                //PlaySoundClick()
                                                 navigation.navigate("Market")
                                             }}>
                                                 <Image source={require("../../assets/images/market.png")} style={{
@@ -403,7 +338,7 @@ const HomeScreen = () => {
                                             <TourGuideZone zone={7} shape={'rectangle'}
                                                 text={'Click for End Turn'}>
                                                 <HomeCard onPress={() => {
-                                                    // PlaySoundClick()
+                                                    // //PlaySoundClick()
                                                     EndTurn(data, setData, setLoading)
                                                     BotsEndTurn(dataBots, setDataBots)
                                                 }
@@ -429,28 +364,5 @@ const HomeScreen = () => {
                         </View>
             }
         </SafeAreaView >
-    );
-};
-export default HomeScreen;
-
-const style = StyleSheet.create({
-    bottomBtn: {
-        height: Dimensions.get("window").height / 5 - 10,
-        width: 80,
-        justifyContent: "center",
-        alignItems: "center",
-        marginHorizontal: 12,
-    },
-    bottomBtnImg: {
-        height: "60%",
-        width: "60%",
-        marginBottom: 6,
-        resizeMode: "contain"
-    },
-    bottomBtnTxt: {
-        fontSize: 14,
-        fontWeight: "bold",
-        color: colors.white,
-        textAlign: "center"
-    }
-})
+    )
+}

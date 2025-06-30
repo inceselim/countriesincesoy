@@ -10,10 +10,8 @@ const ButtonClose = () => {
     return (
         <TouchableOpacity
             onPress={() => {
-                PlaySoundGecis()
-                setTimeout(() => {
-                    navigation.goBack()
-                }, 0.2 * 1000);
+                // PlaySoundGecis()
+                navigation.goBack()
             }}>
             <Image source={require("../../assets/images/close128.png")}
                 style={{

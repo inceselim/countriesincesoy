@@ -45,7 +45,7 @@ const ArmyScreen = () => {
                             marginVertical: 6
                         }}>
                             <View>
-                                <Text style={[styles.txtDark, { marginTop: 6 }]}>Price: 100</Text>
+                                <Text style={[styles.txtDark, { marginTop: 6 }]}>100</Text>
                                 <Text style={[styles.txtDark, { marginTop: 6 }]}>Maintenance: 10</Text>
                                 <Text style={[styles.txtDark, { marginTop: 6 }]}>Capacity per level: 50</Text>
                             </View>
@@ -96,14 +96,14 @@ const ArmyScreen = () => {
                                 flexDirection: "row",
                                 alignItems: "center"
                             }}>
-                                <Text style={styles.txtDark}>Attack: {soldier_power.spearman.attack}</Text>
-                                <Text style={styles.txtDark}>Defence: {soldier_power.spearman.defence}</Text>
+                                <Text style={styles.txtDark}>⚔️ {soldier_power.spearman.attack}</Text>
+                                <Text style={styles.txtDark}>🛡️ {soldier_power.spearman.defence}</Text>
                             </View>
                             <View style={{
                                 flexDirection: "row",
                                 alignItems: "center"
                             }}>
-                                <Text style={styles.txtDark}>Price: {soldier_costs.spearman.gold > 0 && soldier_costs.spearman.gold + "💰"} {soldier_costs.spearman.wood > 0 && soldier_costs.spearman.wood + "🪵"} {soldier_costs.spearman.clay > 0 && soldier_costs.spearman.clay + "🧱"} {soldier_costs.spearman.iron > 0 && soldier_costs.spearman.iron + "🪨"} {soldier_costs.spearman.population > 0 && soldier_costs.spearman.population + "🫂"}</Text>
+                                <Text style={styles.txtDark}>{soldier_costs.spearman.gold > 0 && soldier_costs.spearman.gold + "💰"} {soldier_costs.spearman.wood > 0 && soldier_costs.spearman.wood + "🪵"} {soldier_costs.spearman.clay > 0 && soldier_costs.spearman.clay + "🧱"} {soldier_costs.spearman.iron > 0 && soldier_costs.spearman.iron + "🪨"} {soldier_costs.spearman.population > 0 && soldier_costs.spearman.population + "🫂"}</Text>
                             </View>
                             <View style={{
                                 flexDirection: "row",
@@ -154,14 +154,14 @@ const ArmyScreen = () => {
                                 flexDirection: "row",
                                 alignItems: "center"
                             }}>
-                                <Text style={styles.txtDark}>Attack: {soldier_power.bowman.attack}</Text>
-                                <Text style={styles.txtDark}>Defence: {soldier_power.bowman.defence}</Text>
+                                <Text style={styles.txtDark}>⚔️ {soldier_power.bowman.attack}</Text>
+                                <Text style={styles.txtDark}>🛡️ {soldier_power.bowman.defence}</Text>
                             </View>
                             <View style={{
                                 flexDirection: "row",
                                 alignItems: "center"
                             }}>
-                                <Text style={styles.txtDark}>Price: {soldier_costs.bowman.gold > 0 && soldier_costs.bowman.gold + "💰"} {soldier_costs.bowman.wood > 0 && soldier_costs.bowman.wood + "🪵"} {soldier_costs.bowman.clay > 0 && soldier_costs.bowman.clay + "🧱"} {soldier_costs.bowman.iron > 0 && soldier_costs.bowman.iron + "🪨"} {soldier_costs.bowman.population > 0 && soldier_costs.bowman.population + "🫂"}</Text>
+                                <Text style={styles.txtDark}>{soldier_costs.bowman.gold > 0 && soldier_costs.bowman.gold + "💰"} {soldier_costs.bowman.wood > 0 && soldier_costs.bowman.wood + "🪵"} {soldier_costs.bowman.clay > 0 && soldier_costs.bowman.clay + "🧱"} {soldier_costs.bowman.iron > 0 && soldier_costs.bowman.iron + "🪨"} {soldier_costs.bowman.population > 0 && soldier_costs.bowman.population + "🫂"}</Text>
                             </View>
                             <View style={{
                                 flexDirection: "row",
@@ -213,14 +213,14 @@ const ArmyScreen = () => {
                                 flexDirection: "row",
                                 alignItems: "center"
                             }}>
-                                <Text style={styles.txtDark}>Attack: {soldier_power.swordman.attack}</Text>
-                                <Text style={styles.txtDark}>Defence: {soldier_power.swordman.defence}</Text>
+                                <Text style={styles.txtDark}>⚔️ {soldier_power.swordman.attack}</Text>
+                                <Text style={styles.txtDark}>🛡️ {soldier_power.swordman.defence}</Text>
                             </View>
                             <View style={{
                                 flexDirection: "row",
                                 alignItems: "center"
                             }}>
-                                <Text style={styles.txtDark}>Price: {soldier_costs.swordman.gold > 0 && soldier_costs.swordman.gold + "💰"} {soldier_costs.swordman.wood > 0 && soldier_costs.swordman.wood + "🪵"} {soldier_costs.swordman.clay > 0 && soldier_costs.swordman.clay + "🧱"} {soldier_costs.swordman.iron > 0 && soldier_costs.swordman.iron + "🪨"} {soldier_costs.swordman.population > 0 && soldier_costs.swordman.population + "🫂"}</Text>
+                                <Text style={styles.txtDark}>{soldier_costs.swordman.gold > 0 && soldier_costs.swordman.gold + "💰"} {soldier_costs.swordman.wood > 0 && soldier_costs.swordman.wood + "🪵"} {soldier_costs.swordman.clay > 0 && soldier_costs.swordman.clay + "🧱"} {soldier_costs.swordman.iron > 0 && soldier_costs.swordman.iron + "🪨"} {soldier_costs.swordman.population > 0 && soldier_costs.swordman.population + "🫂"}</Text>
                             </View>
                             <View style={{
                                 flexDirection: "row",
@@ -272,14 +272,14 @@ const ArmyScreen = () => {
                                 flexDirection: "row",
                                 alignItems: "center"
                             }}>
-                                <Text style={styles.txtDark}>Attack: {soldier_power.axeman.attack}</Text>
-                                <Text style={styles.txtDark}>Defence: {soldier_power.axeman.defence}</Text>
+                                <Text style={styles.txtDark}>⚔️ {soldier_power.axeman.attack}</Text>
+                                <Text style={styles.txtDark}>🛡️ {soldier_power.axeman.defence}</Text>
                             </View>
                             <View style={{
                                 flexDirection: "row",
                                 alignItems: "center"
                             }}>
-                                <Text style={styles.txtDark}>Price: {soldier_costs.axeman.gold > 0 && soldier_costs.axeman.gold + "💰"} {soldier_costs.axeman.wood > 0 && soldier_costs.axeman.wood + "🪵"} {soldier_costs.axeman.clay > 0 && soldier_costs.axeman.clay + "🧱"} {soldier_costs.axeman.iron > 0 && soldier_costs.axeman.iron + "🪨"} {soldier_costs.axeman.population > 0 && soldier_costs.axeman.population + "🫂"}</Text>
+                                <Text style={styles.txtDark}>{soldier_costs.axeman.gold > 0 && soldier_costs.axeman.gold + "💰"} {soldier_costs.axeman.wood > 0 && soldier_costs.axeman.wood + "🪵"} {soldier_costs.axeman.clay > 0 && soldier_costs.axeman.clay + "🧱"} {soldier_costs.axeman.iron > 0 && soldier_costs.axeman.iron + "🪨"} {soldier_costs.axeman.population > 0 && soldier_costs.axeman.population + "🫂"}</Text>
                             </View>
                             <View style={{
                                 flexDirection: "row",
@@ -331,14 +331,14 @@ const ArmyScreen = () => {
                                 flexDirection: "row",
                                 alignItems: "center"
                             }}>
-                                <Text style={styles.txtDark}>Attack: {soldier_power.knight.attack}</Text>
-                                <Text style={styles.txtDark}>Defence: {soldier_power.knight.defence}</Text>
+                                <Text style={styles.txtDark}>⚔️ {soldier_power.knight.attack}</Text>
+                                <Text style={styles.txtDark}>🛡️ {soldier_power.knight.defence}</Text>
                             </View>
                             <View style={{
                                 flexDirection: "row",
                                 alignItems: "center"
                             }}>
-                                <Text style={styles.txtDark}>Price: {soldier_costs.knight.gold > 0 && soldier_costs.knight.gold + "💰"} {soldier_costs.knight.wood > 0 && soldier_costs.knight.wood + "🪵"} {soldier_costs.knight.clay > 0 && soldier_costs.knight.clay + "🧱"} {soldier_costs.knight.iron > 0 && soldier_costs.knight.iron + "🪨"} {soldier_costs.knight.population > 0 && soldier_costs.knight.population + "🫂"}</Text>
+                                <Text style={styles.txtDark}>{soldier_costs.knight.gold > 0 && soldier_costs.knight.gold + "💰"} {soldier_costs.knight.wood > 0 && soldier_costs.knight.wood + "🪵"} {soldier_costs.knight.clay > 0 && soldier_costs.knight.clay + "🧱"} {soldier_costs.knight.iron > 0 && soldier_costs.knight.iron + "🪨"} {soldier_costs.knight.population > 0 && soldier_costs.knight.population + "🫂"}</Text>
                             </View>
                             <View style={{
                                 flexDirection: "row",
@@ -390,14 +390,14 @@ const ArmyScreen = () => {
                                 flexDirection: "row",
                                 alignItems: "center"
                             }}>
-                                <Text style={styles.txtDark}>Attack: {soldier_power.catapult.attack}</Text>
-                                <Text style={styles.txtDark}>Defence: {soldier_power.catapult.defence}</Text>
+                                <Text style={styles.txtDark}>⚔️ {soldier_power.catapult.attack}</Text>
+                                <Text style={styles.txtDark}>🛡️ {soldier_power.catapult.defence}</Text>
                             </View>
                             <View style={{
                                 flexDirection: "row",
                                 alignItems: "center"
                             }}>
-                                <Text style={styles.txtDark}>Price: {soldier_costs.catapult.gold > 0 && soldier_costs.catapult.gold + "💰"} {soldier_costs.catapult.wood > 0 && soldier_costs.catapult.wood + "🪵"} {soldier_costs.catapult.clay > 0 && soldier_costs.catapult.clay + "🧱"} {soldier_costs.catapult.iron > 0 && soldier_costs.catapult.iron + "🪨"} {soldier_costs.catapult.population > 0 && soldier_costs.catapult.population + "🫂"}</Text>
+                                <Text style={styles.txtDark}>{soldier_costs.catapult.gold > 0 && soldier_costs.catapult.gold + "💰"} {soldier_costs.catapult.wood > 0 && soldier_costs.catapult.wood + "🪵"} {soldier_costs.catapult.clay > 0 && soldier_costs.catapult.clay + "🧱"} {soldier_costs.catapult.iron > 0 && soldier_costs.catapult.iron + "🪨"} {soldier_costs.catapult.population > 0 && soldier_costs.catapult.population + "🫂"}</Text>
                             </View>
                             <View style={{
                                 flexDirection: "row",
