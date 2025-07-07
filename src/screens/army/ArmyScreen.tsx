@@ -163,6 +163,7 @@ const ArmyScreen = () => {
                             }}>
                                 <Text style={styles.txtDark}>{soldier_costs.bowman.gold > 0 && soldier_costs.bowman.gold + "💰"} {soldier_costs.bowman.wood > 0 && soldier_costs.bowman.wood + "🪵"} {soldier_costs.bowman.clay > 0 && soldier_costs.bowman.clay + "🧱"} {soldier_costs.bowman.iron > 0 && soldier_costs.bowman.iron + "🪨"} {soldier_costs.bowman.population > 0 && soldier_costs.bowman.population + "🫂"}</Text>
                             </View>
+                            <Text />
                             <View style={{
                                 flexDirection: "row",
                                 alignItems: "center"
@@ -176,7 +177,6 @@ const ArmyScreen = () => {
                                 <Text style={styles.txtDark}>{soldier_maintenance.bowman.gold} Gold</Text>
                                 <Text style={styles.txtDark}>{soldier_maintenance.bowman.wood} Wood</Text>
                                 <Text style={styles.txtDark}>{soldier_maintenance.bowman.iron} Iron</Text>
-                                <Text style={styles.txtDark}>{soldier_maintenance.bowman.pop} Pop</Text>
                             </View>
                             <View style={{
                                 flexDirection: "row",

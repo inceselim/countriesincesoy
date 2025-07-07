@@ -16,6 +16,7 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
     const defaultData: any = {
         turn: 1,
         language: "en",
+        isAlive: true,
         isTutorial: true,
         news: [],
         canDeclareWar: false,
@@ -33,7 +34,7 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
         clay: 200,
         iron: 200,
         parliament: 3,
-        castle: 0,
+        castle: 1,
         tower: 0,
         espionage: 0,
         barracks: 1,
