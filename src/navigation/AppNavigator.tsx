@@ -8,6 +8,7 @@ import CastleScreen from '../screens/castle/CastleScreen';
 import ProductScreen from '../screens/product/ProductScreen';
 import { DataContext } from '../context/DataContext';
 import DefeatScreen from '../screens/defeatScreen.tsx/DefeatScreen';
+import PremiumScreen from '../screens/premium/PremiumScreen';
 
 const Stack = createNativeStackNavigator()
 const AppNavigator = () => {
@@ -16,7 +17,7 @@ const AppNavigator = () => {
         <NavigationContainer>
             <Stack.Navigator screenOptions={{ headerShown: false }}>
                 {
-                    data.isAlive ?
+                    !data?.isAlive ?
                         <>
                             <Stack.Screen name="Defeat" component={DefeatScreen} />
                         </>
@@ -27,6 +28,7 @@ const AppNavigator = () => {
                             <Stack.Screen name="Army" component={ArmyScreen} />
                             <Stack.Screen name="Castle" component={CastleScreen} />
                             <Stack.Screen name="Product" component={ProductScreen} />
+                            <Stack.Screen name="Premium" component={PremiumScreen} />
                         </>}
             </Stack.Navigator>
         </NavigationContainer>

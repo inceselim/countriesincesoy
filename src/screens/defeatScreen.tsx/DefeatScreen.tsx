@@ -1,9 +1,11 @@
 import { View, Text, SafeAreaView } from 'react-native'
-import React from 'react'
+import React, { useContext } from 'react'
 import { styles } from '../../styles/styles'
 import ButtonSelect from '../../components/ButtonSelect/ButtonSelect'
+import { DataContext } from '../../context/DataContext';
 
 export default function DefeatScreen() {
+    let { restartGame } = useContext(DataContext);
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>
@@ -35,7 +37,7 @@ export default function DefeatScreen() {
                         marginBottom: 12
                     }}>You should try again...</Text>
                     <ButtonSelect text={"Restart"}
-                        onPress={() => { }} />
+                        onPress={() => { restartGame }} />
                 </View>
             </View>
         </SafeAreaView>

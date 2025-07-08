@@ -4,6 +4,7 @@ import { build_income } from '../data/build_income';
 import { ArmyMaintenanceGold, ArmyMaintenanceWood, ArmyMaintenanceClay, ArmyMaintenanceIron } from '../utils/ArmyMaintenance';
 import { BuildMaintenanceGold, BuildMaintenanceWood, BuildMaintenanceClay, BuildMaintenanceIron } from '../utils/BuildMaintenance';
 import Sound from 'react-native-sound';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const DataContext = createContext<any>(undefined);
 
@@ -256,6 +257,9 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
 
     const [data, setData] = useState<any>(defaultData);
     const [dataBots, setDataBots] = useState<any[]>(defaultDataBots);
+    const restartGame = async () => {
+      setData(defaultData)
+    };
     const loadFromStorage = async () => {
         try {
             const value = await AsyncStorage.getItem('@data');
@@ -377,6 +381,7 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
 
             loadFromStorage,
             saveToStorage,
+            restartGame,
 
             buildIncomeWood,
             buildIncomeClay,

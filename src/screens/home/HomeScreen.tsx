@@ -106,7 +106,7 @@ export default function HomeScreen() {
                                                         style={{ width: "100%", height: "60%" }}
                                                     />
                                                     <Text style={{
-                                                        fontSize: 14,
+                                                        fontSize: 13,
                                                         marginTop: 6,
                                                         fontWeight: "bold",
                                                         textAlign: "center",
@@ -133,7 +133,7 @@ export default function HomeScreen() {
                                                         style={{ width: "100%", height: "60%" }}
                                                     />
                                                     <Text style={{
-                                                        fontSize: 14,
+                                                        fontSize: 13,
                                                         marginTop: 6,
                                                         fontWeight: "bold",
                                                         textAlign: "center",
@@ -153,7 +153,7 @@ export default function HomeScreen() {
                                                         resizeMode: "contain"
                                                     }} />
                                                     <Text style={{
-                                                        fontSize: 14,
+                                                        fontSize: 13,
                                                         marginTop: 6,
                                                         fontWeight: "bold",
                                                         textAlign: "center",
@@ -173,7 +173,7 @@ export default function HomeScreen() {
                                                         resizeMode: "contain"
                                                     }} />
                                                     <Text style={{
-                                                        fontSize: 14,
+                                                        fontSize: 13,
                                                         marginTop: 6,
                                                         fontWeight: "bold",
                                                         textAlign: "center",
@@ -192,7 +192,7 @@ export default function HomeScreen() {
                                                     resizeMode: "contain"
                                                 }} />
                                                 <Text style={{
-                                                    fontSize: 14,
+                                                    fontSize: 13,
                                                     marginTop: 6,
                                                     fontWeight: "bold",
                                                     textAlign: "center",
@@ -206,7 +206,7 @@ export default function HomeScreen() {
                                                     resizeMode: "contain"
                                                 }} />
                                                 <Text style={{
-                                                    fontSize: 14,
+                                                    fontSize: 13,
                                                     marginTop: 6,
                                                     fontWeight: "bold",
                                                     textAlign: "center",
@@ -226,7 +226,7 @@ export default function HomeScreen() {
                                                     style={{ width: "100%", height: "60%" }}
                                                 />
                                                 <Text style={{
-                                                    fontSize: 14,
+                                                    fontSize: 13,
                                                     marginTop: 6,
                                                     fontWeight: "bold",
                                                     textAlign: "center",
@@ -235,20 +235,37 @@ export default function HomeScreen() {
                                             </HomeCard>
                                             <HomeCard onPress={() => {
                                                 //PlaySoundClick()
-                                                navigation.navigate("Statistic")
+                                                navigation.navigate("News")
                                             }}>
-                                                <Image source={require("../../assets/images/statistic1.png")} style={{
+                                                <Image source={require("../../assets/newspaper.png")} style={{
                                                     width: "70%",
                                                     height: "60%",
                                                     resizeMode: "contain"
                                                 }} />
                                                 <Text style={{
-                                                    fontSize: 14,
+                                                    fontSize: 13,
                                                     marginTop: 6,
                                                     fontWeight: "bold",
                                                     textAlign: "center",
                                                     color: colors.txtWhite
-                                                }}>Statistic</Text>
+                                                }}>News</Text>
+                                            </HomeCard>
+                                            <HomeCard onPress={() => {
+                                                //PlaySoundClick()
+                                                navigation.navigate("Premium")
+                                            }}>
+                                                <Image source={require("../../assets/crown.png")} style={{
+                                                    width: "70%",
+                                                    height: "60%",
+                                                    resizeMode: "contain"
+                                                }} />
+                                                <Text style={{
+                                                    fontSize: 13,
+                                                    marginTop: 6,
+                                                    fontWeight: "bold",
+                                                    textAlign: "center",
+                                                    color: colors.txtWhite
+                                                }}>Premium Shop</Text>
                                             </HomeCard>
                                             {/* <HomeCard onPress={() => {
                                                 //PlaySoundClick()
@@ -260,7 +277,7 @@ export default function HomeScreen() {
                                                     resizeMode: "contain"
                                                 }} />
                                                 <Text style={{
-                                                    fontSize: 14,
+                                                    fontSize: 13,
                                                     marginTop: 6,
                                                     fontWeight: "bold",
                                                     textAlign: "center",
@@ -275,7 +292,7 @@ export default function HomeScreen() {
                                                     resizeMode: "contain"
                                                 }} />
                                                 <Text style={{
-                                                    fontSize: 14,
+                                                    fontSize: 13,
                                                     marginTop: 6,
                                                     fontWeight: "bold",
                                                     textAlign: "center",
@@ -293,7 +310,7 @@ export default function HomeScreen() {
                                                         resizeMode: "contain"
                                                     }} />
                                                     <Text style={{
-                                                        fontSize: 14,
+                                                        fontSize: 13,
                                                         marginTop: 6,
                                                         fontWeight: "bold",
                                                         textAlign: "center",
@@ -311,7 +328,7 @@ export default function HomeScreen() {
                                                     resizeMode: "contain"
                                                 }} />
                                                 <Text style={{
-                                                    fontSize: 14,
+                                                    fontSize: 13,
                                                     marginTop: 6,
                                                     fontWeight: "bold",
                                                     textAlign: "center",
@@ -327,7 +344,7 @@ export default function HomeScreen() {
                                                             resizeMode: "contain"
                                                         }} />
                                                         <Text style={{
-                                                            fontSize: 14,
+                                                            fontSize: 13,
                                                             marginTop: 6,
                                                             fontWeight: "bold",
                                                             textAlign: "center",
@@ -349,7 +366,7 @@ export default function HomeScreen() {
                                                         resizeMode: "contain"
                                                     }} />
                                                     <Text style={{
-                                                        fontSize: 14,
+                                                        fontSize: 13,
                                                         marginTop: 6,
                                                         fontWeight: "bold",
                                                         textAlign: "center",
