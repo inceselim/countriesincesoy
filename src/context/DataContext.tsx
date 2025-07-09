@@ -17,7 +17,7 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
     const defaultData: any = {
         turn: 1,
         language: "en",
-        difficult: 0, // 0:secim yap, 1:easy, 2:normal, 3:hard 4:very hard
+        difficult: "0", // 0:secim yap, 1:easy, 2:normal, 3:hard 4:very hard
         isAlive: true,
         isTutorial: true,
         news: [],

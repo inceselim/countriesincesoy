@@ -57,6 +57,12 @@ export default function HomeScreen() {
             eventEmitter.off('stepChange', handleOnStepChange)
         }
     }, [])
+    const handleDiffucult = () => {
+        setData((prevData: any) => ({
+            ...prevData,
+            difficult: selectMode,
+        }))
+    }
     return (
         <SafeAreaView style={styles.container}>
             {
@@ -66,7 +72,7 @@ export default function HomeScreen() {
                     isVisiblePolity == true ?
                         <SelectPolity value={isVisiblePolity} setValue={setVisiblePolity} />
                         :
-                        data?.difficult == 0 ?
+                        data?.difficult == "0" ?
                             <View style={styles.content}>
                                 <View style={{}}>
                                     <View style={{
@@ -134,7 +140,7 @@ export default function HomeScreen() {
                                                 color: selectMode == "4" ? colors.kavun : colors.txtWhite
                                             }}>1v7 Bots</Text>
                                         </HomeCard>
-                                        <ButtonSelect />
+                                        <ButtonSelect onPress={() => handleDiffucult()} />
                                     </View>
                                 </View>
                             </View>

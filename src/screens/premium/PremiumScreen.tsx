@@ -63,7 +63,7 @@ const PremiumScreen = () => {
                     } else {
                         console.log("⛔️ Bu satın alma zaten tamamlanmış (acknowledged), işlem yapılmadı.");
                     }
-                } catch (error) {
+                } catch (error: any) {
                     console.log('❌ Satın alma sonrası hata:', error.message || error);
                 }
             }
