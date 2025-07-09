@@ -2,7 +2,7 @@
   "name": "CountriesWar",
   "displayName": "CountriesWar",
   "react-native-google-mobile-ads": {
-    "android_app_id": "ca-app-pub-xxxxxxxx~xxxxxxxx",
+    "android_app_id": "ca-app-pub-1017432203303316~7899334680",
     "ios_app_id": "ca-app-pub-1017432203303316~7908887010",
     "user_tracking_usage_description": "This identifier will be used to deliver personalized ads to you.",
     "sk_ad_network_items": [

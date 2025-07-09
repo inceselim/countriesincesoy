@@ -17,6 +17,7 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
     const defaultData: any = {
         turn: 1,
         language: "en",
+        difficult: 0, // 0:secim yap, 1:easy, 2:normal, 3:hard 4:very hard
         isAlive: true,
         isTutorial: true,
         news: [],
@@ -258,7 +259,19 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
     const [data, setData] = useState<any>(defaultData);
     const [dataBots, setDataBots] = useState<any[]>(defaultDataBots);
     const restartGame = async () => {
-      setData(defaultData)
+        setData(defaultData)
+    };
+    const addGems = async (x: number) => {
+        setData((prevData: any) => ({
+            ...prevData,
+            gems: prevData.gems + x
+        }));
+    };
+    const decreaseGems = async (x: number) => {
+        setData((prevData: any) => ({
+            ...prevData,
+            gems: prevData.gems - x
+        }));
     };
     const loadFromStorage = async () => {
         try {
@@ -291,73 +304,7 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
             console.error('Hata:', e);
         }
     };
-    // const videolar = ["yrbiWj5BGr8"]
-    // const [playing, setPlaying] = useState(false);
 
-    // const onStateChange = React.useCallback((state: any) => {
-    //     if (state === "ended") {
-    //         setPlaying(false);
-    //     }
-    // }, []);
-
-    // const togglePlaying = useCallback(() => {
-    //     setPlaying((prev) => !prev);
-    // }, []);
-
-    // const [currentSoundIndex, setCurrentSoundIndex] = useState(0);
-    // const [soundInstance, setSoundInstance] = useState<any>(null);
-
-    // // Çalmak istediğiniz ses dosyalarının listesi
-    // const soundFiles = ["mehter1.mp3","bg1.mp3", "bird1.wav",  "arrow.wav", "click1.wav"];
-
-    // useEffect(() => {
-    //     // İlk ses dosyasını başlat
-    //     playSound(currentSoundIndex);
-
-    //     // Cleanup: Sound nesnesini serbest bırak
-    //     return () => {
-    //         if (soundInstance) {
-    //             soundInstance.release();
-    //         }
-    //     };
-    // }, [currentSoundIndex]);
-
-    // const playSound = (index: any) => {
-    //     if (index >= soundFiles.length) {
-    //         // Eğer listedeki tüm sesler çalındıysa başa dön
-    //         setCurrentSoundIndex(0);
-    //         return;
-    //     }
-
-    //     // Yeni ses nesnesi oluştur
-    //     const newSound = new Sound(soundFiles[index], Sound.MAIN_BUNDLE, (error) => {
-    //         if (error) {
-    //             console.log(`Ses dosyası yüklenemedi: ${soundFiles[index]}`, error);
-    //             return;
-    //         }
-    //         newSound.setVolume(0.2)
-    //         console.log(`Şu anda çalıyor: ${soundFiles[index]}`);
-    //         newSound.play((success) => {
-    //             if (success) {
-    //                 console.log(`Bitti: ${soundFiles[index]}`);
-    //                 setCurrentSoundIndex((prevIndex: any) => prevIndex + 1); // Sıradaki sesi çal
-    //             } else {
-    //                 console.log(`Çalma sırasında hata oluştu: ${soundFiles[index]}`);
-    //             }
-    //         });
-
-    //         // Sound nesnesini state'e kaydet
-    //         setSoundInstance(newSound);
-    //     });
-    // };
-
-    // const stopAllSounds = () => {
-    //     if (soundInstance) {
-    //         soundInstance.stop(() => {
-    //             console.log('Tüm sesler durduruldu.');
-    //         });
-    //     }
-    // };
 
     let buildIncomeWood: number = ((build_income.woodcutter.wood * data.woodcutter) + (build_income.avm.wood * data.avm))
     let buildIncomeClay: number = ((build_income.brickhouse.clay * data.brickhouse) + (build_income.avm.clay * data.avm))
@@ -382,6 +329,8 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
             loadFromStorage,
             saveToStorage,
             restartGame,
+            addGems,
+            decreaseGems,
 
             buildIncomeWood,
             buildIncomeClay,
