@@ -1,6 +1,4 @@
 //import liraries
-import React, { Component, useEffect, useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
 import Sound from 'react-native-sound';
 
 // create a component

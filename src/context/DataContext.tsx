@@ -306,46 +306,109 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
     };
 
 
-    let buildIncomeWood: number = ((build_income.woodcutter.wood * data.woodcutter) + (build_income.avm.wood * data.avm))
-    let buildIncomeClay: number = ((build_income.brickhouse.clay * data.brickhouse) + (build_income.avm.clay * data.avm))
-    let buildIncomeIron: number = ((build_income.mine.iron * data.mine) + (build_income.avm.wood * data.avm))
 
-    let buildMaintenanceGold = BuildMaintenanceGold(data)
-    let buildMaintenanceWood = BuildMaintenanceWood(data)
-    let buildMaintenanceClay = BuildMaintenanceClay(data)
-    let buildMaintenanceIron = BuildMaintenanceIron(data)
+    Sound.setCategory('Playback'); // iOS için gereklidir
 
-    let armyMaintenanceGold = ArmyMaintenanceGold(data)
-    let armyMaintenanceWood = ArmyMaintenanceWood(data)
-    let armyMaintenanceClay = ArmyMaintenanceClay(data)
-    let armyMaintenanceIron = ArmyMaintenanceIron(data)
-    return (
-        <DataContext.Provider value={{
-            data,
-            setData,
+    const SoundPlayer = () => {
+        const soundFiles = ['mehter1.mp3', 'bg1.mp3', 'bird1.wav', 'arrow.wav', 'click1.wav'];
 
-            dataBots, setDataBots,
+        const [currentSoundIndex, setCurrentSoundIndex] = useState(0);
+        const [soundInstance, setSoundInstance] = useState<Sound | null>(null);
 
-            loadFromStorage,
-            saveToStorage,
-            restartGame,
-            addGems,
-            decreaseGems,
+        useEffect(() => {
+            playSound(currentSoundIndex);
 
-            buildIncomeWood,
-            buildIncomeClay,
-            buildIncomeIron,
-            buildMaintenanceGold,
-            buildMaintenanceWood,
-            buildMaintenanceClay,
-            buildMaintenanceIron,
-            armyMaintenanceGold,
-            armyMaintenanceWood,
-            armyMaintenanceClay,
-            armyMaintenanceIron,
-        }}>
-            {children}
-            {/* <YoutubePlayer
+            return () => {
+                if (soundInstance) {
+                    soundInstance.release();
+                }
+            };
+        }, [currentSoundIndex]);
+
+        const playSound = (index: number) => {
+            if (index >= soundFiles.length) {
+                // Tüm sesler çalındıysa başa dön
+                setCurrentSoundIndex(0);
+                return;
+            }
+
+            const newSound = new Sound(soundFiles[index], Sound.MAIN_BUNDLE, (error) => {
+                if (error) {
+                    console.log(`Ses dosyası yüklenemedi: ${soundFiles[index]}`, error);
+                    return;
+                }
+
+                newSound.setVolume(0.2);
+                console.log(`Şu anda çalıyor: ${soundFiles[index]}`);
+
+                newSound.play((success) => {
+                    if (success) {
+                        console.log(`Bitti: ${soundFiles[index]}`);
+                        setCurrentSoundIndex((prev) => prev + 1);
+                    } else {
+                        console.log(`Çalma sırasında hata oluştu: ${soundFiles[index]}`);
+                    }
+                });
+
+                setSoundInstance(newSound);
+            });
+        };
+
+        const stopAllSounds = () => {
+            if (soundInstance) {
+                soundInstance.stop(() => {
+                    console.log('Tüm sesler durduruldu.');
+                });
+            }
+        };
+        };
+
+
+
+
+
+
+
+        let buildIncomeWood: number = ((build_income.woodcutter.wood * data.woodcutter) + (build_income.avm.wood * data.avm))
+        let buildIncomeClay: number = ((build_income.brickhouse.clay * data.brickhouse) + (build_income.avm.clay * data.avm))
+        let buildIncomeIron: number = ((build_income.mine.iron * data.mine) + (build_income.avm.wood * data.avm))
+
+        let buildMaintenanceGold = BuildMaintenanceGold(data)
+        let buildMaintenanceWood = BuildMaintenanceWood(data)
+        let buildMaintenanceClay = BuildMaintenanceClay(data)
+        let buildMaintenanceIron = BuildMaintenanceIron(data)
+
+        let armyMaintenanceGold = ArmyMaintenanceGold(data)
+        let armyMaintenanceWood = ArmyMaintenanceWood(data)
+        let armyMaintenanceClay = ArmyMaintenanceClay(data)
+        let armyMaintenanceIron = ArmyMaintenanceIron(data)
+        return (
+            <DataContext.Provider value={{
+                data,
+                setData,
+
+                dataBots, setDataBots,
+
+                loadFromStorage,
+                saveToStorage,
+                restartGame,
+                addGems,
+                decreaseGems,
+
+                buildIncomeWood,
+                buildIncomeClay,
+                buildIncomeIron,
+                buildMaintenanceGold,
+                buildMaintenanceWood,
+                buildMaintenanceClay,
+                buildMaintenanceIron,
+                armyMaintenanceGold,
+                armyMaintenanceWood,
+                armyMaintenanceClay,
+                armyMaintenanceIron,
+            }}>
+                {children}
+                {/* <YoutubePlayer
                 height={0}
                 play={true}
                 volume={10}
@@ -353,8 +416,8 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
                 onChangeState={onStateChange}
                 mute={false}
             /> */}
-        </DataContext.Provider>
-    );
-};
+            </DataContext.Provider>
+        );
+    };
 
-export { DataContextProvider, DataContext, };
+    export { DataContextProvider, DataContext, };

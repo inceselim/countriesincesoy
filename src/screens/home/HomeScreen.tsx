@@ -37,8 +37,10 @@ export default function HomeScreen() {
     }, [canStart, data])
     const handleOnStart = () => console.log('start')
     const handleOnStop = () => {
-        console.log('stop')
-        data.isTutorial = false
+        setData((prevData: any) => ({
+            ...prevData,
+            isTutorial: false,
+        }))
     }
     const handleOnStepChange = () => console.log(`stepChange`)
 
@@ -140,7 +142,13 @@ export default function HomeScreen() {
                                                 color: selectMode == "4" ? colors.kavun : colors.txtWhite
                                             }}>1v7 Bots</Text>
                                         </HomeCard>
-                                        <ButtonSelect onPress={() => handleDiffucult()} />
+                                        <ButtonSelect onPress={() => {
+                                            handleDiffucult()
+                                            setData((prevData: any) => ({
+                                                ...prevData,
+                                                difficult: selectMode
+                                            }));
+                                        }} />
                                     </View>
                                 </View>
                             </View>
