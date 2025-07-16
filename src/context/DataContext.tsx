@@ -1,19 +1,16 @@
 import React, { createContext, useState, useEffect, ReactNode, useCallback } from 'react';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
 import { build_income } from '../data/build_income';
 import { ArmyMaintenanceGold, ArmyMaintenanceWood, ArmyMaintenanceClay, ArmyMaintenanceIron } from '../utils/ArmyMaintenance';
 import { BuildMaintenanceGold, BuildMaintenanceWood, BuildMaintenanceClay, BuildMaintenanceIron } from '../utils/BuildMaintenance';
-import Sound from 'react-native-sound';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const DataContext = createContext<any>(undefined);
-
 interface DataContextProviderProps {
     children: ReactNode;
 }
-
-// Context sağlayıcısı bileşeni
 const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: any) => {
+    const [currentTurn, setCurrentTurn] = useState(0)
+    const [dataBots, setDataBots] = useState<any[]>([]); // burayı istediğin sayıya göre ayarla
     const defaultData: any = {
         turn: 1,
         language: "en",
@@ -257,7 +254,6 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
         ]
 
     const [data, setData] = useState<any>(defaultData);
-    const [dataBots, setDataBots] = useState<any[]>(defaultDataBots);
     const restartGame = async () => {
         setData(defaultData)
     };
@@ -304,120 +300,57 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
             console.error('Hata:', e);
         }
     };
+    let buildIncomeWood: number = ((build_income.woodcutter.wood * data.woodcutter) + (build_income.avm.wood * data.avm))
+    let buildIncomeClay: number = ((build_income.brickhouse.clay * data.brickhouse) + (build_income.avm.clay * data.avm))
+    let buildIncomeIron: number = ((build_income.mine.iron * data.mine) + (build_income.avm.wood * data.avm))
 
+    let buildMaintenanceGold = BuildMaintenanceGold(data)
+    let buildMaintenanceWood = BuildMaintenanceWood(data)
+    let buildMaintenanceClay = BuildMaintenanceClay(data)
+    let buildMaintenanceIron = BuildMaintenanceIron(data)
 
+    let armyMaintenanceGold = ArmyMaintenanceGold(data)
+    let armyMaintenanceWood = ArmyMaintenanceWood(data)
+    let armyMaintenanceClay = ArmyMaintenanceClay(data)
+    let armyMaintenanceIron = ArmyMaintenanceIron(data)
 
-    Sound.setCategory('Playback'); // iOS için gereklidir
+    useEffect(() => {
+        // Oyuncu ülke seçmeden tur başlamasın
+        if (data?.difficult == 0 || data?.isTutorial == true) return;
 
-    const SoundPlayer = () => {
-        const soundFiles = ['mehter1.mp3', 'bg1.mp3', 'bird1.wav', 'arrow.wav', 'click1.wav'];
+        const interval = setInterval(() => {
+            setCurrentTurn((prev) => prev + 1);
+        }, 5000);
 
-        const [currentSoundIndex, setCurrentSoundIndex] = useState(0);
-        const [soundInstance, setSoundInstance] = useState<Sound | null>(null);
+        return () => clearInterval(interval);
+    }, [data]); // oyuncu ülke seçtiğinde başlat
+    return (
+        <DataContext.Provider value={{
+            data,
+            setData,
+            currentTurn,
+            dataBots, setDataBots,
 
-        useEffect(() => {
-            playSound(currentSoundIndex);
+            loadFromStorage,
+            saveToStorage,
+            restartGame,
+            addGems,
+            decreaseGems,
 
-            return () => {
-                if (soundInstance) {
-                    soundInstance.release();
-                }
-            };
-        }, [currentSoundIndex]);
-
-        const playSound = (index: number) => {
-            if (index >= soundFiles.length) {
-                // Tüm sesler çalındıysa başa dön
-                setCurrentSoundIndex(0);
-                return;
-            }
-
-            const newSound = new Sound(soundFiles[index], Sound.MAIN_BUNDLE, (error) => {
-                if (error) {
-                    console.log(`Ses dosyası yüklenemedi: ${soundFiles[index]}`, error);
-                    return;
-                }
-
-                newSound.setVolume(0.2);
-                console.log(`Şu anda çalıyor: ${soundFiles[index]}`);
-
-                newSound.play((success) => {
-                    if (success) {
-                        console.log(`Bitti: ${soundFiles[index]}`);
-                        setCurrentSoundIndex((prev) => prev + 1);
-                    } else {
-                        console.log(`Çalma sırasında hata oluştu: ${soundFiles[index]}`);
-                    }
-                });
-
-                setSoundInstance(newSound);
-            });
-        };
-
-        const stopAllSounds = () => {
-            if (soundInstance) {
-                soundInstance.stop(() => {
-                    console.log('Tüm sesler durduruldu.');
-                });
-            }
-        };
-        };
-
-
-
-
-
-
-
-        let buildIncomeWood: number = ((build_income.woodcutter.wood * data.woodcutter) + (build_income.avm.wood * data.avm))
-        let buildIncomeClay: number = ((build_income.brickhouse.clay * data.brickhouse) + (build_income.avm.clay * data.avm))
-        let buildIncomeIron: number = ((build_income.mine.iron * data.mine) + (build_income.avm.wood * data.avm))
-
-        let buildMaintenanceGold = BuildMaintenanceGold(data)
-        let buildMaintenanceWood = BuildMaintenanceWood(data)
-        let buildMaintenanceClay = BuildMaintenanceClay(data)
-        let buildMaintenanceIron = BuildMaintenanceIron(data)
-
-        let armyMaintenanceGold = ArmyMaintenanceGold(data)
-        let armyMaintenanceWood = ArmyMaintenanceWood(data)
-        let armyMaintenanceClay = ArmyMaintenanceClay(data)
-        let armyMaintenanceIron = ArmyMaintenanceIron(data)
-        return (
-            <DataContext.Provider value={{
-                data,
-                setData,
-
-                dataBots, setDataBots,
-
-                loadFromStorage,
-                saveToStorage,
-                restartGame,
-                addGems,
-                decreaseGems,
-
-                buildIncomeWood,
-                buildIncomeClay,
-                buildIncomeIron,
-                buildMaintenanceGold,
-                buildMaintenanceWood,
-                buildMaintenanceClay,
-                buildMaintenanceIron,
-                armyMaintenanceGold,
-                armyMaintenanceWood,
-                armyMaintenanceClay,
-                armyMaintenanceIron,
-            }}>
-                {children}
-                {/* <YoutubePlayer
-                height={0}
-                play={true}
-                volume={10}
-                videoId={videolar[0]}
-                onChangeState={onStateChange}
-                mute={false}
-            /> */}
-            </DataContext.Provider>
-        );
-    };
-
-    export { DataContextProvider, DataContext, };
+            buildIncomeWood,
+            buildIncomeClay,
+            buildIncomeIron,
+            buildMaintenanceGold,
+            buildMaintenanceWood,
+            buildMaintenanceClay,
+            buildMaintenanceIron,
+            armyMaintenanceGold,
+            armyMaintenanceWood,
+            armyMaintenanceClay,
+            armyMaintenanceIron,
+        }}>
+            {children}
+        </DataContext.Provider>
+    );
+};
+export { DataContextProvider, DataContext, };

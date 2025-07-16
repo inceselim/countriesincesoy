@@ -1,8 +1,7 @@
 //import liraries
 import { useNavigation } from '@react-navigation/native';
-import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { PlaySoundGecis } from '../../utils/PlaySoundGecis';
+import React from 'react';
+import { TouchableOpacity, Image } from 'react-native';
 
 // create a component
 const ButtonClose = () => {

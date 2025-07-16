@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, Image, ScrollView, Modal } from 'react-native'
+import { View, Text, SafeAreaView, Image, ScrollView } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { HomeCard } from '../../components/HomeCard/HomeCard'
 import { useNavigation } from '@react-navigation/native'
@@ -6,12 +6,12 @@ import { colors } from '../../styles/colors';
 import { styles } from '../../styles/styles';
 import LoadingScreen from '../loading/LoadingScreen';
 import { SelectPolity } from '../../components/SelectPolity/SelectPolity';
-import { PlaySoundClick } from '../../utils/PlaySoundClick';
 import { HeaderMenu } from '../../components/HeaderMenu/HeaderMenu';
 import { TourGuideZone, useTourGuideController } from 'rn-tourguide';
 import { DataContext } from '../../context/DataContext';
 import LottieView from 'lottie-react-native';
 import ButtonSelect from '../../components/ButtonSelect/ButtonSelect';
+import { generateBots } from '../../utils/botGenerator';
 
 export default function HomeScreen() {
     const navigation: any = useNavigation();
@@ -60,11 +60,20 @@ export default function HomeScreen() {
         }
     }, [])
     const handleDiffucult = () => {
+        let botCount = 0;
+        if (selectMode === "1") botCount = 1;
+        else if (selectMode === "2") botCount = 3;
+        else if (selectMode === "3") botCount = 5;
+        else if (selectMode === "4") botCount = 7;
+
         setData((prevData: any) => ({
             ...prevData,
             difficult: selectMode,
-        }))
-    }
+        }));
+
+        setDataBots(generateBots(botCount));
+    };
+
     return (
         <SafeAreaView style={styles.container}>
             {
@@ -76,80 +85,79 @@ export default function HomeScreen() {
                         :
                         data?.difficult == "0" ?
                             <View style={styles.content}>
-                                <View style={{}}>
-                                    <View style={{
-                                        flexDirection: "row",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                    }}>
-                                        <HomeCard onPress={() => setSelectMode("1")}>
-                                            <Text style={{
-                                                fontSize: 16,
-                                                marginTop: 6,
-                                                fontWeight: "bold",
-                                                textAlign: "center",
-                                                color: selectMode == "1" ? colors.kavun : colors.txtWhite
-                                            }}>Easy Game</Text>
-                                            <Text style={{
-                                                fontSize: 13,
-                                                marginTop: 6,
-                                                textAlign: "center",
-                                                color: selectMode == "1" ? colors.kavun : colors.txtWhite
-                                            }}>1v1</Text>
-                                        </HomeCard>
-                                        <HomeCard onPress={() => setSelectMode("2")}>
-                                            <Text style={{
-                                                fontSize: 16,
-                                                marginTop: 6,
-                                                fontWeight: "bold",
-                                                textAlign: "center",
-                                                color: selectMode == "2" ? colors.kavun : colors.txtWhite
-                                            }}>Normal Game</Text>
-                                            <Text style={{
-                                                fontSize: 13,
-                                                marginTop: 6,
-                                                textAlign: "center",
-                                                color: selectMode == "2" ? colors.kavun : colors.txtWhite
-                                            }}>3 Bots</Text>
-                                        </HomeCard>
-                                        <HomeCard onPress={() => setSelectMode("3")}>
-                                            <Text style={{
-                                                fontSize: 16,
-                                                marginTop: 6,
-                                                fontWeight: "bold",
-                                                textAlign: "center",
-                                                color: selectMode == "3" ? colors.kavun : colors.txtWhite
-                                            }}>Hard Game</Text>
-                                            <Text style={{
-                                                fontSize: 13,
-                                                marginTop: 6,
-                                                textAlign: "center",
-                                                color: selectMode == "3" ? colors.kavun : colors.txtWhite
-                                            }}>1v3 Bots</Text>
-                                        </HomeCard>
-                                        <HomeCard onPress={() => setSelectMode("4")}>
-                                            <Text style={{
-                                                fontSize: 16,
-                                                marginTop: 6,
-                                                fontWeight: "bold",
-                                                textAlign: "center",
-                                                color: selectMode == "4" ? colors.kavun : colors.txtWhite
-                                            }}>Very Hard Game</Text>
-                                            <Text style={{
-                                                fontSize: 13,
-                                                marginTop: 6,
-                                                textAlign: "center",
-                                                color: selectMode == "4" ? colors.kavun : colors.txtWhite
-                                            }}>1v7 Bots</Text>
-                                        </HomeCard>
-                                        <ButtonSelect onPress={() => {
-                                            handleDiffucult()
-                                            setData((prevData: any) => ({
-                                                ...prevData,
-                                                difficult: selectMode
-                                            }));
-                                        }} />
-                                    </View>
+                                <View style={{
+                                    flex: 1,
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}>
+                                    <HomeCard onPress={() => setSelectMode("1")}>
+                                        <Text style={{
+                                            fontSize: 16,
+                                            marginTop: 6,
+                                            fontWeight: "bold",
+                                            textAlign: "center",
+                                            color: selectMode == "1" ? colors.kavun : colors.txtWhite
+                                        }}>Easy Game</Text>
+                                        <Text style={{
+                                            fontSize: 13,
+                                            marginTop: 6,
+                                            textAlign: "center",
+                                            color: selectMode == "1" ? colors.kavun : colors.txtWhite
+                                        }}>1v1</Text>
+                                    </HomeCard>
+                                    <HomeCard onPress={() => setSelectMode("2")}>
+                                        <Text style={{
+                                            fontSize: 16,
+                                            marginTop: 6,
+                                            fontWeight: "bold",
+                                            textAlign: "center",
+                                            color: selectMode == "2" ? colors.kavun : colors.txtWhite
+                                        }}>Normal Game</Text>
+                                        <Text style={{
+                                            fontSize: 13,
+                                            marginTop: 6,
+                                            textAlign: "center",
+                                            color: selectMode == "2" ? colors.kavun : colors.txtWhite
+                                        }}>3 Bots</Text>
+                                    </HomeCard>
+                                    <HomeCard onPress={() => setSelectMode("3")}>
+                                        <Text style={{
+                                            fontSize: 16,
+                                            marginTop: 6,
+                                            fontWeight: "bold",
+                                            textAlign: "center",
+                                            color: selectMode == "3" ? colors.kavun : colors.txtWhite
+                                        }}>Hard Game</Text>
+                                        <Text style={{
+                                            fontSize: 13,
+                                            marginTop: 6,
+                                            textAlign: "center",
+                                            color: selectMode == "3" ? colors.kavun : colors.txtWhite
+                                        }}>1v3 Bots</Text>
+                                    </HomeCard>
+                                    <HomeCard onPress={() => setSelectMode("4")}>
+                                        <Text style={{
+                                            fontSize: 16,
+                                            marginTop: 6,
+                                            fontWeight: "bold",
+                                            textAlign: "center",
+                                            color: selectMode == "4" ? colors.kavun : colors.txtWhite
+                                        }}>Very Hard Game</Text>
+                                        <Text style={{
+                                            fontSize: 13,
+                                            marginTop: 6,
+                                            textAlign: "center",
+                                            color: selectMode == "4" ? colors.kavun : colors.txtWhite
+                                        }}>1v7 Bots</Text>
+                                    </HomeCard>
+                                    <ButtonSelect onPress={() => {
+                                        handleDiffucult()
+                                        setData((prevData: any) => ({
+                                            ...prevData,
+                                            difficult: selectMode
+                                        }));
+                                    }} />
                                 </View>
                             </View>
                             :
