@@ -13,6 +13,7 @@ import CardView from '../../components/CardView/CardView';
 import { build_maintenance } from '../../data/build_maintenance';
 import LottieView from 'lottie-react-native';
 import { EnterName } from '../../components/EnterName/EnterName';
+import Slider from '@react-native-community/slider';
 
 // create a component
 const GovermentScreen = () => {
@@ -189,6 +190,35 @@ const GovermentScreen = () => {
                                     <Text style={[styles.txtCenter, styles.txtUyumlu]}>💎 20</Text>
                                 </TouchableOpacity>
                             </View>
+                            <CardView>
+                                <View style={{ padding: 12 }}>
+                                    <Text style={[styles.txtDarkTitle]}>Tax Rate: %{data.taxRate}</Text>
+                                    <Slider
+                                        style={{ width: '100%', height: 40 }}
+                                        minimumValue={10}
+                                        maximumValue={90}
+                                        step={1}
+                                        value={data.taxRate}
+                                        minimumTrackTintColor={colors.kavun}
+                                        maximumTrackTintColor="#000000"
+                                        onValueChange={(value) => {
+                                            const taxGold = Math.round(value * 0.333);
+                                            const popGrowth = 0.006 - ((value - 10) / 80) * (0.006 - 0.001);
+
+                                            setData((prevData: any) => ({
+                                                ...prevData,
+                                                taxRate: value,
+                                                taxGoldPerTurn: taxGold,
+                                                populationGrowthRate: parseFloat(popGrowth.toFixed(5))
+                                            }));
+                                        }}
+                                    />
+                                    <Text style={[styles.txtDark]}>Gold per Turn: {data.taxGoldPerTurn} 💰</Text>
+                                    <Text style={[styles.txtDark]}>Gold per Turn: {data.populationGrowthRate} 💰</Text>
+                                    <Text style={[styles.txtDark]}>Population Growth: +{(data.populationGrowthRate * 1).toFixed(3)}%</Text>
+                                </View>
+                            </CardView>
+
                             <CardView>
                                 <View style={{
                                     flexDirection: "row",

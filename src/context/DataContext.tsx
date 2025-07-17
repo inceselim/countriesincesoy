@@ -17,6 +17,9 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
         difficult: "0", // 0:secim yap, 1:easy, 2:normal, 3:hard 4:very hard
         isAlive: true,
         isTutorial: true,
+        taxRate: 10, // %10
+        taxGoldPerTurn: 3, // her tur altın geliri
+        populationGrowthRate: 0.006, // başlangıçta en yüksek büyüme
         news: [],
         canDeclareWar: false,
         countryName: "",
