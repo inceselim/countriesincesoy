@@ -1,7 +1,7 @@
 import { Alert } from "react-native";
-import { ArmyMaintenanceClay, ArmyMaintenanceGold, ArmyMaintenanceIron, ArmyMaintenanceWood } from "./ArmyMaintenance";
-import { BuildMaintenanceClay, BuildMaintenanceGold, BuildMaintenanceIron, BuildMaintenanceWood, } from "./BuildMaintenance";
-import { CalculatePopulation } from "./CalculatePopulation";
+import { ArmyMaintenanceClay, ArmyMaintenanceGold, ArmyMaintenanceIron, ArmyMaintenanceWood } from "../service/ArmyMaintenance";
+import { BuildMaintenanceClay, BuildMaintenanceGold, BuildMaintenanceIron, BuildMaintenanceWood, } from "../service/BuildMaintenance";
+import { CalculatePopulation } from "../service/CalculatePopulation";
 import { build_income } from "../data/build_income";
 import { CalculateInterest } from "./CalculateTax";
 import { BotsEndTurn } from "./BotsEndTurn";

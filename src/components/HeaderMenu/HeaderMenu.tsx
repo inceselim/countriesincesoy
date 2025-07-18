@@ -5,22 +5,12 @@ import { styles } from '../../styles/styles';
 import { colors } from '../../styles/colors';
 import { DataContext } from '../../context/DataContext';
 import { formatShowNumber } from '../../utils/FormatShowNumbers';
+import { calculateTurnIncome } from '../../service/turnIncome';
 
 // create a component
 export const HeaderMenu = () => {
-    const { data, setData, currentTurn,
-        buildIncomeWood,
-        buildIncomeClay,
-        buildIncomeIron,
-        buildMaintenanceGold,
-        buildMaintenanceWood,
-        buildMaintenanceClay,
-        buildMaintenanceIron,
-        armyMaintenanceGold,
-        armyMaintenanceWood,
-        armyMaintenanceClay,
-        armyMaintenanceIron,
-    } = useContext(DataContext)
+    const { data, setData, currentTurn, } = useContext(DataContext);
+    const turnIncome = calculateTurnIncome(data);
     return (
         <View style={{
             backgroundColor: colors.bg,
@@ -44,14 +34,9 @@ export const HeaderMenu = () => {
                 }}>
                     <Text style={styles.txtBold}>📌 Turn {currentTurn}</Text>
                     <Text style={[styles.txtBold, { paddingStart: 12 }]}>🫂 {formatShowNumber(data.farm * 1000) + "/" + formatShowNumber(data.population)} {"("}{data.population - data.prevPopulation + ")"}</Text>
-                    <Text style={[styles.txtBold, { paddingStart: 12 }]}>🪵 {data.wood} {"(" + Math.round(buildIncomeWood - (buildMaintenanceWood + armyMaintenanceWood)) + ")"}</Text>
-                    <Text style={[styles.txtBold, { paddingStart: 12 }]}>🧱 {data.clay} {"(" + Math.round(buildIncomeClay - (buildMaintenanceClay + armyMaintenanceClay)) + ")"}</Text>
-                    <Text style={[styles.txtBold, { paddingStart: 12 }]}>🪨 {data.iron} {"(" + Math.round(buildIncomeIron - (buildMaintenanceIron + armyMaintenanceIron)) + ")"}</Text>
-                    {/* <Text style={styles.txtBold}>📌 Turn {data.turn}</Text>
-                    <Text style={[styles.txtBold, { paddingStart: 12 }]}>🫂 {formatShowNumber(data.farm * 1000) + "/" + formatShowNumber(data.population)} {"("}{ data.population - data.prevPopulation + ")"}</Text>
-                    <Text style={[styles.txtBold, { paddingStart: 12 }]}>🪵 {data.wood} {"(" + Math.round(buildIncomeWood - (buildMaintenanceWood + armyMaintenanceWood)) + ")"}</Text>
-                    <Text style={[styles.txtBold, { paddingStart: 12 }]}>🧱 {data.clay} {"(" + Math.round(buildIncomeClay - (buildMaintenanceClay + armyMaintenanceClay)) + ")"}</Text>
-                    <Text style={[styles.txtBold, { paddingStart: 12 }]}>🪨 {data.iron} {"(" + Math.round(buildIncomeIron - (buildMaintenanceIron + armyMaintenanceIron)) + ")"}</Text> */}
+                    <Text style={[styles.txtBold, { paddingStart: 12 }]}>🪵 {data.wood} {"(+" + turnIncome.wood + ")"}</Text>
+                    <Text style={[styles.txtBold, { paddingStart: 12 }]}>🧱 {data.clay} {"(+" + turnIncome.clay + ")"}</Text>
+                    <Text style={[styles.txtBold, { paddingStart: 12 }]}>🪨 {data.iron} {"(+" + turnIncome.iron + ")"}</Text>
                 </View>
                 {/* <View style={{
                     flexDirection: "row"
@@ -62,7 +47,7 @@ export const HeaderMenu = () => {
                     flexDirection: "row"
                 }}>
                     <Text style={[styles.txtBold, { paddingEnd: 12, }]}>💎 {data.gems}</Text>
-                    <Text style={styles.txtBold}>💰 {data.gold} ({data.income})</Text>
+                    <Text style={styles.txtBold}>💰 {data.gold} {"(+" + turnIncome.gold + ")"}</Text>
                 </View>
             </SafeAreaView>
         </View>

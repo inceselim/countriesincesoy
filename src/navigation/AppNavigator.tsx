@@ -9,6 +9,7 @@ import ProductScreen from '../screens/product/ProductScreen';
 import { DataContext } from '../context/DataContext';
 import DefeatScreen from '../screens/defeatScreen.tsx/DefeatScreen';
 import PremiumScreen from '../screens/premium/PremiumScreen';
+import WarScreen from '../screens/war/WarScreen';
 
 const Stack = createNativeStackNavigator()
 const AppNavigator = () => {
@@ -29,6 +30,7 @@ const AppNavigator = () => {
                             <Stack.Screen name="Castle" component={CastleScreen} />
                             <Stack.Screen name="Product" component={ProductScreen} />
                             <Stack.Screen name="Premium" component={PremiumScreen} />
+                            <Stack.Screen name="War" component={WarScreen} />
                         </>}
             </Stack.Navigator>
         </NavigationContainer>

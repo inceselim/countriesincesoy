@@ -1,8 +1,7 @@
-import React, { createContext, useState, useEffect, ReactNode, useCallback } from 'react';
-import { build_income } from '../data/build_income';
-import { ArmyMaintenanceGold, ArmyMaintenanceWood, ArmyMaintenanceClay, ArmyMaintenanceIron } from '../utils/ArmyMaintenance';
-import { BuildMaintenanceGold, BuildMaintenanceWood, BuildMaintenanceClay, BuildMaintenanceIron } from '../utils/BuildMaintenance';
+import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { CalculatePopBot, CalculatePopPlayer } from '../service/population';
+import { calculateTurnIncome } from '../service/turnIncome';
 
 const DataContext = createContext<any>(undefined);
 interface DataContextProviderProps {
@@ -14,247 +13,54 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
     const defaultData: any = {
         turn: 1,
         language: "en",
-        difficult: "0", // 0:secim yap, 1:easy, 2:normal, 3:hard 4:very hard
+        difficult: "0", // 0: seçim yapılmadı, 1: easy, 2: normal, ...
         isAlive: true,
-        isTutorial: true,
-        taxRate: 10, // %10
-        taxGoldPerTurn: 3, // her tur altın geliri
-        populationGrowthRate: 0.006, // başlangıçta en yüksek büyüme
+        isTutorial: false,
         news: [],
         canDeclareWar: false,
         countryName: "",
-        countryFocus: "attack", //attack, defence, pop, income, premium
-        polity: "",
-        population: 2900,
-        prevPopulation: 0,
+        countryFocus: "pop", // attack, defence, income, premium, pop
+        polity: "Democracy", // Monarchy, Theocracy, Dictator, Aristocracy, Democracy
+        population: 4500,
+        prevPopulation: 4350,
+
+        // Vergi ve nüfus sistemleri
+        taxRate: 40,
+        taxGoldPerTurn: 13, // 40 * 0.333
+        populationGrowthRate: 0.0044, // 0.006 - ((40 - 10) / 80) * 0.005
+
         gems: 0,
-        gold: 3330,
+        gold: 1800,
+        wood: 500,
+        clay: 400,
+        iron: 300,
+
+        // Ekonomi
+        income: 0,
         prevInflation: 1,
         inflation: 1,
-        income: 0,
-        wood: 200,
-        clay: 200,
-        iron: 200,
+
+        // Binalar
         parliament: 3,
         castle: 1,
         tower: 0,
         espionage: 0,
         barracks: 1,
-        farm: 3,
-        mine: 1,
-        woodcutter: 1,
-        brickhouse: 1,
-        trade_center: 1,
-        avm: 0,
-        spearman: 0,
-        bowman: 0,
-        swordman: 0,
-        axeman: 0,
-        knight: 0,
-        catapult: 0,
-        bots: [
-            // Bot 1: Saldırı odaklı
-            {
-                countryName: "Bot1",
-                countryFocus: "attack", //attack, defence, pop, income, premium
-                polity: "monarchy",
-                population: 2900,
-                prevPopulation: 0,
-                gems: 0,
-                gold: 3030,
-                prevInflation: 1,
-                inflation: 1,
-                income: 0,
-                wood: 120,
-                clay: 120,
-                iron: 120,
-                parliament: 3,
-                castle: 0,
-                tower: 0,
-                espionage: 0,
-                barracks: 1,
-                farm: 3,
-                mine: 1,
-                woodcutter: 1,
-                brickhouse: 1,
-                trade_center: 1,
-                avm: 0,
-                spearman: 0,
-                bowman: 0,
-                swordman: 0,
-                axeman: 0,
-                knight: 0,
-                catapult: 0,
-            },
-            // Bot 2: Savunma odaklı
-            {
-                countryName: "Bot2",
-                countryFocus: "defence",
-                polity: "theocracy",
-                population: 2900,
-                prevPopulation: 0,
-                gems: 0,
-                gold: 3030,
-                prevInflation: 1,
-                inflation: 1,
-                income: 0,
-                wood: 120,
-                clay: 120,
-                iron: 120,
-                parliament: 3,
-                castle: 0,
-                tower: 0,
-                espionage: 0,
-                barracks: 1,
-                farm: 3,
-                mine: 1,
-                woodcutter: 1,
-                brickhouse: 1,
-                trade_center: 1,
-                avm: 0,
-                spearman: 0,
-                bowman: 0,
-                swordman: 0,
-                axeman: 0,
-                knight: 0,
-                catapult: 0,
-            },
-            // Bot 3: Ekonomi odaklı
-            {
-                countryName: "Bot3",
-                countryFocus: "income",
-                polity: "aristocracy",
-                population: 2900,
-                prevPopulation: 0,
-                gems: 0,
-                gold: 3000,
-                prevInflation: 1,
-                inflation: 1,
-                income: 0,
-                wood: 120,
-                clay: 120,
-                iron: 120,
-                parliament: 3,
-                castle: 0,
-                tower: 0,
-                espionage: 0,
-                barracks: 1,
-                farm: 3,
-                mine: 1,
-                woodcutter: 1,
-                brickhouse: 1,
-                trade_center: 1,
-                avm: 0,
-                spearman: 0,
-                bowman: 0,
-                swordman: 0,
-                axeman: 0,
-                knight: 0,
-                catapult: 0,
-            },
-        ]
+        farm: 4,
+        mine: 2,
+        woodcutter: 2,
+        brickhouse: 2,
+        trade_center: 5,
+        avm: 1,
+
+        // Askerler
+        spearman: 10,
+        bowman: 15,
+        swordman: 5,
+        axeman: 8,
+        knight: 4,
+        catapult: 2,
     }
-    const defaultDataBots: any[] =
-        [ // Bot 1: Saldırı odaklı
-            {
-                countryName: "Bot1",
-                countryFocus: "attack", //attack, defence, pop, income, premium
-                polity: "monarchy",
-                population: 3900,
-                prevPopulation: 0,
-                gems: 0,
-                gold: 4030,
-                prevInflation: 1,
-                inflation: 1,
-                income: 0,
-                wood: 500,
-                clay: 500,
-                iron: 500,
-                parliament: 4,
-                castle: 0,
-                tower: 0,
-                espionage: 0,
-                barracks: 1,
-                farm: 4,
-                mine: 2,
-                woodcutter: 2,
-                brickhouse: 2,
-                trade_center: 2,
-                avm: 0,
-                spearman: 0,
-                bowman: 0,
-                swordman: 0,
-                axeman: 0,
-                knight: 0,
-                catapult: 0,
-            },
-            // Bot 2: Savunma odaklı
-            {
-                countryName: "Bot2",
-                countryFocus: "defence",
-                polity: "theocracy",
-                population: 3900,
-                prevPopulation: 0,
-                gems: 0,
-                gold: 3030,
-                prevInflation: 1,
-                inflation: 1,
-                income: 0,
-                wood: 500,
-                clay: 500,
-                iron: 500,
-                parliament: 4,
-                castle: 0,
-                tower: 0,
-                espionage: 0,
-                barracks: 1,
-                farm: 3,
-                mine: 2,
-                woodcutter: 2,
-                brickhouse: 2,
-                trade_center: 2,
-                avm: 0,
-                spearman: 0,
-                bowman: 0,
-                swordman: 0,
-                axeman: 0,
-                knight: 0,
-                catapult: 0,
-            },
-            // Bot 3: Ekonomi odaklı
-            {
-                countryName: "Bot3",
-                countryFocus: "income",
-                polity: "aristocracy",
-                population: 3900,
-                prevPopulation: 0,
-                gems: 0,
-                gold: 5000,
-                prevInflation: 1,
-                inflation: 1,
-                income: 0,
-                wood: 500,
-                clay: 500,
-                iron: 500,
-                parliament: 4,
-                castle: 0,
-                tower: 0,
-                espionage: 0,
-                barracks: 1,
-                farm: 4,
-                mine: 2,
-                woodcutter: 2,
-                brickhouse: 2,
-                trade_center: 2,
-                avm: 0,
-                spearman: 0,
-                bowman: 0,
-                swordman: 0,
-                axeman: 0,
-                knight: 0,
-                catapult: 0,
-            },
-        ]
 
     const [data, setData] = useState<any>(defaultData);
     const restartGame = async () => {
@@ -303,19 +109,6 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
             console.error('Hata:', e);
         }
     };
-    let buildIncomeWood: number = ((build_income.woodcutter.wood * data.woodcutter) + (build_income.avm.wood * data.avm))
-    let buildIncomeClay: number = ((build_income.brickhouse.clay * data.brickhouse) + (build_income.avm.clay * data.avm))
-    let buildIncomeIron: number = ((build_income.mine.iron * data.mine) + (build_income.avm.wood * data.avm))
-
-    let buildMaintenanceGold = BuildMaintenanceGold(data)
-    let buildMaintenanceWood = BuildMaintenanceWood(data)
-    let buildMaintenanceClay = BuildMaintenanceClay(data)
-    let buildMaintenanceIron = BuildMaintenanceIron(data)
-
-    let armyMaintenanceGold = ArmyMaintenanceGold(data)
-    let armyMaintenanceWood = ArmyMaintenanceWood(data)
-    let armyMaintenanceClay = ArmyMaintenanceClay(data)
-    let armyMaintenanceIron = ArmyMaintenanceIron(data)
 
     useEffect(() => {
         // Oyuncu ülke seçmeden tur başlamasın
@@ -323,10 +116,41 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
 
         const interval = setInterval(() => {
             setCurrentTurn((prev) => prev + 1);
+
+            // 1. Oyuncu için kaynak ve nüfus hesaplama
+            setData((prevData: any) => {
+                const income = calculateTurnIncome(prevData);
+                return {
+                    ...prevData,
+                    gold: prevData.gold + income.gold,
+                    wood: prevData.wood + income.wood,
+                    clay: prevData.clay + income.clay,
+                    iron: prevData.iron + income.iron,
+                    prevPopulation: prevData.population,
+                    population: CalculatePopPlayer(prevData)
+                };
+            });
+
+            // 2. Botlar için kaynak ve nüfus hesaplama
+            setDataBots((prevBots: any[]) =>
+                prevBots.map((bot: any) => {
+                    const income = calculateTurnIncome(bot);
+                    return {
+                        ...bot,
+                        gold: bot.gold + income.gold,
+                        wood: bot.wood + income.wood,
+                        clay: bot.clay + income.clay,
+                        iron: bot.iron + income.iron,
+                        prevPopulation: bot.population,
+                        population: CalculatePopBot(bot)
+                    };
+                })
+            );
         }, 5000);
 
         return () => clearInterval(interval);
-    }, [data]); // oyuncu ülke seçtiğinde başlat
+    }, [data]);
+
     return (
         <DataContext.Provider value={{
             data,
@@ -339,18 +163,6 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
             restartGame,
             addGems,
             decreaseGems,
-
-            buildIncomeWood,
-            buildIncomeClay,
-            buildIncomeIron,
-            buildMaintenanceGold,
-            buildMaintenanceWood,
-            buildMaintenanceClay,
-            buildMaintenanceIron,
-            armyMaintenanceGold,
-            armyMaintenanceWood,
-            armyMaintenanceClay,
-            armyMaintenanceIron,
         }}>
             {children}
         </DataContext.Provider>

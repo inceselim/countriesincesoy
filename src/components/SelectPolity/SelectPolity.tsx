@@ -106,7 +106,6 @@ export const SelectPolity = ({ value, setValue }: any) => {
                                     }}>
                                         <Text style={[styles.txtDarkBold]}>Positive</Text>
                                         <Text style={[styles.txtUyumlu]}>%20 Attack</Text>
-                                        <Text style={[styles.txtUyumlu]}>-%20 Soldier Maintenance</Text>
                                     </View>
                                     <View style={{
                                         marginStart: 12
@@ -230,7 +229,6 @@ export const SelectPolity = ({ value, setValue }: any) => {
                                         marginEnd: 12
                                     }}>
                                         <Text style={[styles.txtDarkBold]}>Positive</Text>
-                                        <Text style={[styles.txtUyumlu]}>%10 Soldier Maintenance</Text>
                                         <Text style={[styles.txtUyumlu]}>%10 Defence</Text>
                                     </View>
                                     <View style={{

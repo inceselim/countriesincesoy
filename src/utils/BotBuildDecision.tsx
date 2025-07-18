@@ -1,6 +1,6 @@
 import { build_income } from "../data/build_income";
-import { ArmyMaintenanceGold, ArmyMaintenanceWood, ArmyMaintenanceClay, ArmyMaintenanceIron } from "./ArmyMaintenance";
-import { BuildMaintenanceGold, BuildMaintenanceWood, BuildMaintenanceClay, BuildMaintenanceIron } from "./BuildMaintenance";
+import { ArmyMaintenanceGold, ArmyMaintenanceWood, ArmyMaintenanceClay, ArmyMaintenanceIron } from "../service/ArmyMaintenance";
+import { BuildMaintenanceGold, BuildMaintenanceWood, BuildMaintenanceClay, BuildMaintenanceIron } from "../service/BuildMaintenance";
 import { calculateSoldierAmount } from "./CalculateSoldierAmount";
 
 export const BotBuildDecision = (data: any, index: number) => {

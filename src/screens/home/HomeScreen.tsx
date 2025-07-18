@@ -11,7 +11,7 @@ import { TourGuideZone, useTourGuideController } from 'rn-tourguide';
 import { DataContext } from '../../context/DataContext';
 import LottieView from 'lottie-react-native';
 import ButtonSelect from '../../components/ButtonSelect/ButtonSelect';
-import { generateBots } from '../../utils/botGenerator';
+import { generateBots } from '../../service/botGenerator';
 
 export default function HomeScreen() {
     const navigation: any = useNavigation();
