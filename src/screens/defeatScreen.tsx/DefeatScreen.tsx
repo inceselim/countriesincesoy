@@ -37,7 +37,7 @@ export default function DefeatScreen() {
                         marginBottom: 12
                     }}>You should try again...</Text>
                     <ButtonSelect text={"Restart"}
-                        onPress={() => { restartGame }} />
+                        onPress={() => { restartGame() }} />
                 </View>
             </View>
         </SafeAreaView>

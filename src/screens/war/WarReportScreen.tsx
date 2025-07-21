@@ -13,7 +13,7 @@ const unitIcons: Record<string, any> = {
 
 const WarReportScreen = () => {
     const route: any = useRoute();
-    const navigation = useNavigation();
+    const navigation: any = useNavigation();
 
     const { lostUnits, gainedPop, gainedGold, victory } = route.params;
 
