@@ -1,28 +1,24 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const VictoryScreen = () => {
     const navigation: any = useNavigation();
 
     return (
-        <ImageBackground
-            source={require('../../assets/victory_bg.jpg')}
-            style={styles.container}
-            resizeMode="cover"
-        >
+        <SafeAreaView style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
             <View style={styles.overlay}>
-                <Text style={styles.title}>🏆 Zafer!</Text>
-                <Text style={styles.subtitle}>Tüm düşmanları yendin, ülkenle tarihe geçtin!</Text>
+                <Text style={styles.title}>🏆 Victory!</Text>
+                <Text style={styles.subtitle}>All enemies have been defeated — you and your nation have made history!</Text>
 
                 {/* İsteğe bağlı skor veya istatistikler */}
                 {/* <Text style={styles.score}>Toplam Puan: 12345</Text> */}
 
                 <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
-                    <Text style={styles.buttonText}>Restary</Text>
+                    <Text style={styles.buttonText}>Restart</Text>
                 </TouchableOpacity>
             </View>
-        </ImageBackground>
+        </SafeAreaView>
     );
 };
 
