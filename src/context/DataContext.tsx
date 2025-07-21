@@ -93,12 +93,21 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
         } catch (e) {
             console.error('Hata:', e);
         }
+        try {
+            const value = await AsyncStorage.getItem('@currentTurn');
+            if (value !== null) {
+                setCurrentTurn(JSON.parse(value));
+            }
+        } catch (e) {
+            console.error('Hata:', e);
+        }
     };
 
-    const saveToStorage = async (value: string, bots: any) => {
+    const saveToStorage = async (value: string, bots: any, currentTurn: any) => {
         try {
             await AsyncStorage.setItem('@data', JSON.stringify(value));
             await AsyncStorage.setItem('@dataBots', JSON.stringify(bots));
+            await AsyncStorage.setItem('@currentTurn', JSON.stringify(currentTurn));
         } catch (e) {
             console.error('Hata:', e);
         }

@@ -19,7 +19,7 @@ export default function HomeScreen() {
     const [loading, setLoading] = useState(false)
     const [selectMode, setSelectMode] = useState("")
     const [isVisiblePolity, setVisiblePolity] = useState(false)
-    let { data, setData, dataBots, setDataBots, loadFromStorage, saveToStorage } = useContext(DataContext)
+    let { data, setData, dataBots, setDataBots, currentTurn, loadFromStorage, saveToStorage } = useContext(DataContext)
     const [modalVisible, setModalVisible] = useState(false);
 
     const {
@@ -389,7 +389,7 @@ export default function HomeScreen() {
                                                     <TourGuideZone zone={6} shape={'rectangle'}
                                                         text={'Remember save your game before exit'}>
                                                         <HomeCard onPress={() => {
-                                                            saveToStorage(data, dataBots)
+                                                            saveToStorage(data, dataBots, currentTurn)
                                                         }}>
                                                             <Image source={require("../../assets/images/savegame.png")} style={{
                                                                 width: "70%",
