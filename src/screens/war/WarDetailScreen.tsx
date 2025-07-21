@@ -22,9 +22,46 @@ const WarDetailScreen = () => {
     const [selectedUnits, setSelectedUnits] = useState<Record<string, number>>(
         Object.fromEntries(unitTypes.map((u) => [u, 0]))
     );
-    const calculateUnitLoss = (selectedUnits: any, lossPower: number): any => {
+    // const calculateUnitLoss = (selectedUnits: any, lossPower: number): any => {
+    //     const lostUnits: any = {};
+    //     const unitOrder = ['spearman', 'bowman', 'swordman', 'axeman', 'knight', 'catapult'];
+
+    //     for (let unit of unitOrder) {
+    //         const unitPower = soldier_power[unit]?.attack || 1;
+    //         const sentCount = selectedUnits[unit] || 0;
+
+    //         const maxLossPower = sentCount * unitPower;
+
+    //         if (lossPower >= maxLossPower) {
+    //             lostUnits[unit] = sentCount;
+    //             lossPower -= maxLossPower;
+    //         } else {
+    //             const lostCount = Math.floor(lossPower / unitPower);
+    //             lostUnits[unit] = lostCount;
+    //             break;
+    //         }
+    //     }
+
+    //     return lostUnits;
+    // };
+    const calculateUnitLoss = (
+        selectedUnits: any,
+        lossPower: number,
+        polity: string,
+        countryFocus: string
+    ): any => {
         const lostUnits: any = {};
         const unitOrder = ['spearman', 'bowman', 'swordman', 'axeman', 'knight', 'catapult'];
+
+        // BONUS HESAPLAMA
+        const polityBonus = polity === 'Monarchy' ? 0.2 : polity === 'Aristocracy' ? -0.2 : 0;
+        const focusBonus = countryFocus === 'attack' ? 0.2 : countryFocus === 'premium' ? 1 : 0;
+        const totalBonus = 1 + polityBonus + focusBonus;
+
+        // BONUS GÜCÜ KADAR LOSS DÜŞÜLÜR
+        const effectiveLoss = Math.round(lossPower / totalBonus);
+
+        let remainingLoss = effectiveLoss;
 
         for (let unit of unitOrder) {
             const unitPower = soldier_power[unit]?.attack || 1;
@@ -32,11 +69,11 @@ const WarDetailScreen = () => {
 
             const maxLossPower = sentCount * unitPower;
 
-            if (lossPower >= maxLossPower) {
+            if (remainingLoss >= maxLossPower) {
                 lostUnits[unit] = sentCount;
-                lossPower -= maxLossPower;
+                remainingLoss -= maxLossPower;
             } else {
-                const lostCount = Math.floor(lossPower / unitPower);
+                const lostCount = Math.floor(remainingLoss / unitPower);
                 lostUnits[unit] = lostCount;
                 break;
             }

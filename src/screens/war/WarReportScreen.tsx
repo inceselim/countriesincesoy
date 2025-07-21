@@ -20,10 +20,10 @@ const WarReportScreen = () => {
     return (
         <ScrollView contentContainerStyle={[styles.container, { backgroundColor: victory ? '#e7ffe7' : '#ffe7e7' }]}>
             <Text style={[styles.title, { color: victory ? 'green' : 'red' }]}>
-                {victory ? '🎉 Zafer Raporu' : '💥 Mağlubiyet Raporu'}
+                {victory ? '🎉 Victory Report' : '💥 Defeat Report'}
             </Text>
 
-            <Text style={styles.sectionTitle}>🪖 Kaybedilen Askerler</Text>
+            <Text style={styles.sectionTitle}>🪖 Lost Soldiers</Text>
             {Object.entries(lostUnits).map(([unit, count]) => (
                 <View key={unit} style={styles.unitRow}>
                     <Image source={unitIcons[unit]} style={styles.icon} />
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
         marginBottom: 8,
     },
     unitRow: {
-        flexDirection: 'row',
+        flexDirection: 'column',
         alignItems: 'center',
         marginBottom: 10,
     },

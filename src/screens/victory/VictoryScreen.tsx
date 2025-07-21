@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ImageBackground, SafeAreaView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { DataContext } from '../../context/DataContext';
 
 const VictoryScreen = () => {
-    const navigation: any = useNavigation();
-
+    const { setData } = useContext(DataContext);
     return (
-        <SafeAreaView style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <View style={styles.overlay}>
                 <Text style={styles.title}>🏆 Victory!</Text>
                 <Text style={styles.subtitle}>All enemies have been defeated — you and your nation have made history!</Text>
@@ -14,7 +14,13 @@ const VictoryScreen = () => {
                 {/* İsteğe bağlı skor veya istatistikler */}
                 {/* <Text style={styles.score}>Toplam Puan: 12345</Text> */}
 
-                <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Home')}>
+                <TouchableOpacity style={styles.button} onPress={() => {
+                    // navigation.navigate('Home')
+                    setData((prevData: any) => ({
+                        ...prevData,
+                        difficult: 0,
+                    }));
+                }}>
                     <Text style={styles.buttonText}>Restart</Text>
                 </TouchableOpacity>
             </View>

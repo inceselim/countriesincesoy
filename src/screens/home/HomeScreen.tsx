@@ -86,86 +86,86 @@ export default function HomeScreen() {
                     isVisiblePolity == true ?
                         <SelectPolity value={isVisiblePolity} setValue={setVisiblePolity} />
                         :
-                        areAllEnemiesDefeated(dataBots) == true ?
-                            <VictoryScreen />
-                            :
-                            data?.difficult == "0" ?
-                                <View style={styles.content}>
-                                    <View style={{
-                                        flex: 1,
-                                        flexDirection: "row",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                    }}>
-                                        <HomeCard onPress={() => setSelectMode("1")}>
-                                            <Text style={{
-                                                fontSize: 16,
-                                                marginTop: 6,
-                                                fontWeight: "bold",
-                                                textAlign: "center",
-                                                color: selectMode == "1" ? colors.kavun : colors.txtWhite
-                                            }}>Easy Game</Text>
-                                            <Text style={{
-                                                fontSize: 13,
-                                                marginTop: 6,
-                                                textAlign: "center",
-                                                color: selectMode == "1" ? colors.kavun : colors.txtWhite
-                                            }}>1v1</Text>
-                                        </HomeCard>
-                                        <HomeCard onPress={() => setSelectMode("2")}>
-                                            <Text style={{
-                                                fontSize: 16,
-                                                marginTop: 6,
-                                                fontWeight: "bold",
-                                                textAlign: "center",
-                                                color: selectMode == "2" ? colors.kavun : colors.txtWhite
-                                            }}>Normal Game</Text>
-                                            <Text style={{
-                                                fontSize: 13,
-                                                marginTop: 6,
-                                                textAlign: "center",
-                                                color: selectMode == "2" ? colors.kavun : colors.txtWhite
-                                            }}>3 Bots</Text>
-                                        </HomeCard>
-                                        <HomeCard onPress={() => setSelectMode("3")}>
-                                            <Text style={{
-                                                fontSize: 16,
-                                                marginTop: 6,
-                                                fontWeight: "bold",
-                                                textAlign: "center",
-                                                color: selectMode == "3" ? colors.kavun : colors.txtWhite
-                                            }}>Hard Game</Text>
-                                            <Text style={{
-                                                fontSize: 13,
-                                                marginTop: 6,
-                                                textAlign: "center",
-                                                color: selectMode == "3" ? colors.kavun : colors.txtWhite
-                                            }}>1v3 Bots</Text>
-                                        </HomeCard>
-                                        <HomeCard onPress={() => setSelectMode("4")}>
-                                            <Text style={{
-                                                fontSize: 16,
-                                                marginTop: 6,
-                                                fontWeight: "bold",
-                                                textAlign: "center",
-                                                color: selectMode == "4" ? colors.kavun : colors.txtWhite
-                                            }}>Very Hard Game</Text>
-                                            <Text style={{
-                                                fontSize: 13,
-                                                marginTop: 6,
-                                                textAlign: "center",
-                                                color: selectMode == "4" ? colors.kavun : colors.txtWhite
-                                            }}>1v7 Bots</Text>
-                                        </HomeCard>
-                                        <ButtonSelect onPress={() => {
-                                            handleDiffucult()
-                                            setData((prevData: any) => ({
-                                                ...prevData,
-                                                difficult: selectMode
-                                            }));
-                                        }} />
-                                    </View>
+                        data?.difficult == "0" ?
+                            <View style={styles.content}>
+                                <View style={{
+                                    flex: 1,
+                                    flexDirection: "row",
+                                    alignItems: "center",
+                                    justifyContent: "center",
+                                }}>
+                                    <HomeCard onPress={() => setSelectMode("1")}>
+                                        <Text style={{
+                                            fontSize: 16,
+                                            marginTop: 6,
+                                            fontWeight: "bold",
+                                            textAlign: "center",
+                                            color: selectMode == "1" ? colors.kavun : colors.txtWhite
+                                        }}>Easy Game</Text>
+                                        <Text style={{
+                                            fontSize: 13,
+                                            marginTop: 6,
+                                            textAlign: "center",
+                                            color: selectMode == "1" ? colors.kavun : colors.txtWhite
+                                        }}>1v1</Text>
+                                    </HomeCard>
+                                    <HomeCard onPress={() => setSelectMode("2")}>
+                                        <Text style={{
+                                            fontSize: 16,
+                                            marginTop: 6,
+                                            fontWeight: "bold",
+                                            textAlign: "center",
+                                            color: selectMode == "2" ? colors.kavun : colors.txtWhite
+                                        }}>Normal Game</Text>
+                                        <Text style={{
+                                            fontSize: 13,
+                                            marginTop: 6,
+                                            textAlign: "center",
+                                            color: selectMode == "2" ? colors.kavun : colors.txtWhite
+                                        }}>3 Bots</Text>
+                                    </HomeCard>
+                                    <HomeCard onPress={() => setSelectMode("3")}>
+                                        <Text style={{
+                                            fontSize: 16,
+                                            marginTop: 6,
+                                            fontWeight: "bold",
+                                            textAlign: "center",
+                                            color: selectMode == "3" ? colors.kavun : colors.txtWhite
+                                        }}>Hard Game</Text>
+                                        <Text style={{
+                                            fontSize: 13,
+                                            marginTop: 6,
+                                            textAlign: "center",
+                                            color: selectMode == "3" ? colors.kavun : colors.txtWhite
+                                        }}>1v3 Bots</Text>
+                                    </HomeCard>
+                                    <HomeCard onPress={() => setSelectMode("4")}>
+                                        <Text style={{
+                                            fontSize: 16,
+                                            marginTop: 6,
+                                            fontWeight: "bold",
+                                            textAlign: "center",
+                                            color: selectMode == "4" ? colors.kavun : colors.txtWhite
+                                        }}>Very Hard Game</Text>
+                                        <Text style={{
+                                            fontSize: 13,
+                                            marginTop: 6,
+                                            textAlign: "center",
+                                            color: selectMode == "4" ? colors.kavun : colors.txtWhite
+                                        }}>1v7 Bots</Text>
+                                    </HomeCard>
+                                    <ButtonSelect onPress={() => {
+                                        handleDiffucult()
+                                        setData((prevData: any) => ({
+                                            ...prevData,
+                                            difficult: selectMode
+                                        }));
+                                    }} />
                                 </View>
+                            </View>
+                            :
+                            areAllEnemiesDefeated(dataBots) == true ?
+                                <VictoryScreen />
                                 :
                                 <View style={styles.content}>
                                     <TourGuideZone zone={0} shape={'rectangle'}
@@ -439,28 +439,6 @@ export default function HomeScreen() {
                                                         }}>Earn 100$</Text>
                                                     </HomeCard>
                                                 </TourGuideZone> */}
-                                                    <TourGuideZone zone={7} shape={'rectangle'}
-                                                        text={'Click for End Turn'}>
-                                                        <HomeCard onPress={() => {
-                                                            // //PlaySoundClick()
-                                                            EndTurn(data, setData, setLoading)
-                                                            BotsEndTurn(dataBots, setDataBots)
-                                                        }
-                                                        }>
-                                                            <Image source={require("../../assets/images/hourglass.png")} style={{
-                                                                width: "70%",
-                                                                height: "60%",
-                                                                resizeMode: "contain"
-                                                            }} />
-                                                            <Text style={{
-                                                                fontSize: 13,
-                                                                marginTop: 6,
-                                                                fontWeight: "bold",
-                                                                textAlign: "center",
-                                                                color: colors.txtWhite
-                                                            }}>End Turn</Text>
-                                                        </HomeCard>
-                                                    </TourGuideZone>
                                                 </View>
                                             </View>
                                         </View>
