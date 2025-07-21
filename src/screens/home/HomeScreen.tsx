@@ -337,7 +337,7 @@ export default function HomeScreen() {
                                                             color: colors.txtWhite
                                                         }}>War</Text>
                                                     </HomeCard>
-                                                    <HomeCard onPress={() => {
+                                                    {/* <HomeCard onPress={() => {
                                                         //PlaySoundClick()
                                                         navigation.navigate("News")
                                                     }}>
@@ -353,7 +353,7 @@ export default function HomeScreen() {
                                                             textAlign: "center",
                                                             color: colors.txtWhite
                                                         }}>News</Text>
-                                                    </HomeCard>
+                                                    </HomeCard> */}
                                                     <HomeCard onPress={() => {
                                                         //PlaySoundClick()
                                                         navigation.navigate("Premium")
