@@ -4,6 +4,7 @@ export const generateBots = (count: number): any[] => {
     const polityTypes = ["monarchy", "theocracy", "aristocracy", "democracy", "republic"];
 
     return Array.from({ length: count }, (_, i) => ({
+        id: i,
         countryName: `Bot${i + 1}`,
         countryFocus: focuses[Math.floor(Math.random() * focuses.length)],
         polity: polityTypes[Math.floor(Math.random() * polityTypes.length)],
@@ -15,9 +16,9 @@ export const generateBots = (count: number): any[] => {
         prevInflation: 1,
         inflation: 1,
         income: 0,
-        wood: 500,
-        clay: 500,
-        iron: 500,
+        wood: 1000,
+        clay: 1000,
+        iron: 1000,
         parliament: 4,
         castle: 1,
         tower: 0,
@@ -28,7 +29,7 @@ export const generateBots = (count: number): any[] => {
         woodcutter: 2,
         brickhouse: 2,
         trade_center: 6,
-        avm: 1,
+        avm: 2,
         spearman: 10,
         bowman: 0,
         swordman: 0,

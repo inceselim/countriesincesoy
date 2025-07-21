@@ -47,7 +47,15 @@ export const executeBattle = (
     attackerData: any,
     defenderData: any,
     attackingUnits: Record<UnitType, number>
-): { updatedAttacker: any, updatedDefender: any, winner: 'attacker' | 'defender' } => {
+): {
+    updatedAttacker: any, updatedDefender: any, winner: 'attacker' | 'defender',
+    report: {
+        lostPop: number;
+        lostGold: number;
+        attackerGained: boolean;
+        eliminated: boolean;
+    }
+} => {
     const attackerPower = calculateAttackPower(attackingUnits);
 
     const defenderUnits: Record<UnitType, number> = {
@@ -82,18 +90,6 @@ export const executeBattle = (
         updatedAttacker.gold += lostGold;
 
         updatedDefender.isAlive = false; // Savunan silinir
-    } else {
-        // Kazanan: savunan → sadece saldıran kaybeder
-        // const lostPop = Math.floor(attackerData.population * (lossPercent / 100));
-        // const lostGold = Math.floor(attackerData.gold * (lossPercent / 100));
-        const lostPop = 0;
-        const lostGold = 0;
-        updatedAttacker.population -= lostPop;
-        updatedAttacker.gold -= lostGold;
-        updatedDefender.population += lostPop;
-        updatedDefender.gold += lostGold;
-
-        // Kimse silinmez
     }
 
     // Gönderilen askerleri düşür (saldıran)
@@ -106,5 +102,11 @@ export const executeBattle = (
         updatedAttacker,
         updatedDefender,
         winner,
+        report: {
+            lostPop: Math.floor(defenderData.population * (lossPercent / 100)),
+            lostGold: Math.floor(defenderData.gold * (lossPercent / 100)),
+            attackerGained: winner === 'attacker',
+            eliminated: !updatedDefender.isAlive,
+        }
     };
 };

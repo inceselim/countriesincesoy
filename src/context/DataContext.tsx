@@ -2,6 +2,11 @@ import React, { createContext, useState, useEffect, ReactNode } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CalculatePopBot, CalculatePopPlayer } from '../service/population';
 import { calculateTurnIncome } from '../service/turnIncome';
+import { botBuildDecision } from '../service/BotBuildDecision';
+import { botRecruitSoldier } from '../service/BotRecruitSoldier';
+import { botAttackDecision } from '../service/BotAttackDecision';
+import { executeBattle } from '../service/battle';
+import { Alert } from 'react-native';
 
 const DataContext = createContext<any>(undefined);
 interface DataContextProviderProps {
@@ -21,8 +26,8 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
         countryName: "",
         countryFocus: "pop", // attack, defence, income, premium, pop
         polity: "Democracy", // Monarchy, Theocracy, Dictator, Aristocracy, Democracy
-        population: 4500,
-        prevPopulation: 4350,
+        population: 3500,
+        prevPopulation: 3500,
 
         // Vergi ve nüfus sistemleri
         taxRate: 40,
@@ -55,14 +60,16 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
 
         // Askerler
         spearman: 10,
-        bowman: 15,
+        bowman: 10,
         swordman: 5,
-        axeman: 8,
-        knight: 4,
+        axeman: 5,
+        knight: 44,
         catapult: 2,
     }
 
     const [data, setData] = useState<any>(defaultData);
+    const [botAttackResult, setBotAttackResult] = useState<any>(null);
+
     const restartGame = async () => {
         setData(defaultData)
     };
@@ -81,7 +88,6 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
     const loadFromStorage = async () => {
         try {
             const value = await AsyncStorage.getItem('@data');
-            console.log(value)
             if (value !== null) {
                 setData(JSON.parse(value));
             }
@@ -131,11 +137,11 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
                 };
             });
 
-            // 2. Botlar için kaynak ve nüfus hesaplama
+            // 2. Botlar için kaynak ve nüfus + karar mekanizmaları
             setDataBots((prevBots: any[]) =>
-                prevBots.map((bot: any) => {
+                prevBots.map((bot: any, idx: number, arr: any[]) => {
                     const income = calculateTurnIncome(bot);
-                    return {
+                    let updatedBot = {
                         ...bot,
                         gold: bot.gold + income.gold,
                         wood: bot.wood + income.wood,
@@ -144,6 +150,37 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
                         prevPopulation: bot.population,
                         population: CalculatePopBot(bot)
                     };
+                    // Bina kurma kararı
+                    const build = botBuildDecision(updatedBot);
+                    if (build) updatedBot[build] = (updatedBot[build] || 0) + 1;
+                    // Asker basma kararı
+                    const recruit = botRecruitSoldier(updatedBot);
+                    if (recruit) updatedBot[recruit.type] = (updatedBot[recruit.type] || 0) + recruit.amount;
+                    // Saldırı kararı
+                    const attack = botAttackDecision(updatedBot, [data, ...arr.filter((b, i) => i !== idx)]);
+                    // %10 ihtimalle saldırı
+                    if (attack && attack.targetIndex === 0 && Math.random() < 0.1) {
+                        // Bot bize saldırıyor
+                        const { updatedAttacker, updatedDefender, winner, report } = executeBattle(
+                            updatedBot,
+                            data,
+                            attack.units
+                        );
+                        // Eğer oyuncu yenildiyse isAlive false yap
+                        if (winner === 'attacker' && report.eliminated) {
+                            setData((prev: any) => ({ ...prev, isAlive: false }));
+                        } else {
+                            setData(updatedDefender);
+                        }
+                        // Alert ile bildir
+                        // Alert.alert(
+                        //     'News',
+                        //     `${winner === 'defender' ? 'Savunmayı kaybettin!' : 'Saldırıyı savundun!'}\nKaybedilen nüfus: ${report.lostPop}\nKaybedilen altın: ${report.lostGold}${report.eliminated ? '\nÜlken tamamen yok edildi!' : ''}`,
+                        //     [{ text: 'Tamam' }]
+                        // );
+                        updatedBot = updatedAttacker;
+                    }
+                    return updatedBot;
                 })
             );
         }, 5000);

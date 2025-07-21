@@ -35,11 +35,11 @@ export const calculateTurnIncome = (data: any) => {
     const taxRate = data.taxRate || 10; // %10–90 arası
     const population = data.population || 1000;
     const rawGold = (population / 1000) * 30 * (taxRate / 100); // esas altın geliri
-    const goldIncome = Math.round(rawGold * (1 + incomeBonus));
+    const goldIncome = Math.round((rawGold + (data.avm * 80) + (data.trade_center * 20)) * (1 + incomeBonus));
     // --- 3. Temel üretim (binaya göre)
-    let baseWood = ((data.woodcutter || 0) * 20) + ((data.avm || 0) * 10);
-    let baseClay = ((data.brickhouse || 0) * 20) + ((data.avm || 0) * 10);
-    let baseIron = ((data.mine || 0) * 20) + ((data.avm || 0) * 10);
+    let baseWood = ((data.woodcutter || 0) * 20) + ((data.avm || 0) * 80);
+    let baseClay = ((data.brickhouse || 0) * 20) + ((data.avm || 0) * 80);
+    let baseIron = ((data.mine || 0) * 20) + ((data.avm || 0) * 80);
 
     // --- 3. Bonuslu üretim
     const woodIncome = Math.round(baseWood);
@@ -47,14 +47,10 @@ export const calculateTurnIncome = (data: any) => {
     const ironIncome = Math.round(baseIron);
 
     // --- 4. Bakım giderleri
-    const goldMaintenance =  BuildMaintenanceGold(data);
+    const goldMaintenance = BuildMaintenanceGold(data);
     const woodMaintenance = ArmyMaintenanceWood(data) + BuildMaintenanceWood(data);
     const clayMaintenance = ArmyMaintenanceClay(data) + BuildMaintenanceClay(data);
     const ironMaintenance = ArmyMaintenanceIron(data) + BuildMaintenanceIron(data);
-    console.log("GOld income: ")
-    console.log("GOld income: ", goldIncome)
-    console.log("GOld goldMaintenance: ", goldMaintenance)
-    console.log("KALAN: ", Math.max(goldIncome - goldMaintenance, 0))
     // --- 5. Net gelirler
     return {
         gold: Math.max(goldIncome - goldMaintenance, 0),

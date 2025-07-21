@@ -17,7 +17,6 @@ import { soldier_maintenance } from '../../data/soldier_maintenance';
 import { build_costs } from '../../data/build_costs';
 import { calculateSoldierAmount } from '../../utils/CalculateSoldierAmount';
 import HeaderMenuContent from '../../components/HeaderMenu/HeaderMenuContent';
-import { PlaySoundClickLevel } from '../../utils/PlaySoundClickLevel';
 
 // create a component
 const ArmyScreen = () => {

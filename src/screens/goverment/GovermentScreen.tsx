@@ -428,7 +428,7 @@ const GovermentScreen = () => {
                                                                                     marginEnd: 4
                                                                                 }}>
                                                                                     <Text style={[styles.txtDarkBold]}>Positive</Text>
-                                                                                    <Text style={[styles.txtUyumlu]}>%10 Defence</Text>
+                                                                                    <Text style={[styles.txtUyumlu]}>%20 Defence</Text>
                                                                                 </View>
                                                                                 <View style={{
                                                                                     marginStart: 4

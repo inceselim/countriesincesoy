@@ -10,6 +10,9 @@ import { DataContext } from '../context/DataContext';
 import DefeatScreen from '../screens/defeatScreen.tsx/DefeatScreen';
 import PremiumScreen from '../screens/premium/PremiumScreen';
 import WarScreen from '../screens/war/WarScreen';
+import { MarketScreen } from '../screens/market/MarketScreen';
+import WarDetailScreen from '../screens/war/WarDetailScreen';
+import WarReportScreen from '../screens/war/WarReportScreen';
 
 const Stack = createNativeStackNavigator()
 const AppNavigator = () => {
@@ -31,6 +34,9 @@ const AppNavigator = () => {
                             <Stack.Screen name="Product" component={ProductScreen} />
                             <Stack.Screen name="Premium" component={PremiumScreen} />
                             <Stack.Screen name="War" component={WarScreen} />
+                            <Stack.Screen name="WarDetail" component={WarDetailScreen} />
+                            <Stack.Screen name="WarReport" component={WarReportScreen} />
+                            <Stack.Screen name="Market" component={MarketScreen} />
                         </>}
             </Stack.Navigator>
         </NavigationContainer>
