@@ -52,14 +52,12 @@ const PremiumScreen = () => {
                         sku === 'com.countriesincesoyselim.iap1' || sku === 'diamond_pack_1'
                             ? 14
                             : 100;
-
+                    await addGems(gemAmount);
                     // 🛡️ Android: Eğer zaten acknowledged ise tekrar finishTransaction yapma
                     const alreadyAcknowledged =
                         Platform.OS === 'android' && purchase.isAcknowledgedAndroid;
-
                     if (!alreadyAcknowledged) {
                         await RNIap.finishTransaction(purchase, false);
-                        addGems(gemAmount);
                         Alert.alert("Satın alma başarılı", `${gemAmount} elmas hesabınıza eklendi.`);
                     } else {
                         console.log("⛔️ Bu satın alma zaten tamamlanmış (acknowledged), işlem yapılmadı.");

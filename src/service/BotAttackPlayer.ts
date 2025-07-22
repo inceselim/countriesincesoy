@@ -65,13 +65,13 @@ export const botAttacksPlayerRandomly = (
 
     if (attackerPower > defenderPower) {
         Alert.alert(
-            'Düşman Saldırısı!',
-            `Bir bot ülkenize saldırdı ve kazandı!\nKaybedilen nüfus: ${lostPop}\nKaybedilen altın: ${lostGold}\nAsker kayıpları: ${Object.entries(lostUnits).map(([u, v]) => `${u}: ${v}`).join(', ')}`
+            'Enemy Attacked!',
+            `Enemy attacked and won! \nLost Pop: ${lostPop}\nLost Gold: ${lostGold}\nLost Soldier: ${Object.entries(lostUnits).map(([u, v]) => `${u}: ${v}`).join(', ')}`
         );
     } else {
         Alert.alert(
-            'Saldırı Başarısız',
-            `Bir bot ülkenize saldırdı ama savunmayı kazandınız!\nAsker kayıpları: ${Object.entries(lostUnits).map(([u, v]) => `${u}: ${v}`).join(', ')}`
+            'Enemy Attacked and Defeated!',
+            `Enemy attacked and lost! \nLost Soldier: ${Object.entries(lostUnits).map(([u, v]) => `${u}: ${v}`).join(', ')}`
         );
     }
 };
