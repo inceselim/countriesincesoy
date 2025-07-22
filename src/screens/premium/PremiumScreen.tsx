@@ -8,13 +8,14 @@ import HeaderMenuContent from '../../components/HeaderMenu/HeaderMenuContent';
 import CardView from '../../components/CardView/CardView';
 import ButtonSelect from '../../components/ButtonSelect/ButtonSelect';
 import * as RNIap from 'react-native-iap';
+import { Inter2 } from '../../ads/Inter2';
 
 const PremiumScreen = () => {
     const navigation: any = useNavigation();
     const { addGems } = useContext(DataContext);
     const [isVisibleCountryName, setVisibleCountryName] = useState(false);
     const [products, setProducts] = useState<any>([]);
-
+    Inter2()
     // const itemSkus = [Platform.OS === 'ios' ? 'com.countriesincesoyselim.iap1' : 'diamond_pack_1'];
     const itemSkus: any = Platform.select({
         ios: [

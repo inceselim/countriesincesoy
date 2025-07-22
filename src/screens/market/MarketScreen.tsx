@@ -7,11 +7,13 @@ import { colors } from '../../styles/colors';
 import { DataContext } from '../../context/DataContext';
 import CardView from '../../components/CardView/CardView';
 import HeaderMenuContent from '../../components/HeaderMenu/HeaderMenuContent';
+import { Inter1 } from '../../ads/Inter1';
 
 export const MarketScreen = () => {
     const navigation: any = useNavigation();
     const [segment, setSegment] = useState(0);
     const { data, setData, } = useContext(DataContext)
+    Inter1()
 
     const sellMaterial = ({ item, state }: any) => {
         // state 0 sıfır ise satış demektir.

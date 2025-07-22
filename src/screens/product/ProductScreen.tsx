@@ -12,12 +12,13 @@ import { build_maintenance } from '../../data/build_maintenance';
 import HeaderMenuContent from '../../components/HeaderMenu/HeaderMenuContent';
 import { BuildUpdate } from '../../utils/BuildUpdate';
 import { build_income } from '../../data/build_income';
-import { PlaySoundClickLevel } from '../../utils/PlaySoundClickLevel';
+import { Inter2 } from '../../ads/Inter2';
 
 // create a component
 const ProductScreen = () => {
     const navigation: any = useNavigation();
     let { data, setData } = useContext(DataContext);
+    Inter2()
     return (
         <ContentView>
             <HeaderMenuContent title={"Product"} />

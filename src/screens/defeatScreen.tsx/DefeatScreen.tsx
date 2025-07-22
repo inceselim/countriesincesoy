@@ -3,9 +3,13 @@ import React, { useContext } from 'react'
 import { styles } from '../../styles/styles'
 import ButtonSelect from '../../components/ButtonSelect/ButtonSelect'
 import { DataContext } from '../../context/DataContext';
+import { Inter1 } from '../../ads/Inter1';
+import { Inter2 } from '../../ads/Inter2';
 
 export default function DefeatScreen() {
     let { restartGame } = useContext(DataContext);
+    Inter1()
+    Inter2()
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.content}>

@@ -14,12 +14,14 @@ import { build_maintenance } from '../../data/build_maintenance';
 import LottieView from 'lottie-react-native';
 import { EnterName } from '../../components/EnterName/EnterName';
 import Slider from '@react-native-community/slider';
+import { Inter1 } from '../../ads/Inter1';
 
 // create a component
 const GovermentScreen = () => {
     const navigation: any = useNavigation();
     let { data, setData } = useContext(DataContext);
     const [isVisibleCountryName, setVisibleCountryName] = useState(false)
+    Inter1()
     const handleCountryBonus = (bonus: string) => {
         setData((prevData: any) => ({
             ...prevData,

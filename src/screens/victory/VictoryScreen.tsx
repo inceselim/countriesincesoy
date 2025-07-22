@@ -1,9 +1,13 @@
 import React, { useContext } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-native';
 import { DataContext } from '../../context/DataContext';
+import { Inter1 } from '../../ads/Inter1';
+import { Inter2 } from '../../ads/Inter2';
 
 const VictoryScreen = () => {
     const { setData } = useContext(DataContext);
+    Inter1()
+    Inter2()
     return (
         <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
             <View style={styles.overlay}>

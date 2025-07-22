@@ -7,11 +7,12 @@ import HeaderMenuContent from '../../components/HeaderMenu/HeaderMenuContent';
 import ContentView from '../../components/ContentView/ContentView';
 import { calculateBotAttackPower, calculateBotDefencePower, calculatePlayerAttackPower, calculatePlayerDefencePower } from '../../service/CalculatePlayerPower';
 import { useNavigation } from '@react-navigation/native';
+import { Inter2 } from '../../ads/Inter2';
 
 const WarScreen = () => {
     const { data, dataBots, setData, setDataBots } = useContext(DataContext);
     const navigation: any = useNavigation();
-
+    Inter2()
     const aliveBots = dataBots.filter((bot: any) => bot.isAlive);
 
     const renderBot = ({ item }: any) => {

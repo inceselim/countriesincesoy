@@ -17,11 +17,13 @@ import { soldier_maintenance } from '../../data/soldier_maintenance';
 import { build_costs } from '../../data/build_costs';
 import { calculateSoldierAmount } from '../../utils/CalculateSoldierAmount';
 import HeaderMenuContent from '../../components/HeaderMenu/HeaderMenuContent';
+import { Inter1 } from '../../ads/Inter1';
 
 // create a component
 const ArmyScreen = () => {
     const navigation: any = useNavigation();
     let { data, setData } = useContext(DataContext);
+    Inter1()
     return (
         <ContentView>
             <HeaderMenuContent title={"Army"} />
