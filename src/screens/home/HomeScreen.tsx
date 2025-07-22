@@ -72,7 +72,7 @@ export default function HomeScreen() {
             difficult: selectMode,
         }));
 
-        setDataBots(generateBots(botCount));
+        setDataBots(generateBots(botCount, selectMode));
     };
     const areAllEnemiesDefeated = (dataBots: any[]): boolean => {
         return dataBots.every(bot => bot.isAlive === false);
