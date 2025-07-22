@@ -1,19 +1,28 @@
-import React, { createContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useState, useEffect, ReactNode, useCallback, useRef } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { CalculatePopBot, CalculatePopPlayer } from '../service/population';
 import { calculateTurnIncome } from '../service/turnIncome';
 import { botBuildDecision } from '../service/BotBuildDecision';
 import { botRecruitSoldier } from '../service/BotRecruitSoldier';
-import { botAttackDecision } from '../service/BotAttackDecision';
-import { Alert } from 'react-native';
-import { calculateBotAttackPower, calculateBotDefencePower } from '../service/CalculatePlayerPower';
 import { botAttacksPlayerRandomly } from '../service/BotAttackPlayer';
+import YoutubePlayer from "react-native-youtube-iframe";
 
 const DataContext = createContext<any>(undefined);
 interface DataContextProviderProps {
     children: ReactNode;
 }
 const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: any) => {
+    const [playing, setPlaying] = useState(false);
+
+    const onStateChange = useCallback((state: any) => {
+        if (state === "ended") {
+            setPlaying(false);
+        }
+    }, []);
+
+    const togglePlaying = useCallback(() => {
+        setPlaying((prev) => !prev);
+    }, []);
     const [currentTurn, setCurrentTurn] = useState(0)
     const [dataBots, setDataBots] = useState<any[]>([]);
     const defaultData: any = {
@@ -168,7 +177,11 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
         return () => clearInterval(interval);
     }, [data]);
 
-
+    useEffect(() => {
+        setTimeout(() => {
+            setPlaying(true);
+        }, 100); // küçük bir gecikme autoplay'i tetikleyebilir
+    }, []);
     return (
         <DataContext.Provider value={{
             data,
@@ -182,6 +195,20 @@ const DataContextProvider: React.FC<DataContextProviderProps> = ({ children }: a
             decreaseGems,
         }}>
             {children}
+            <YoutubePlayer
+                height={0}
+                play={playing}
+                videoId="ZKFwQFBwQFU"
+                onChangeState={(event: any) => {
+                    if (event === "ended") setPlaying(false);
+                }}
+                initialPlayerParams={{
+                    start: 1,
+                    autoplay: true, // bu önemli!
+                    controls: 1,
+                    modestbranding: true,
+                }}
+            />
         </DataContext.Provider>
     );
 };
